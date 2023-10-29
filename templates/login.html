@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 300px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Login</h2>
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <p style="color: red; text-align:center;">{{ messages[0] }}</p>
+    {% endif %}
+    {% endwith %}
+    
+    <form action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <input type="submit" value="Login">
+    </form>
+    <p style="text-align:center;">Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+</body>
+</html>
