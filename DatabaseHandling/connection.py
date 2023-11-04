@@ -3,8 +3,8 @@ import mysql.connector
 def get_db_connection():
     config = {
         'host': 'localhost',
-        'user': 'ivank',
-        'password': 'Mikrovela1!',
+        'user': 'xxx',
+        'password': 'xx!',
         'database': 'banking_app'
     }
     connection = mysql.connector.connect(**config)
