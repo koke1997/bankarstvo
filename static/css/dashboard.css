@@ -1,123 +1,70 @@
-/* Base Styles */
 body {
     font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(90deg, #87CEEB 0%, #1E90FF 50%, #87CEEB 100%);
-    background-size: 300% 300%;
-    animation: waterWave 4s infinite, gradientBackground 20s infinite alternate;
+    background: linear-gradient(-45deg, #6dd5ed, #2193b0, #6dd5ed, #2193b0);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    border-radius: 15px;
+    flex-direction: column;
 }
 
-h2, h3 {
-    text-align: center;
-}
-
-form {
-    max-width: 300px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 0.4em;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: #fff;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-a {
-    color: #007BFF;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #0056b3;
-}
-
-/* Responsive Design */
-@media only screen and (max-width: 600px) {
-    form {
-        max-width: 90%;
-    }
-    table {
-        width: 95%;
-    }
-}
-
-/* Shimmering Effect on Button Hover */
-@keyframes shimmer {
+@keyframes gradientBG {
     0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
-
-button:hover {
-    background-image: linear-gradient(90deg, #0056b3, #007BFF, #0056b3);
-    animation: shimmer 1.5s infinite;
-}
-
-/* Water Shimmering Wave Effect */
-@keyframes waterWave {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-/* Shimmering Background with Slow Gradient Color Transitions */
-@keyframes gradientBackground {
-    0% {
-        background-color: #f4f4f4;
+        background-position: 0% 50%;
     }
     50% {
-        background-color: #e0e0e0;
+        background-position: 100% 50%;
     }
     100% {
-        background-color: #f4f4f4;
+        background-position: 0% 50%;
     }
 }
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #40e0d0; /* Turquoise color */
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(64, 224, 208, 0.5);
+}
+
+/* Existing shimmering wave effect code for buttons */
+.btn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    transform: skewX(-20deg) translateX(-100%);
+    transition: none;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.btn:hover::before {
+    transform: skewX(-20deg) translateX(300%);
+    transition: transform 0.7s ease;
+}
+
+

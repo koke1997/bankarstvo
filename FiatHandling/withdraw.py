@@ -1,7 +1,7 @@
-from DatabaseHandling.connection import get_db_connection
+from DatabaseHandling.connection import connect_db
 
 def withdraw(user_id, amount):
-    connection = get_db_connection()
+    connection = connect_db()
     cursor = connection.cursor()
 
     # Ensure the user has sufficient funds

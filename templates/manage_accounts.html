@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Manage Accounts</h2>
+
+    <form action="{{ url_for('manage_accounts') }}" method="post">
+        <h3>Add Account:</h3>
+        <label for="currency_code">Currency:</label>
+        <select name="currency_code">
+            {% for country in country_data %}
+                <option value="{{ country['currency']['code'] }}">{{ country['name'] }} ({{ country['currency']['code'] }})</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="add_currency" value="Add Account">
+
+        <h3>Existing Accounts:</h3>
+        {% for account in accounts %}
+        <div>
+            Account ID: {{ account[0] }} | Currency: {{ account[1] }}
+            <input type="submit" name="remove_account" value="Remove" formaction="{{ url_for('manage_accounts') }}?account_id={{ account[0] }}">
+        </div>
+        {% endfor %}
+    </form>
+{% endblock %}

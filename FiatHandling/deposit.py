@@ -1,7 +1,7 @@
 # deposit.py
 
 import mysql.connector
-from DatabaseHandling.connection import get_db_connection, get_db_cursor
+from DatabaseHandling.connection import connect_db, get_db_cursor
 from validation_utils import validate_account, validate_currency
 
 def deposit(user_id, amount, currency_code):
@@ -10,7 +10,7 @@ def deposit(user_id, amount, currency_code):
     """
 
     # Establish a database connection and get a cursor
-    db = get_db_connection()
+    db = connect_db()
     cursor = get_db_cursor(db)
 
     try:
@@ -52,6 +52,7 @@ def deposit(user_id, amount, currency_code):
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
+        db.rollback()  # Rollback in case of an error to avoid data inconsistencies.
         return "Failed to deposit funds"
 
     finally:

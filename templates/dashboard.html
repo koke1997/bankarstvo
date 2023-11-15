@@ -16,6 +16,44 @@
 <body>
     <h2 style="text-align:center;">Dashboard</h2>
 
+    <form id="create-account-form" method="post" action="{{ url_for('account.create_account') }}">
+        <h2>Create New Account</h2>
+        <div>
+            <label for="account-name">Account Name:</label>
+            <input type="text" id="account-name" name="account_name" required>
+        </div>
+        <div>
+            <label for="country-code">Country:</label>
+            <select id="country-code" name="currency_code" required>
+                {% for country in country_options %}
+                <option value="{{ country.code }}">{{ country.name }} ({{ country.code }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="account-type">Account Type:</label>
+            <select id="account-type" name="account_type" required>
+                <option value="checking">Checking</option>
+                <option value="savings">Savings</option>
+                <!-- Add more account types as needed -->
+            </select>
+        </div>
+        <div>
+            <button type="submit">Create Account</button>
+        </div>
+    </form>
+    
+
+    <form action="{{ url_for('account_routes.dashboard') }}" method="post">
+        <select name="account_choice">
+            {% for account in accounts %}
+            <option value="{{ account.account_id }}">{{ account.account_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Select Account">
+    </form>
+    
+
     <!-- Balance Display -->
     <h3>Your Balance: ${{ balance }}</h3>
 
@@ -64,6 +102,6 @@
         </tbody>
     </table>
 
-    <p style="text-align:center;"><a href="{{ url_for('index') }}">Logout</a></p>
+    <p style="text-align:center;"><a href="{{ url_for('user_routes.index') }}">Logout</a></p>
 </body>
 </html>

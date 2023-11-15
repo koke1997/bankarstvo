@@ -1,24 +1,22 @@
-from app import db, bcrypt
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from werkzeug.security import generate_password_hash
+from app_factory import db
+from models import User
+from extensions import db, bcrypt
 
-registration_bp = Blueprint('registration', __name__)
+def register_user(username, email, password):
 
-@registration_bp.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
+    user = User.query.filter_by(email=email).first()
+    if user:
+        return False
 
-        # Hash the password
-        hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
-
-        # Store the user in the database
-        new_user = User(username=username, email=email, password_hash=hashed_pw)
-        db.session.add(new_user)
-        db.session.commit()
-
-        flash('Registration successful! Please login.')
-        return redirect(url_for('login.index'))
-
-    return render_template('register.html')
+    # Generate the hashed password
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+    
+    # Create a new User instance using the provided username and hashed password
+    new_user = User(username=username, email=email, password_hash=hashed_password)
+    
+    # Add the new User instance to the session and commit to the database
+    db.session.add(new_user)
+    db.session.commit()
+    
+    return new_user

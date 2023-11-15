@@ -1,7 +1,7 @@
-from DatabaseHandling.connection import get_db_connection
+from DatabaseHandling.connection import connect_db
 
 def check_notifications(user_id):
-    connection = get_db_connection()
+    connection = connect_db()
     cursor = connection.cursor()
 
     notification_query = """SELECT transaction_type, transaction_date 

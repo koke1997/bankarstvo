@@ -1,8 +1,8 @@
-from DatabaseHandling.connection import get_db_connection, get_db_cursor
+from DatabaseHandling.connection import connect_db, get_db_cursor
 
 def validate_currency(currency_code):
     """Validates that the given currency_code exists in the database."""
-    db = get_db_connection()
+    db = connect_db()
     cursor = get_db_cursor(db)
     
     try:
@@ -19,7 +19,7 @@ def validate_currency(currency_code):
 
 def validate_account(account_id):
     """Validates that the given account_id exists in the database."""
-    db = get_db_connection()
+    db = connect_db()
     cursor = get_db_cursor(db)
     
     try:

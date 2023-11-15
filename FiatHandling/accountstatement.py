@@ -1,7 +1,7 @@
-from DatabaseHandling.connection import get_db_connection
+from DatabaseHandling.connection import connect_db
 
 def get_monthly_statement(user_id, month, year):
-    connection = get_db_connection()
+    connection = connect_db()
     cursor = connection.cursor()
 
     statement_query = """SELECT transaction_id, from_account_id, to_account_id, amount, transaction_date, transaction_type, transaction_status, description 

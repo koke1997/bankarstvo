@@ -1,8 +1,8 @@
-from DatabaseHandling.connection import get_db_connection
+from DatabaseHandling.connection import connect_db
 
 
 def get_transaction_history(user_id, n=10):
-    connection = get_db_connection()
+    connection = connect_db()
     cursor = connection.cursor()
 
     # Fetch the account ID for the user

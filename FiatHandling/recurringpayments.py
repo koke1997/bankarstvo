@@ -1,8 +1,8 @@
 import mysql.connector
 from datetime import datetime
-from DatabaseHandling.connection import get_db_connection
+from DatabaseHandling.connection import connect_db
 
-def get_db_connection():
+def connect_db():
     config = {
         'host': 'localhost',
         'user': 'banking_user',
@@ -13,7 +13,7 @@ def get_db_connection():
     return connection
 
 def add_recurring_payment(from_user_id, to_account_id, amount, start_date, end_date, frequency):
-    connection = get_db_connection()
+    connection = connect_db()
     cursor = connection.cursor()
 
     insert_query = """INSERT INTO RecurringPayments (from_user_id, to_account_id, amount, start_date, end_date, frequency, status)
@@ -25,7 +25,7 @@ def add_recurring_payment(from_user_id, to_account_id, amount, start_date, end_d
     connection.close()
 
 def execute_recurring_payments():
-    connection = get_db_connection()
+    connection = connect_db()
     cursor = connection.cursor()
 
     # Get all active recurring payments that need execution
