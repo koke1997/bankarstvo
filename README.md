@@ -19,12 +19,12 @@ This project is a comprehensive banking application built in Python. It features
 
 1. **Clone the Repository**
    \`\`\`bash
-   git clone [repository-link]
+   git clone [[repository-link](https://github.com/koke1997/bankarstvo)]
    \`\`\`
 
 2. **Navigate to the Project Directory**
    \`\`\`bash
-   cd [project-directory]
+   cd [project-directoryGitHub\bankarstvo]
    \`\`\`
 
 3. **Install Dependencies**
