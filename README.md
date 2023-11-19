@@ -3,7 +3,7 @@
 
 ## **Description**
 
-This project is a comprehensive banking application built in Python. It features modules for user registration, login, balance checking, and more, offering a robust framework for banking operations.
+This project is a comprehensive banking application built in Python. It features modules for user registration, login, balance checking, and more, offering a robust framework for banking operations. Main idea is to create more smaller banks instead having few big banks in a country. Current challenge is the technology which should enable only real persons to use the banking system. 
 
 ## **Features**
 
