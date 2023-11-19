@@ -3,7 +3,7 @@
 
 ## **Description**
 
-This project is a comprehensive banking application built in Python. It features modules for user registration, login, balance checking, and more, offering a robust framework for banking operations. Main idea is to create more smaller banks instead having few big banks in a country. Current challenge is the technology which should enable only real persons to use the banking system. 
+This project is a comprehensive banking application built in Python. It features modules for user registration, login, balance checking, and more, offering a robust framework for banking operations. The main idea is to create more smaller banks instead of having a few big banks in a country. The current challenge is the technology which should enable only real persons to use the banking system.
 
 ## **Features**
 
@@ -18,27 +18,18 @@ This project is a comprehensive banking application built in Python. It features
 **Step-by-step setup:**
 
 1. **Clone the Repository**
-   \`\`\`bash
-   git clone [repository-link]
-   \`\`\`
+   <pre><code>git clone https://github.com/koke1997/bankarstvo</code></pre>
 
 2. **Navigate to the Project Directory**
-   \`\`\`bash
-   cd [project-directory]
-   \`\`\`
+   <pre><code>cd bankarstvo</code></pre>
 
 3. **Install Dependencies**
-   \`\`\`bash
-   pip install -r requirements.txt
-   \`\`\`
+   <pre><code>pip install -r requirements.txt</code></pre>
 
 ## **Usage**
 
 **Running the Application:**
-
-\`\`\`bash
-python app.py
-\`\`\`
+<pre><code>python app.py</code></pre>
 
 ## **Configuration**
 
@@ -50,17 +41,14 @@ Contributions are welcome. Here's how you can contribute:
 
 1. **Fork the Repository**
 2. **Create a Feature Branch**
-   \`\`\`bash
-   git checkout -b feature/YourFeature
-   \`\`\`
+   <pre><code>git checkout -b feature/YourFeature</code></pre>
+
 3. **Commit Your Changes**
-   \`\`\`bash
-   git commit -am 'Add some feature'
-   \`\`\`
+   <pre><code>git commit -am 'Add some feature'</code></pre>
+
 4. **Push to the Branch**
-   \`\`\`bash
-   git push origin feature/YourFeature
-   \`\`\`
+   <pre><code>git push origin feature/YourFeature</code></pre>
+
 5. **Submit a Pull Request**
 
 ## **License**
@@ -69,4 +57,4 @@ Contributions are welcome. Here's how you can contribute:
 
 ## **Contact**
 
-For queries or contributions, contact us at [Your Email](mailto:ivankokalovic@protonmail.ch).
+For queries or contributions, contact me at [ivankokalovic@protonmail.ch](mailto:ivankokalovic@protonmail.ch).
