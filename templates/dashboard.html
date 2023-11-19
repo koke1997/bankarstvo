@@ -45,6 +45,8 @@
     
 
     <form action="{{ url_for('account_routes.dashboard') }}" method="post">
+        <!-- Hidden input field to store selected_account_id -->
+        <input type="hidden" name="selected_account_id" value="{{ selected_account_id }}">
         <select name="account_choice">
             {% for account in accounts %}
             <option value="{{ account.account_id }}">{{ account.account_name }}</option>

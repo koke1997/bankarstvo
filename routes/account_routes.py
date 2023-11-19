@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, session
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, session, jsonify
 from DatabaseHandling.connection import connect_db, get_db_cursor
 import json
 
@@ -63,10 +63,12 @@ def dashboard():
     balance = 0.00
 
     if request.method == 'POST':
-        selected_account_id = request.form.get('account_choice')
+        account_choice = request.form.get('account_choice')
+        session['selected_account_id'] = account_choice  # Store selected_account_id in the session
 
         # Retrieve account details, balance, transactions, etc.
         try:
+            selected_account_id = session.get('selected_account_id')
             conn, cursor = get_db_cursor()
             cursor.execute("SELECT * FROM accounts WHERE account_id = %s", (selected_account_id,))
             selected_account = cursor.fetchone()
@@ -74,7 +76,7 @@ def dashboard():
             if selected_account:
                 balance = selected_account['balance']
                 # Retrieve transactions for the selected account
-                cursor.execute("SELECT * FROM transactions WHERE account_id = %s", (selected_account_id,))
+                cursor.execute("SELECT * FROM transactions WHERE from_account_id = %s", (selected_account_id,))
                 transactions = cursor.fetchall()
 
             cursor.close()
@@ -84,9 +86,10 @@ def dashboard():
             current_app.logger.error(f"An error occurred while retrieving account details: {e}")
             flash(f"An error occurred while retrieving account details: {e}", "error")
 
-    return render_template('dashboard.html', country_options=country_options, accounts=accounts, selected_account=selected_account, balance=balance, transactions=transactions)
+    return render_template('dashboard.html', country_options=country_options, accounts=accounts, selected_account=selected_account, selected_account_id=session.get('selected_account_id'), balance=balance, transactions=transactions)
 
 
 def configure_account_routes(app):
     app.register_blueprint(account_routes)
     app.register_blueprint(account_bp, url_prefix='/account')
+

@@ -1,5 +1,10 @@
 import mysql.connector
 from mysql.connector import pooling
+import logging
+
+# Initialize logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Initialize the connection pool
 pool = pooling.MySQLConnectionPool(
@@ -16,11 +21,20 @@ pool = pooling.MySQLConnectionPool(
 )
 
 def connect_db():
-    # Get a connection from the pool
-    return pool.get_connection()
+    try:
+        connection = pool.get_connection()
+        logger.info("Database connection established")
+        return connection
+    except mysql.connector.Error as err:
+        logger.error(f"Error connecting to the database: {err}")
+        raise
 
 def get_db_cursor():
-    # Get a database connection and cursor
-    connection = connect_db()
-    cursor = connection.cursor(dictionary=True)  # This sets up a DictCursor
-    return connection, cursor
+    try:
+        connection = connect_db()
+        cursor = connection.cursor(dictionary=True)
+        logger.info("Database cursor obtained")
+        return connection, cursor
+    except mysql.connector.Error as err:
+        logger.error(f"Error getting database cursor: {err}")
+        raise
