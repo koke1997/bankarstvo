@@ -1,4 +1,3 @@
-
 # **Banking Application**
 
 ## **Description**
@@ -18,27 +17,22 @@ This project is a comprehensive banking application built in Python. It features
 **Step-by-step setup:**
 
 1. **Clone the Repository**
-   \`\`\`bash
-   git clone https://github.com/koke1997/bankarstvo
-   \`\`\`
+   
+    git clone https://github.com/koke1997/bankarstvo
 
 2. **Navigate to the Project Directory**
-   \`\`\`bash
-   cd bankarstvo
-   \`\`\`
+   
+    cd bankarstvo
 
 3. **Install Dependencies**
-   \`\`\`bash
-   pip install -r requirements.txt
-   \`\`\`
+   
+    pip install -r requirements.txt
 
 ## **Usage**
 
 **Running the Application:**
-
-\`\`\`bash
-python app.py
-\`\`\`
+    
+    python app.py
 
 ## **Configuration**
 
@@ -50,17 +44,17 @@ Contributions are welcome. Here's how you can contribute:
 
 1. **Fork the Repository**
 2. **Create a Feature Branch**
-   \`\`\`bash
-   git checkout -b feature/YourFeature
-   \`\`\`
+    
+    git checkout -b feature/YourFeature
+
 3. **Commit Your Changes**
-   \`\`\`bash
-   git commit -am 'Add some feature'
-   \`\`\`
+    
+    git commit -am 'Add some feature'
+
 4. **Push to the Branch**
-   \`\`\`bash
-   git push origin feature/YourFeature
-   \`\`\`
+    
+    git push origin feature/YourFeature
+
 5. **Submit a Pull Request**
 
 ## **License**
@@ -70,3 +64,4 @@ Contributions are welcome. Here's how you can contribute:
 ## **Contact**
 
 For queries or contributions, contact me at [ivankokalovic@protonmail.ch](mailto:ivankokalovic@protonmail.ch).
+"""
