@@ -1,41 +1,72 @@
-# bankarstvo
 
+# **Banking Application**
 
-app.py
+## **Description**
 
-Framework: Python
-Type: General Script
-Summary: Sets up and runs the Flask application using create_app from app_factory.py.
-app_factory.py
+This project is a comprehensive banking application built in Python. It features modules for user registration, login, balance checking, and more, offering a robust framework for banking operations.
 
-Framework: Flask
-Type: Class/Function Definitions
-Summary: Defines create_app to set up the Flask app with configurations, routes, and extensions.
-extensions.py
+## **Features**
 
-Framework: Flask
-Type: Class/Function Definitions
-Summary: Initializes Flask extensions like SQLAlchemy, Bcrypt, and LoginManager, and integrates them with the app.
-models.py
+- **User Registration**: Allows new users to register for the banking service.
+- **User Login**: Secure login functionality for existing users.
+- **Balance Checking**: Users can check their account balance.
+- **Database Connectivity**: Manages secure connections to the database.
+- **Data Validation**: Ensures integrity and correctness of user input.
 
-Framework: Flask
-Type: Class/Function Definitions
-Summary: Defines data models using SQLAlchemy, including a User model with login functionality.
-validation_utils.py
+## **Installation**
 
-Framework: Python
-Type: Class/Function Definitions
-Summary: Contains functions for validating currencies against the database using custom queries.
-Directories
-DatabaseHandling
+**Step-by-step setup:**
 
-Contents: Modules for database interactions, including balance checking, connection management, login, and registration.
-FiatHandling
+1. **Clone the Repository**
+   \`\`\`bash
+   git clone [repository-link]
+   \`\`\`
 
-Contents: Modules related to fiat currency operations like account details, statement, deposits, transfers, notifications, and withdrawals.
-routes
+2. **Navigate to the Project Directory**
+   \`\`\`bash
+   cd [project-directory]
+   \`\`\`
 
-Contents: Flask route modules for user, account, and transaction handling.
-templates
+3. **Install Dependencies**
+   \`\`\`bash
+   pip install -r requirements.txt
+   \`\`\`
 
-Contents: HTML templates for various user interfaces like dashboard, deposit, login, account management, registration, transaction history, transfer, and withdrawal.
+## **Usage**
+
+**Running the Application:**
+
+\`\`\`bash
+python app.py
+\`\`\`
+
+## **Configuration**
+
+- Update the `config.py` file with your database and other environment-specific settings.
+
+## **Contributing**
+
+Contributions are welcome. Here's how you can contribute:
+
+1. **Fork the Repository**
+2. **Create a Feature Branch**
+   \`\`\`bash
+   git checkout -b feature/YourFeature
+   \`\`\`
+3. **Commit Your Changes**
+   \`\`\`bash
+   git commit -am 'Add some feature'
+   \`\`\`
+4. **Push to the Branch**
+   \`\`\`bash
+   git push origin feature/YourFeature
+   \`\`\`
+5. **Submit a Pull Request**
+
+## **License**
+
+- [MIT License](LICENSE)
+
+## **Contact**
+
+For queries or contributions, contact us at [Your Email](mailto:ivankokalovic@protonmail.ch).
