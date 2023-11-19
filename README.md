@@ -3,7 +3,7 @@
 
 ## **Description**
 
-This project is a comprehensive banking application built in Python. It features modules for user registration, login, balance checking, and more, offering a robust framework for banking operations. Main idea is to create more smaller banks instead having few big banks in a country. Current challenge is the technology which should enable only real persons to use the banking system. 
+This project is a comprehensive banking application built in Python. It features modules for user registration, login, balance checking, and more, offering a robust framework for banking operations. The main idea is to create more smaller banks instead of having a few big banks in a country. The current challenge is the technology which should enable only real persons to use the banking system.
 
 ## **Features**
 
@@ -19,12 +19,12 @@ This project is a comprehensive banking application built in Python. It features
 
 1. **Clone the Repository**
    \`\`\`bash
-   git clone [[repository-link](https://github.com/koke1997/bankarstvo)]
+   git clone https://github.com/koke1997/bankarstvo
    \`\`\`
 
 2. **Navigate to the Project Directory**
    \`\`\`bash
-   cd [project-directoryGitHub\bankarstvo]
+   cd bankarstvo
    \`\`\`
 
 3. **Install Dependencies**
@@ -69,4 +69,4 @@ Contributions are welcome. Here's how you can contribute:
 
 ## **Contact**
 
-For queries or contributions, contact us at [Your Email](mailto:ivankokalovic@protonmail.ch).
+For queries or contributions, contact me at [ivankokalovic@protonmail.ch](mailto:ivankokalovic@protonmail.ch).
