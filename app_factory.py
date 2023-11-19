@@ -33,7 +33,7 @@ def create_app():
         traceback_str = traceback.format_exc()
         app.logger.error(f"An exception occurred: {str(e)}\n{traceback_str}")
         return 'An internal server error occurred.', 500
-
+    app.debug = True
     return app
 
 
