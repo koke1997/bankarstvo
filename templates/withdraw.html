@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Withdraw</h2>
-<form action="/withdraw" method="post">
+<form action="{{ url_for('transaction_routes.withdraw') }}" method="post">
     <label for="amount">Amount:</label>
     <input type="text" id="amount" name="amount" required><br><br>
 
