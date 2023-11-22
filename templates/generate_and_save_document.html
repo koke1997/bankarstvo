@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate and Save Document</title>
+</head>
+<body>
+    <h1>Generate and Save Document</h1>
+    
+    <!-- Form to submit data for PDF generation -->
+    <form action="/generate_and_save_document" method="POST">
+        <label for="document_type">Document Type:</label>
+        <input type="text" name="document_type" required><br><br>
+
+        <label for="additional_info">Additional Info:</label>
+        <input type="text" name="additional_info"><br><br>
+
+        <label for="document_content">Document Content:</label><br>
+        <textarea name="document_content" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Generate PDF and Save">
+    </form>
+    
+    <!-- Display PDF download link if available -->
+    {% if pdf_download_link %}
+        <hr>
+        <h2>Generated PDF:</h2>
+        <p>You can download the generated PDF here:</p>
+        <a href="{{ pdf_download_link }}" download="generated_document.pdf">Download PDF</a>
+    {% endif %}
+    
+    <!-- Display flash messages if any -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <hr>
+            <h2>Messages:</h2>
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

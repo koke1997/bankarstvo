@@ -1,7 +1,11 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for, flash, session
-from DatabaseHandling.connection import connect_db, get_db_cursor
+from flask import Flask, Blueprint, render_template, request, redirect, url_for, flash, session, send_file
+from DatabaseHandling.connection import get_db_cursor
 import logging
-import psycopg2.errors
+import io
+import base64
+from MediaHandling.pdf_handling import generate_pdf, save_document_to_db
+from datetime import datetime
+from models import Transaction  # Import the Transaction model
 import traceback  # Import the traceback module
 
 # Initialize Flask app
@@ -14,10 +18,6 @@ logger = logging.getLogger(__name__)
 
 # Define a Blueprint for transaction routes
 transaction_routes = Blueprint('transaction_routes', __name__)
-
-# Define your other routes and configurations here (snippets you have)
-
-# ...
 
 # Define the deposit route
 @transaction_routes.route('/deposit', methods=['GET', 'POST'])
@@ -81,15 +81,15 @@ def withdraw():
                     logger.info(f'Executed SQL query: {update_query} with parameters: ({withdrawal_amount}, {account_id})')
 
                     # Log the SQL query for inserting transaction
-                    insert_query = """
-                        INSERT INTO transactions (from_account_id, amount, transaction_type, description) 
-                        VALUES (%s, %s, 'withdrawal', 'Withdrawal from account')
-                        """
-                    cursor.execute(insert_query, (account_id, withdrawal_amount))
-                    logger.info(f'Executed SQL query: {insert_query} with parameters: ({account_id}, {withdrawal_amount})')
-
+                    transaction = Transaction(
+                        user_id=session.get('user_id'),
+                        amount=withdrawal_amount,
+                        transaction_type='withdrawal',
+                        description='Withdrawal from account'
+                    )
+                    conn.add(transaction)
                     conn.commit()
-                    cursor.close()
+
                     conn.close()
 
                     logger.info(f'Withdrawal successful! Amount: {withdrawal_amount}, Account ID: {account_id}')
@@ -100,10 +100,6 @@ def withdraw():
             else:
                 logger.warning(f'Account not found or balance key missing! Account ID: {account_id}')
                 flash('Account not found or balance key missing!', 'error')
-        except psycopg2.errors.DatabaseError as db_error:
-            # Log the specific database error
-            logger.error(f"Database error during withdrawal: {db_error}")
-            flash(f"Database error during withdrawal: {db_error}", "error")
         except Exception as e:
             # Log any other exceptions
             logger.error(f"An error occurred during withdrawal: {str(e)}")
@@ -114,11 +110,6 @@ def withdraw():
         return redirect(url_for('account_routes.dashboard'))
 
     return render_template('withdraw.html')
-
-
-
-
-
 
 # Define the transfer route
 @transaction_routes.route('/transfer', methods=['GET', 'POST'])
@@ -137,32 +128,70 @@ def transfer():
                 # Update balances of both accounts
                 cursor.execute("UPDATE accounts SET balance = balance - %s WHERE account_id = %s", (transfer_amount, from_account_id))
                 cursor.execute("UPDATE accounts SET balance = balance + %s WHERE account_id = %s", (transfer_amount, to_account_id))
+                
                 # Record transactions
-                cursor.execute("""
-                    INSERT INTO transactions (from_account_id, to_account_id, amount, transaction_type, description) 
-                    VALUES (%s, %s, %s, 'transfer', 'Transfer to another account')
-                    """, (from_account_id, to_account_id, transfer_amount))
+                transaction_from = Transaction(
+                    user_id=session.get('user_id'),
+                    amount=transfer_amount,
+                    transaction_type='transfer',
+                    description='Transfer to another account'
+                )
+                transaction_to = Transaction(
+                    user_id=session.get('user_id'),
+                    amount=transfer_amount,
+                    transaction_type='transfer',
+                    description='Transfer from another account'
+                )
+                conn.add_all([transaction_from, transaction_to])
                 conn.commit()
+
+                conn.close()
+
+                logger.info(f'Transfer successful! Amount: {transfer_amount}, From Account ID: {from_account_id}, To Account ID: {to_account_id}')
+                flash('Transfer successful!', 'success')
+                return redirect(url_for('account_routes.dashboard'))
             else:
                 logger.warning(f'Insufficient balance for transfer! Amount: {transfer_amount}, Account ID: {from_account_id}')
                 flash('Insufficient balance for transfer!', 'error')
-            cursor.close()
-            conn.close()
-
-            logger.info(f'Transfer successful! Amount: {transfer_amount}, From Account ID: {from_account_id}, To Account ID: {to_account_id}')
-            flash('Transfer successful!', 'success')
-            return redirect(url_for('account_routes.dashboard'))  # Add a return statement here
         except Exception as e:
-            logger.error(f"An error occurred during transfer: {e}")
-            flash(f"An error occurred during transfer: {e}", "error")
+            # Log any other exceptions
+            logger.error(f"An error occurred during transfer: {str(e)}")
+            flash(f"An error occurred during transfer: {str(e)}", "error")
 
     return render_template('transfer.html')
 
 # Define the transaction history route
 @transaction_routes.route('/transaction_history', methods=['GET'])
 def transaction_history():
-    # Logic to show transaction history
-    return render_template('transaction_history.html')
+    conn, cursor = get_db_cursor()
+    cursor.execute("SELECT * FROM transactions WHERE user_id = %s", (session.get('user_id'),))
+    transactions = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return render_template('transaction_history.html', transactions=transactions)
+
+@transaction_routes.route('/generate_and_save_document', methods=['POST', 'GET'])
+def generate_and_save_document():
+    user_id = session.get('user_id')
+    logger.info('Current user ID: %s', user_id)
+    document_type = request.form['document_type']
+    logger.info('Current document type: %s', document_type)
+    additional_info = request.form['additional_info']
+    logger.info('Current additional info: %s', additional_info)
+    document_content = request.form['document_content']  # Content to be included in the PDF
+    logger.info('Current document content: %s', document_content)
+
+    base64_data = generate_pdf(document_content)
+    document_id = save_document_to_db(user_id, document_type, base64_data, additional_info)
+
+    logging.info('PDF Document generated and saved with ID: %s', document_id)
+
+    pdf_data = base64.b64decode(base64_data)
+    pdf_file = io.BytesIO(pdf_data)
+    pdf_file.seek(0)
+
+    return send_file(pdf_file, attachment_filename=f"document_{document_id}.pdf", mimetype='application/pdf')
 
 # Add other routes and configurations here (snippets you have)
 
@@ -170,7 +199,7 @@ def transaction_history():
 
 # Configure the transaction routes in your app
 def configure_transaction_routes(app):
-    app.register_blueprint(transaction_routes)
+    app.register_blueprint(transaction_routes, url_prefix='/transactions')
 
 if __name__ == '__main__':
     configure_transaction_routes(app)

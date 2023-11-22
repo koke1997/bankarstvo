@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='icons/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='icons/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <title>Dashboard</title>
     <style>
         body {
@@ -43,8 +51,7 @@
         </div>
     </form>
     
-
-    <form action="/dashboard" method="post">
+    <form action="{{ url_for('dashboard') }}" method="post">
         <select name="account_choice">
             {% for account in accounts %}
                 <option value="{{ account.account_id }}">{{ account.account_name }}</option>
@@ -53,26 +60,25 @@
         <input type="submit" value="Select Account">
     </form>
     
-
     <!-- Balance Display -->
     <h3>Your Balance: ${{ balance }}</h3>
 
     <!-- Deposit Funds -->
-    <form action="/deposit" method="post">
+    <form action="{{ url_for('deposit') }}" method="post">
         <label for="deposit_amount">Deposit Amount:</label>
         <input type="number" name="amount" id="deposit_amount" placeholder="Deposit Amount">
         <button type="submit">Deposit</button>
     </form>
 
     <!-- Withdraw Funds -->
-    <form action="/withdraw" method="post">
+    <form action="{{ url_for('withdraw') }}" method="post">
         <label for="withdraw_amount">Withdraw Amount:</label>
         <input type="number" name="amount" id="withdraw_amount" placeholder="Withdraw Amount">
         <button type="submit">Withdraw</button>
     </form>
 
     <!-- Fund Transfer -->
-    <form action="/transfer" method="post">
+    <form action="{{ url_for('transfer') }}" method="post">
         <label for="recipient">Recipient Username:</label>
         <input type="text" name="recipient" id="recipient" placeholder="Recipient Username">
         
@@ -97,6 +103,15 @@
                 <td>{{ transaction.date }}</td>
                 <td>{{ transaction.description }}</td>
                 <td>{{ transaction.amount }}</td>
+                <td>
+                    <form action="{{ url_for('generate_and_save_document') }}" method="post">
+                        <input type="hidden" name="user_id" value="{{ transaction.user_id }}">
+                        <input type="hidden" name="document_type" value="Transaction Document">
+                        <input type="hidden" name="document_content" value="Transaction Details: {{ transaction.details }}">
+                        <input type="hidden" name="additional_info" value="{{ transaction.additional_info }}">
+                        <button type="submit">Generate PDF</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

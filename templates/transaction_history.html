@@ -21,6 +21,15 @@
             <td>{{ transaction.amount }}</td>
             <td>{{ transaction.currency_code }}</td>
             <td>{{ transaction.description }}</td>
+            <td>
+                <form action="{{ url_for('transaction_routes.generate_and_save_document') }}" method="post">
+                    <input type="hidden" name="user_id" value="{{ transaction.user_id }}">
+                    <input type="hidden" name="document_type" value="Transaction Document">
+                    <input type="hidden" name="document_content" value="Transaction Details: {{ transaction.details }}">
+                    <input type="hidden" name="additional_info" value="{{ transaction.additional_info }}">
+                    <button type="submit">Generate PDF</button>
+                </form>
+            </td>
         </tr>
     {% endfor %}
     </tbody>

@@ -1,3 +1,4 @@
+#app_factory.py
 import traceback
 from flask import Flask
 from extensions import db, bcrypt, login_manager, create_extensions
@@ -7,6 +8,8 @@ from routes.transaction_routes import configure_transaction_routes
 
 def create_app():
     app = Flask(__name__)
+
+    app.static_folder = 'static'
 
     # Configuration settings
     app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
