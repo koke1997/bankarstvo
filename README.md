@@ -1,4 +1,5 @@
 
+
 # **Banking Application**
 
 ## **Description**
@@ -22,18 +23,30 @@ This project is a comprehensive banking application built in Python. It features
 
 2. **Navigate to the Project Directory**
    <pre><code>cd bankarstvo</code></pre>
-
+ 
+ 3.  **Create and Activate Virtual Environment**
+  This is strongly advised for further development, because dependencies can be easily added to the project.
+	 <pre><code>python -m virtualenv . </code></pre>
+	 
+	 3.1. **For Windows (using Command Prompt):**
+	  -  <pre><code>.\Scripts\activate</code></pre>
+	  3.2 **For Windows (using PowerShell):**
+	  -  <pre><code>.\Scripts\Activate.ps1</code></pre>
+	  3.3 **For Unix or MacOS (using Bash):**
+	  -  <pre><code>source bin/activate</code></pre> 
 3. **Install Dependencies**
    <pre><code>pip install -r requirements.txt</code></pre>
 
 ## **Usage**
+
+Keep in mind you will need a mysql database running in background in order to run this app properly. 
 
 **Running the Application:**
 <pre><code>python app.py</code></pre>
 
 ## **Configuration**
 
-- Update the `config.py` file with your database and other environment-specific settings.
+- Update the `app_factory.py` & `DatabaseHandling\connection.py` file with your database and other environment-specific settings.
 
 ## **Contributing**
 
