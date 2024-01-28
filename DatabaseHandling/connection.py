@@ -7,18 +7,18 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Initialize the connection pool
-pool = pooling.MySQLConnectionPool(
-    pool_name="mypool",
-    pool_size=10,  # This is the equivalent of max_connections in your original code
-    pool_reset_session=True,
-    host='localhost',
-    port=3306,  # Port is specified separately from the host
-    user='ikokalovic',
-    password='Mikrovela1!',
-    database='banking_app',
-    charset='utf8mb4',
-    autocommit=True
-)
+DATABASE_CONFIG = {
+    "user": "ikokalovic",
+    "password": "Mikrovela1!",
+    "host": "localhost",
+    "port": 3306,
+    "database": "banking_app",
+    "charset": "utf8mb4",
+    "autocommit": True,
+}
+
+pool = pooling.MySQLConnectionPool(pool_name="mypool", pool_size=10, **DATABASE_CONFIG)
+
 
 def connect_db():
     try:
@@ -28,6 +28,7 @@ def connect_db():
     except mysql.connector.Error as err:
         logger.error(f"Error connecting to the database: {err}")
         raise
+
 
 def get_db_cursor():
     try:

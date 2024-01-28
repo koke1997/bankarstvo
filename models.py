@@ -48,14 +48,18 @@ class Account(db.Model):
         return f"<Account {self.account_name}, Country Code: {self.country_code}, User ID: {self.user_id}>"
     
 class SignedDocument(db.Model):
-    __tablename__ = 'document'
+    __tablename__ = 'signed_documents'
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)  # Include user_id
     transaction_id = db.Column(db.Integer, db.ForeignKey('transaction.id'), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    document_type = db.Column(db.String(255), nullable=True)
+    additional_info = db.Column(db.Text, nullable=True)
     sender = db.Column(db.String(255), nullable=False)
     receiver = db.Column(db.String(255), nullable=False)
     image_data = db.Column(db.Text, nullable=False)  # Stores the base64 image
 
     def __repr__(self):
-        return f"Document(Transaction ID: '{self.transaction_id}', Timestamp: '{self.timestamp}', Sender: '{self.sender}', Receiver: '{self.receiver}')"
+        return f"Document(User ID: '{self.user_id}', Transaction ID: '{self.transaction_id}', Timestamp: '{self.timestamp}', Sender: '{self.sender}', Receiver: '{self.receiver}')"
+
 
