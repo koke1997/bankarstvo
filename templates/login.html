@@ -10,6 +10,14 @@
             max-width: 300px;
             margin: 50px auto;
         }
+        .error-message {
+            color: red;
+            text-align: center;
+        }
+        .success-message {
+            color: green;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -17,11 +25,19 @@
     
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <p style="color: red; text-align:center;">{{ messages[0] }}</p>
+        {% for message in messages %}
+            {% if 'error' in message %}
+                <p class="error-message">{{ message }}</p>
+            {% elif 'success' in message %}
+                <p class="success-message">{{ message }}</p>
+            {% else %}
+                <p>{{ message }}</p>
+            {% endif %}
+        {% endfor %}
     {% endif %}
     {% endwith %}
     
-    <form action="/login" method="post">
+    <form action="{{ url_for('account_routes.dashboard') }}" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <br><br>

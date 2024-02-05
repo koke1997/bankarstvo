@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}">
@@ -12,112 +15,172 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <title>Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        form {
-            max-width: 300px;
-            margin: 20px auto;
-        }
-    </style>
+    <!-- Bootstrap Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
 </head>
-<body>
-    <h2 style="text-align:center;">Dashboard</h2>
 
-    <form id="create-account-form" method="post" action="{{ url_for('account.create_account') }}">
-        <h2>Create New Account</h2>
-        <div>
-            <label for="account-name">Account Name:</label>
-            <input type="text" id="account-name" name="account_name" required>
+<body class="bg-light">
+
+    <div class="container mt-5">
+
+        <h2 class="text-center mb-4">Dashboard</h2>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="{% if 'error' in messages[0] %}alert alert-danger{% elif 'success' in messages[0] %}alert alert-success{% endif %}" role="alert">
+            {{ messages[0] }}
         </div>
-        <div>
-            <label for="country-code">Country:</label>
-            <select id="country-code" name="currency_code" required>
-                {% for country in country_options %}
-                <option value="{{ country.code }}">{{ country.name }} ({{ country.code }})</option>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Create account -->
+        <form id="create-account-form" method="post" action="{{ url_for('account_routes.create_account') }}" class="mb-4">
+            <h2>Create New Account</h2>
+            <div class="form-group">
+                <label for="account-name">Account Name:</label>
+                <input type="text" id="account-name" name="account_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="country-code">Country:</label>
+                <select id="country-code" name="currency_code" class="form-control" required>
+                    {% for country in country_options %}
+                    <option value="{{ country.code }}">{{ country.name }} ({{ country.code }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="account-type">Account Type:</label>
+                <select id="account-type" name="account_type" class="form-control" required>
+                    <option value="checking">Checking</option>
+                    <option value="savings">Savings</option>
+                    <!-- Add more account types as needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </div>
+        </form>
+
+        <!-- Select Account Form -->
+        <form action="{{ url_for('account_routes.dashboard') }}" method="post" class="mb-4 select-account-form">
+            <div class="form-group">
+                <label for="account-choice">Select Account:</label>
+                <select name="account_choice" id="account-choice" class="form-control">
+                    {% for account in accounts %}
+                        <option value="{{ account.account_id }}" {% if session.selected_account_id == account.account_id %}selected{% endif %}>
+                            {{ account.account_name if account.account_name else 'N/A' }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success select-account-btn">Select Account</button>
+        </form>
+
+        <!-- Display Account Information -->
+        <h3>Account Information</h3>
+        <p>Username: {{ selected_account.username }}</p>
+        <p>Account ID: {{ selected_account.account_id }}</p>
+        <p>Your Balance: ${{ balance }}</p>
+
+        <!-- Deposit Funds Form -->
+        <form action="{{ url_for('transaction_routes.deposit') }}" method="post" class="mb-4">
+            <!-- Form Fields for Depositing Funds -->
+            <div class="form-group">
+                <label for="deposit_amount">Deposit Amount:</label>
+                <input type="number" name="amount" id="deposit_amount" class="form-control" placeholder="Deposit Amount">
+            </div>
+            <button type="submit" class="btn btn-primary">Deposit</button>
+        </form>
+
+        <!-- Withdraw Funds Form -->
+        <form action="{{ url_for('transaction_routes.withdraw') }}" method="post" class="mb-4">
+            <!-- Form Fields for Withdrawing Funds -->
+            <div class="form-group">
+                <label for="withdraw_amount">Withdraw Amount:</label>
+                <input type="number" name="amount" id="withdraw_amount" class="form-control" placeholder="Withdraw Amount">
+            </div>
+            <button type="submit" class="btn btn-danger">Withdraw</button>
+        </form>
+
+        <!-- Display Fund Transfer Form -->
+        <form action="{{ url_for('account_routes.search_routes.search_accounts') }}" method="post" class="mb-4">
+            {{ transfer_form.hidden_tag() }}
+            <!-- Form Fields for Fund Transfer -->
+            <div class="form-group">
+                <label for="recipient">Recipient Username:</label>
+                {{ transfer_form.recipient(id="recipient-input", class="form-control", placeholder="Recipient Username") }}
+            </div>
+            <div class="form-group">
+                <button type="submit" id="search-button" class="btn btn-info" name="search_button">Search</button>
+            </div>
+            <!-- Display search results -->
+            <div id="transfer-results">
+                <!-- This is where the search results will be displayed -->
+                <div id="account_selection" class="form-group">
+                    <label for="account-choice">Select Account:</label>
+                    <select id="search-results-dropdown" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="transfer_amount">Transfer Amount:</label>
+                    {{ transfer_form.transfer_amount(class="form-control", placeholder="Transfer Amount") }}
+                </div>
+                <button type="submit" class="btn btn-info" name="transfer_button">Transfer</button>
+            </div>
+        </form>
+
+        <!-- Transaction History Table -->
+        <h3>Transaction History</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Generate PDF</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>
+                        <!-- Generate PDF Button -->
+                        <form action="{{ url_for('transaction_routes.generate_and_save_document') }}" method="post">
+                            <!-- Form Fields for Generating PDF -->
+                            <input type="hidden" name="user_id" value="{{ transaction.user_id }}">
+                            <input type="hidden" name="document_type" value="Transaction Document">
+                            <input type="hidden" name="document_content" value="Transaction Details: {{ transaction.details }}">
+                            <input type="hidden" name="additional_info" value="{{ transaction.additional_info }}">
+                            <button type="submit" class="btn btn-secondary">Generate PDF</button>
+                        </form>
+                    </td>
+                </tr>
                 {% endfor %}
-            </select>
+            </tbody>
+        </table>
+
+        <!-- Logout Link -->
+        <p class="text-center mt-4"><a href="{{ url_for('user_routes.index') }}" class="btn btn-warning">Logout</a></p>
+
+        <!-- Back Button -->
+        <div class="back-button">
+            <a href="{{ url_for('account_routes.dashboard') }}" class="btn btn-secondary">Back</a>
         </div>
-        <div>
-            <label for="account-type">Account Type:</label>
-            <select id="account-type" name="account_type" required>
-                <option value="checking">Checking</option>
-                <option value="savings">Savings</option>
-                <!-- Add more account types as needed -->
-            </select>
-        </div>
-        <div>
-            <button type="submit">Create Account</button>
-        </div>
-    </form>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='javascripts/search_accounts.js') }}"></script>
     
-    <form action="{{ url_for('account_routes.dashboard') }}" method="post">
-        <select name="account_choice">
-            {% for account in accounts %}
-                <option value="{{ account.account_id }}">{{ account.account_name }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Select Account">
-    </form>
-    
-    <!-- Balance Display -->
-    <h3>Your Balance: ${{ balance }}</h3>
 
-    <!-- Deposit Funds -->
-    <form action="{{ url_for('transaction_routes.deposit') }}" method="post">
-        <label for="deposit_amount">Deposit Amount:</label>
-        <input type="number" name="amount" id="deposit_amount" placeholder="Deposit Amount">
-        <button type="submit">Deposit</button>
-    </form>
 
-    <!-- Withdraw Funds -->
-    <form action="{{ url_for('transaction_routes.withdraw') }}" method="post">
-        <label for="withdraw_amount">Withdraw Amount:</label>
-        <input type="number" name="amount" id="withdraw_amount" placeholder="Withdraw Amount">
-        <button type="submit">Withdraw</button>
-    </form>
-
-    <!-- Fund Transfer -->
-    <form action="{{ url_for('transaction_routes.transfer') }}" method="post">
-        <label for="recipient">Recipient Username:</label>
-        <input type="text" name="recipient" id="recipient" placeholder="Recipient Username">
-        
-        <label for="transfer_amount">Transfer Amount:</label>
-        <input type="number" name="amount" id="transfer_amount" placeholder="Transfer Amount">
-        <button type="submit">Transfer</button>
-    </form>
-
-    <!-- Transaction History -->
-    <h3>Transaction History</h3>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for transaction in transactions %}
-            <tr>
-                <td>{{ transaction.date }}</td>
-                <td>{{ transaction.description }}</td>
-                <td>{{ transaction.amount }}</td>
-                <td>
-                    <form action="{{ url_for('transaction_routes.generate_and_save_document') }}" method="post">
-                        <input type="hidden" name="user_id" value="{{ transaction.user_id }}">
-                        <input type="hidden" name="document_type" value="Transaction Document">
-                        <input type="hidden" name="document_content" value="Transaction Details: {{ transaction.details }}">
-                        <input type="hidden" name="additional_info" value="{{ transaction.additional_info }}">
-                        <button type="submit">Generate PDF</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <p style="text-align:center;"><a href="{{ url_for('user_routes.index') }}">Logout</a></p>
 </body>
+
 </html>

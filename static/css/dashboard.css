@@ -1,53 +1,30 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(-45deg, #6dd5ed, #2193b0, #6dd5ed, #2193b0);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    border-radius: 15px;
-    flex-direction: column;
-}
-
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.container {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 15px;
+}
+
+form {
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+#account-choice {
+    width: 100%; /* Make sure the select element takes full width */
+    margin-bottom: 10px; /* Add margin for spacing */
 }
 
 .btn {
-    display: inline-block;
     padding: 15px 30px;
     margin: 10px;
     border: none;
     border-radius: 25px;
     font-size: 16px;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    background-color: #40e0d0; /* Turquoise color */
+    background-color: #40e0d0;
     color: #ffffff;
-    box-shadow: 0 5px 15px rgba(64, 224, 208, 0.5);
 }
 
-/* Existing shimmering wave effect code for buttons */
+/* Shimmering wave effect for buttons */
 .btn::before {
     content: '';
     display: block;
@@ -66,5 +43,3 @@ body {
     transform: skewX(-20deg) translateX(300%);
     transition: transform 0.7s ease;
 }
-
-
