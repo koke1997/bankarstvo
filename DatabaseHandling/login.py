@@ -11,6 +11,7 @@ def login_func(username, password):
     ):  # Notice the field is password_hash
         login_user(user)
         session["user_id"] = user.id  # Store user ID in session
+        print("Session data: ", session)
         return True
     return False
 

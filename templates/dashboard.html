@@ -122,6 +122,7 @@
                     <label for="account-choice">Select Account:</label>
                     <select id="search-results-dropdown" class="form-control"></select>
                 </div>
+                <form action="{{ url_for('transaction_routes.transfer') }}" method="post" class="mb-4"></form>
                 <div class="form-group">
                     <label for="transfer_amount">Transfer Amount:</label>
                     {{ transfer_form.transfer_amount(class="form-control", placeholder="Transfer Amount") }}
@@ -138,15 +139,17 @@
                     <th>Date</th>
                     <th>Description</th>
                     <th>Amount</th>
+                    <th>Direction</th>  
                     <th>Generate PDF</th>
                 </tr>
             </thead>
             <tbody>
                 {% for transaction in transactions %}
                 <tr>
-                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.transaction_date }}</td>
                     <td>{{ transaction.description }}</td>
                     <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.transaction_direction }}</td>
                     <td>
                         <!-- Generate PDF Button -->
                         <form action="{{ url_for('transaction_routes.generate_and_save_document') }}" method="post">
