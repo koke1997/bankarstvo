@@ -64,7 +64,7 @@
         </form>
 
         <!-- Select Account Form -->
-        <form action="{{ url_for('account_routes.dashboard') }}" method="post" class="mb-4 select-account-form">
+        <form action="{{ url_for('account_routes.select_account') }}" method="post" class="mb-4 select-account-form">
             <div class="form-group">
                 <label for="account-choice">Select Account:</label>
                 <select name="account_choice" id="account-choice" class="form-control">
@@ -104,7 +104,7 @@
             <button type="submit" class="btn btn-danger">Withdraw</button>
         </form>
 
-        <!-- Display Fund Transfer Form -->
+                <!-- Display Fund Transfer Form -->
         <form action="{{ url_for('account_routes.search_routes.search_accounts') }}" method="post" class="mb-4">
             {{ transfer_form.hidden_tag() }}
             <!-- Form Fields for Fund Transfer -->
@@ -115,21 +115,24 @@
             <div class="form-group">
                 <button type="submit" id="search-button" class="btn btn-info" name="search_button">Search</button>
             </div>
-            <!-- Display search results -->
-            <div id="transfer-results">
-                <!-- This is where the search results will be displayed -->
-                <div id="account_selection" class="form-group">
-                    <label for="account-choice">Select Account:</label>
-                    <select id="search-results-dropdown" class="form-control"></select>
-                </div>
-                <form action="{{ url_for('transaction_routes.transfer') }}" method="post" class="mb-4"></form>
+        </form>
+        <!-- Display search results -->
+        <div id="transfer-results">
+            <!-- This is where the search results will be displayed -->
+            <div id="account_selection" class="form-group">
+                <label for="account-choice">Select Account:</label>
+                <select id="search-results-dropdown" class="form-control"></select>
+            </div>
+            <!-- Transfer Form -->
+            <form action="{{ url_for('transaction_routes.transfer') }}" method="post" class="mb-4">
+                {{ transfer_form.hidden_tag() }}
                 <div class="form-group">
                     <label for="transfer_amount">Transfer Amount:</label>
-                    {{ transfer_form.transfer_amount(class="form-control", placeholder="Transfer Amount") }}
+                    {{ transfer_form.transfer_amount(id="transfer_amount", class="form-control", placeholder="Transfer Amount") }}
                 </div>
-                <button type="submit" class="btn btn-info" name="transfer_button">Transfer</button>
-            </div>
-        </form>
+                <button type="submit" id="transfer-button" class="btn btn-info" name="transfer_button">Transfer</button>
+            </form>
+        </div>
 
         <!-- Transaction History Table -->
         <h3>Transaction History</h3>
@@ -181,6 +184,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='javascripts/search_accounts.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascripts/transfer.js') }}"></script>
     
 
 
