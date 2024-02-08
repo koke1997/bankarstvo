@@ -1,15 +1,6 @@
 # Exclude folders part of virtual environment
-include/
-Lib/
-Scripts/
-share/
-
-# Exclude specific files
-pyvenv.cfg
-.hintrc
+venv/
 
 # Exclude Python bytecode cache folders
 __pycache__/
-
-# Include javascripts folder
-!static/javascripts/
+*.pyc
