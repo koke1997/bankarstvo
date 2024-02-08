@@ -1,6 +1,6 @@
 # routes/account_routes/search.py
 # search.py
-from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, jsonify
 from routes.account_routes import account_routes  # Updated import
 from DatabaseHandling.connection import get_db_cursor
 import logging

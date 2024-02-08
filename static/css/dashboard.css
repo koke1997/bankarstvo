@@ -43,3 +43,8 @@ form {
     transform: skewX(-20deg) translateX(300%);
     transition: transform 0.7s ease;
 }
+
+option.selected {
+    background-color: #f8f9fa; 
+    color: #343a40;
+}

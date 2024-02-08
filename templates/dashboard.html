@@ -78,10 +78,18 @@
             <button type="submit" class="btn btn-success select_account-btn">Select Account</button>
         </form>
         <!-- Display Account Information -->
-        <h3>Account Information</h3>
-        <p>Username: {{ selected_account.username }}</p>
-        <p>Account ID: {{ selected_account.account_id }}</p>
-        <p id="balance-display">Your Balance: ${{ balance }}</p>
+        <div class="card">
+            <div class="card-header">
+              Account Information
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Account ID: {{ selected_account.account_id }}</li>
+              <li class="list-group-item">Account Name: {{ selected_account.account_name }}</li>
+              <li class="list-group-item">Account Type: {{ selected_account.account_type }}</li>
+              <li class="list-group-item">Balance: {{ selected_account.balance }}</li>
+              <li class="list-group-item">Currency Code: {{ selected_account.currency_code }}</li>
+            </ul>
+        </div>
 
         <!-- Deposit Funds Form -->
         <form action="{{ url_for('transaction_routes.deposit') }}" method="post" class="mb-4">
@@ -185,6 +193,7 @@
     <script src="{{ url_for('static', filename='javascripts/search_accounts.js') }}"></script>
     <script src="{{ url_for('static', filename='javascripts/transfer.js') }}"></script>
     <script src="{{ url_for('static', filename='javascripts/updateBalance.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascripts/dropdown.js') }}"></script>
 
 
 </body>

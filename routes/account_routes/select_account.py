@@ -21,6 +21,7 @@ def select_account():
                 (selected_account_id, current_user.get_id()),  # Get user_id from current_user
             )
             selected_account = cursor.fetchone()
+            print(selected_account) # Log the selected account
         except Exception as e:
             print(f"Database error: {e}")  # Log the exception
             flash("Failed to select account due to a database error", "error")
