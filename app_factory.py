@@ -8,7 +8,6 @@ def create_app():
     app = Flask(__name__)
     logging.basicConfig(level=logging.INFO)
 
-
     app.static_folder = "static"
 
     # Configuration settings
@@ -25,11 +24,12 @@ def create_app():
     from routes.transaction_routes import transaction_routes
     from routes.account_routes import account_routes
     from routes.user_routes import user_routes
+    from routes.search_routes.search import search_routes  # Import the search_routes blueprint
 
     app.register_blueprint(transaction_routes)
     app.register_blueprint(account_routes)
     app.register_blueprint(user_routes)
-
+    app.register_blueprint(search_routes)  # Register the search_routes blueprint
 
     # Print rules for each Blueprint
     print("\nMain Application Rules:")
@@ -41,7 +41,7 @@ def create_app():
     log_handler.setLevel(logging.DEBUG)  # Change to WARNING if needed
     app.logger.addHandler(log_handler)
 
-   # Custom 404 error handler
+    # Custom 404 error handler
     @app.errorhandler(404)
     def page_not_found(e):
         # Log available URLs
@@ -50,7 +50,6 @@ def create_app():
 
         # Render the error page
         return render_template("error.html", error_message=f"404 Not Found: {request.url}. The requested URL was not found on the server. If you entered the URL manually, please check your spelling and try again."), 404
-
 
     @app.errorhandler(Exception)
     def log_error(exception):

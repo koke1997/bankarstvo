@@ -82,7 +82,7 @@
         <h3>Account Information</h3>
         <p>Username: {{ selected_account.username }}</p>
         <p>Account ID: {{ selected_account.account_id }}</p>
-        <p>Your Balance: ${{ balance }}</p>
+        <p id="balance-display">Your Balance: ${{ balance }}</p>
 
         <!-- Deposit Funds Form -->
         <form action="{{ url_for('transaction_routes.deposit') }}" method="post" class="mb-4">
@@ -104,8 +104,8 @@
             <button type="submit" class="btn btn-danger">Withdraw</button>
         </form>
 
-                <!-- Display Fund Transfer Form -->
-        <form action="{{ url_for('account_routes.search_routes.search_accounts') }}" method="post" class="mb-4">
+            <!-- Display Fund Transfer Form -->
+        <form action="{{ url_for('search_routes.search_accounts') }}" method="post" class="mb-4">
             {{ transfer_form.hidden_tag() }}
             <!-- Form Fields for Fund Transfer -->
             <div class="form-group">
@@ -185,7 +185,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='javascripts/search_accounts.js') }}"></script>
     <script src="{{ url_for('static', filename='javascripts/transfer.js') }}"></script>
-    
+    <script src="{{ url_for('static', filename='javascripts/updateBalance.js') }}"></script>
 
 
 </body>
