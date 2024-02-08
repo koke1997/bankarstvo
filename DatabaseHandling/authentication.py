@@ -5,6 +5,7 @@ from utils.extensions import bcrypt
 from core.models import User
 from flask_login import login_user, logout_user
 from flask import session
+from .session_clearing  import clear_session
 
 def login_func(username, password):
     try:
@@ -23,4 +24,5 @@ def login_func(username, password):
         return False
 
 def logout_func():
+    clear_session()
     logout_user()
