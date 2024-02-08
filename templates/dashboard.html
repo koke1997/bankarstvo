@@ -36,7 +36,7 @@
         {% endwith %}
 
         <!-- Create account -->
-        <form id="create-account-form" method="post" action="{{ url_for('account_routes.create_account') }}" class="mb-4">
+        <form id="create_account-form" method="post" action="{{ url_for('account_routes.create_account') }}" class="mb-4">
             <h2>Create New Account</h2>
             <div class="form-group">
                 <label for="account-name">Account Name:</label>
@@ -64,20 +64,19 @@
         </form>
 
         <!-- Select Account Form -->
-        <form action="{{ url_for('account_routes.select_account') }}" method="post" class="mb-4 select-account-form">
+        <form action="{{ url_for('account_routes.select_account') }}" method="post" class="mb-4 select_account-form">
             <div class="form-group">
                 <label for="account-choice">Select Account:</label>
-                <select name="account_choice">
+                <select name="account_choice" id="account-choice">
                     {% for account in accounts %}
-                        <option value="{{ account.id }}" {% if account.id == selected_account_id %}selected{% endif %}>
-                            {{ account.name }}
+                        <option value="{{ account.account_id }}" {% if account.account_id == selected_account_id %}selected{% endif %}>
+                            {{ account.account_name }}
                         </option>
                     {% endfor %}
                 </select>
             </div>
-            <button type="submit" class="btn btn-success select-account-btn">Select Account</button>
+            <button type="submit" class="btn btn-success select_account-btn">Select Account</button>
         </form>
-
         <!-- Display Account Information -->
         <h3>Account Information</h3>
         <p>Username: {{ selected_account.username }}</p>

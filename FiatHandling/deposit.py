@@ -2,7 +2,7 @@
 
 import mysql.connector
 from DatabaseHandling.connection import connect_db, get_db_cursor
-from validation_utils import validate_account, validate_currency
+from core.validation_utils import validate_account, validate_currency
 import logging
 
 # Initialize logging

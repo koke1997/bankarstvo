@@ -1,4 +1,5 @@
-from flask import render_template, session
+from flask import render_template
+from flask_login import current_user
 from . import transaction_routes
 from DatabaseHandling.connection import get_db_cursor
 import logging
@@ -17,7 +18,8 @@ def transaction_history():
     JOIN accounts a ON t.to_account_id = a.account_id
     WHERE a.user_id = %s
     """
-    params = (session.get("user_id"), session.get("user_id"))
+    user_id = current_user.get_id()  # Get user_id from current_user
+    params = (user_id, user_id)
     cursor.execute(query, params)
     transactions = cursor.fetchall()
     logging.debug("SQL query: %s", query)

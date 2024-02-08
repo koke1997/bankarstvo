@@ -14,7 +14,10 @@ def create_extensions(app):
 
     @login_manager.user_loader
     def load_user(user_id):
-        return User.query.get(int(user_id))
+        print(f"Loading user with ID {user_id}")
+        user = User.query.get(int(user_id))
+        print(f"Loaded user: {user}")
+        return user
 
 # models.py should be imported after the extensions are defined
-from models import User
+from core.models import User

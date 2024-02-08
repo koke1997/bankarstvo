@@ -1,5 +1,5 @@
 from app_factory import db
-from models import User
+from core.models import User
 
 
 def get_user_balance(email):

@@ -1,6 +1,6 @@
 from flask import redirect, url_for
 from . import user_routes
-from DatabaseHandling.login import logout_func
+from DatabaseHandling.authentication import logout_func
 
 @user_routes.route('/logout', methods=['GET'], endpoint="logout")
 def logout():

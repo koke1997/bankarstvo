@@ -37,7 +37,7 @@
     {% endif %}
     {% endwith %}
     
-    <form action="{{ url_for('account_routes.dashboard') }}" method="post">
+    <form action="{{ url_for('user_routes.login') }}" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <br><br>

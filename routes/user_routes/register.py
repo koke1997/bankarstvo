@@ -1,7 +1,7 @@
 from flask import request, redirect, url_for, flash,render_template
 from . import user_routes
-from DatabaseHandling.registration import register_user
-from models import User
+from DatabaseHandling.registration_func import register_user
+from core.models import User
 
 @user_routes.route('/register', methods=['GET', 'POST'], endpoint="register")
 def register():

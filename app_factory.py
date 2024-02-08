@@ -2,7 +2,7 @@
 import traceback
 import logging
 from flask import Flask, render_template, request   
-from extensions import db, bcrypt, login_manager, create_extensions
+from utils.extensions import db, bcrypt, login_manager, create_extensions
 
 def create_app():
     app = Flask(__name__)

@@ -1,5 +1,6 @@
 # select_account.py
 from flask import session, request, redirect, url_for, flash
+from flask_login import current_user
 from . import account_routes
 from DatabaseHandling.connection import get_db_cursor
 
@@ -17,7 +18,7 @@ def select_account():
             cursor.fetchone()  # Fetch the result of the "SELECT 1" query
             cursor.execute(
                 "SELECT a.*, u.username FROM accounts a JOIN user u ON a.user_id = u.user_id WHERE a.account_id = %s AND a.user_id = %s",
-                (selected_account_id, session.get("user_id")),
+                (selected_account_id, current_user.get_id()),  # Get user_id from current_user
             )
             selected_account = cursor.fetchone()
         except Exception as e:

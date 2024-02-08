@@ -1,5 +1,6 @@
 # dashboard.py
 from flask import render_template, session, request, flash, redirect, url_for, current_app
+from flask_login import current_user
 from . import account_routes
 from DatabaseHandling.connection import get_db_cursor
 from .forms import TransferForm
@@ -14,11 +15,12 @@ logger = logging.getLogger(__name__)
 
 @account_routes.route("/dashboard", methods=["GET", "POST"], endpoint="dashboard")
 def dashboard():
-    user_id = session.get("user_id")
-
-    if not user_id:
+    
+    if not current_user.is_authenticated:
         flash("User not logged in", "error")
         return redirect(url_for("user_routes.login"))
+
+    user_id = current_user.get_id()
 
     country_options = []
     accounts = []

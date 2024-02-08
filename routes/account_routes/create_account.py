@@ -1,14 +1,15 @@
 from flask import request, flash, redirect, url_for, current_app, session
+from flask_login import current_user
 from . import account_routes
 from DatabaseHandling.connection import get_db_cursor
 from pymysql import IntegrityError
 
-@account_routes.route("/create-account", methods=["GET", "POST"], endpoint="create_account")
+@account_routes.route("/create_account", methods=["GET", "POST"], endpoint="create_account")
 def create_account():
     if request.method == "POST":
         try:
             account_name = request.form["account_name"]
-            user_id = session.get("user_id")
+            user_id = current_user.get_id()
             account_type = request.form.get("account_type", "checking")
             currency_code = request.form.get("currency_code", "USD")
 

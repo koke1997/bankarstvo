@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash
 from app_factory import db
-from models import User
-from extensions import db, bcrypt
+from core.models import User
+from utils.extensions import db, bcrypt
 
 
 def register_user(username, email, password):

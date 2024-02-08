@@ -1,8 +1,8 @@
 import io
 import base64
 from reportlab.pdfgen import canvas
-from models import SignedDocument
-from extensions import db
+from core.models import SignedDocument
+from utils.extensions import db
 from flask_login import current_user  # Assuming you have Flask-Login for user management
 
 def generate_pdf(document_content):

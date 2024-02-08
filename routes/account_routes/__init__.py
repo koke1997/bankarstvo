@@ -11,6 +11,6 @@ from .get_balance import get_balance
 
 # Register the routes
 account_routes.add_url_rule("/dashboard", endpoint="dashboard", view_func=dashboard)
-account_routes.add_url_rule("/create-account", endpoint="create_account", view_func=create_account)
-account_routes.add_url_rule("/select-account", endpoint="select_account", view_func=select_account)
+account_routes.add_url_rule("/create_account", endpoint="create_account", view_func=create_account)
+account_routes.add_url_rule("/select_account", endpoint="select_account", view_func=select_account)
 account_routes.add_url_rule("/get-balance", endpoint="get_balance", view_func=get_balance)
