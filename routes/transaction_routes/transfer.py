@@ -68,6 +68,13 @@ def transfer():
 
                 conn.commit()
 
+                # Fetch the updated balance from the database
+                cursor.execute("SELECT balance FROM accounts WHERE account_id = %s", (from_account_id,))
+                updated_balance = cursor.fetchone()["balance"]
+
+                # Update the balance in the session
+                session["balance"] = updated_balance
+
                 conn.close()
 
                 logging.info(f"Transfer successful! Amount: {transfer_amount}, From Account ID: {from_account_id}, To Account ID: {to_account_id}")

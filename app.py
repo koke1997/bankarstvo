@@ -1,3 +1,5 @@
+import os
+import subprocess
 from app_factory import create_app
 import argparse
 from core.plot_diagram import plot_routes_diagram, extract_all_routes
@@ -12,4 +14,9 @@ if __name__ == '__main__':
         plot_routes_diagram(extracted_routes)
     else:
         app = create_app()
-        app.run(debug=True)
+
+        # Set the FLASK_APP environment variable
+        os.environ["FLASK_APP"] = "app.py"
+
+        # Run the Flask application with the debugger enabled
+        subprocess.run(["flask", "run", "--debugger"])
