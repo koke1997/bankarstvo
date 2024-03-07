@@ -5,6 +5,7 @@ from . import transaction_routes
 from DatabaseHandling.connection import get_db_cursor
 import logging
 import traceback
+logger = logging.getLogger(__name__)
 
 @transaction_routes.route("/withdraw", methods=["GET", "POST"], endpoint="withdraw")
 def withdraw():
@@ -50,7 +51,7 @@ def withdraw():
         except Exception as e:
             logging.error(f"An error occurred during withdrawal: {str(e)}")
             flash(f"An error occurred during withdrawal: {str(e)}", "error")
-            print(f"Error details: {e}")
+            logger.info(f"Error details: {e}")
             traceback.print_exc()
 
         return redirect(url_for("account_routes.dashboard"))

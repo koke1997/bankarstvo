@@ -2,6 +2,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+import logging
+logger = logging.getLogger(__name__)
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -14,9 +16,9 @@ def create_extensions(app):
 
     @login_manager.user_loader
     def load_user(user_id):
-        print(f"Loading user with ID {user_id}")
+        logging.info(f"Loading user with ID {user_id}")
         user = User.query.get(int(user_id))
-        print(f"Loaded user: {user}")
+        logging.info(f"Loaded user: {user}")
         return user
 
 # models.py should be imported after the extensions are defined

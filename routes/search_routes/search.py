@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from routes.account_routes import account_routes  # Updated import
 from DatabaseHandling.connection import get_db_cursor
 import logging
+logger = logging.getLogger(__name__)
 
 
 search_routes = Blueprint("search_routes", __name__)
@@ -20,7 +21,7 @@ def search_accounts_by_username(username):
         """
         cursor.execute(sql_query, (username,))
         accounts = cursor.fetchall()
-        print(accounts)
+        logger.info(accounts)
 
         # Log the executed SQL query
         current_app.logger.debug("Executed SQL query: %s" % cursor.statement)

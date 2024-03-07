@@ -1,6 +1,8 @@
 import mysql.connector
 from DatabaseHandling.connection import connect_db, get_db_cursor
 from validation_utils import validate_account
+import logging
+logger = logging.getLogger(__name__)
 
 def transfer(sender_user_id, receiver_account_id, amount, currency_code):
     """
@@ -58,7 +60,7 @@ def transfer(sender_user_id, receiver_account_id, amount, currency_code):
         return "Transfer successful"
 
     except mysql.connector.Error as err:
-        print(f"Error: {err}")
+        logger.error(f"Error: {err}")
         return "Failed to transfer funds"
 
     finally:

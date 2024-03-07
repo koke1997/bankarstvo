@@ -1,12 +1,25 @@
 # app_factory.py
 import traceback
 import logging
-from flask import Flask, render_template, request   
+from flask import Flask, render_template, request
 from utils.extensions import db, bcrypt, login_manager, create_extensions
+from logging.config import fileConfig
+import os
 
 def create_app():
     app = Flask(__name__)
-    logging.basicConfig(level=logging.INFO)
+
+    #Load the logging configuration
+    fileConfig(os.path.join('configuration', 'logging.conf'))
+    # Set up a separate logger
+    logger = logging.getLogger('root')
+    logger.setLevel(logging.INFO)
+    handler = logging.FileHandler('app.log')
+    handler.setLevel(logging.INFO)
+    logger.addHandler(handler)
+
+    # Write a test log message
+    logger.info('App started')
 
     app.static_folder = "static"
 
@@ -25,21 +38,44 @@ def create_app():
     from routes.account_routes import account_routes
     from routes.user_routes import user_routes
     from routes.search_routes.search import search_routes  # Import the search_routes blueprint
+    from routes.logger_routes.log_routes import log_routes
 
     app.register_blueprint(transaction_routes)
     app.register_blueprint(account_routes)
     app.register_blueprint(user_routes)
     app.register_blueprint(search_routes)  # Register the search_routes blueprint
+    app.register_blueprint(log_routes)
 
-    # Print rules for each Blueprint
-    print("\nMain Application Rules:")
+    # Log rules for each Blueprint
+    logger.info("\nMain Application Rules:")
     for rule in app.url_map.iter_rules():
-        print(rule)
+        logger.info(rule)
 
     # Set logging level to WARNING (or higher) to reduce log messages
     log_handler = logging.StreamHandler()
     log_handler.setLevel(logging.DEBUG)  # Change to WARNING if needed
-    app.logger.addHandler(log_handler)
+    logger.addHandler(log_handler)
+
+    #Set logging from werkzeug to app.log file
+    werkzeug_logger = logging.getLogger('werkzeug')
+    for handler in logger.handlers:
+        handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
+        werkzeug_logger.addHandler(handler)
+
+    # Set logging from DatabaseHandling.connection to app.log file
+    database_logger = logging.getLogger('DatabaseHandling.connection')
+    database_logger.setLevel(logging.INFO)
+    for handler in logger.handlers:
+        handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
+        database_logger.addHandler(handler)
+
+    # Set logging from routes.account_routes.dashboard to app.log file
+    account_logger = logging.getLogger('routes.account_routes.dashboard')
+    account_logger.setLevel(logging.INFO)
+    for handler in logger.handlers:
+        handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
+        account_logger.addHandler(handler)
+
 
     # Custom 404 error handler
     @app.errorhandler(404)

@@ -1,0 +1,876 @@
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [07/Mar/2024 17:33:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:33:18] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:19] "[36mGET /static/icons/favicon-32x32.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:19] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:19] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:33:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+127.0.0.1 - - [07/Mar/2024 17:33:23] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:33:23] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:23] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:23] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:23] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:23] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:23] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:33:51] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:33:51] "GET /logs HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:34:13] "GET /logs HTTP/1.1" 200 -
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [07/Mar/2024 17:39:52] "GET /logs HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:40:02] "[32mGET /logout HTTP/1.1[0m" 302 -
+127.0.0.1 - - [07/Mar/2024 17:40:02] "GET /login HTTP/1.1" 200 -
+Attempting to log in with username kokelej123456 and password 123
+Login successful
+Redirecting to: /dashboard
+127.0.0.1 - - [07/Mar/2024 17:40:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+Loading user with ID 5
+Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+Database connection established
+Database cursor obtained
+Database connection established
+Database cursor obtained
+127.0.0.1 - - [07/Mar/2024 17:40:06] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:40:06] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:06] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:06] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:06] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:06] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:06] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:10] "GET /logs HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:40:12] "GET /logs HTTP/1.1" 200 -
+Database connection established
+Database cursor obtained
+Loading user with ID 5
+Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+{'account_id': 10, 'user_id': 5, 'balance': Decimal('180.00'), 'account_type': 'checking', 'account_status': 'Active', 'currency_code': 'AFN', 'account_name': 'blablabla', 'username': 'kokelej123456'}
+127.0.0.1 - - [07/Mar/2024 17:40:55] "[32mPOST /select_account HTTP/1.1[0m" 302 -
+Loading user with ID 5
+Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+Database connection established
+Database cursor obtained
+Database connection established
+Database cursor obtained
+Database connection established
+Database cursor obtained
+127.0.0.1 - - [07/Mar/2024 17:40:55] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:40:55] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:55] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:55] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:55] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:55] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:40:55] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [07/Mar/2024 17:47:46] "[32mGET /logout HTTP/1.1[0m" 302 -
+127.0.0.1 - - [07/Mar/2024 17:47:46] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:47:48] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:47:51] "GET /logs HTTP/1.1" 200 -
+Attempting to log in with username kokelej123456 and password 123
+Login successful
+Redirecting to: /dashboard
+127.0.0.1 - - [07/Mar/2024 17:48:05] "[32mPOST /login HTTP/1.1[0m" 302 -
+Loading user with ID 5
+Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+Database connection established
+Database cursor obtained
+Database connection established
+Database cursor obtained
+127.0.0.1 - - [07/Mar/2024 17:48:05] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:48:05] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:05] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:05] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:05] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:05] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:05] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:13] "GET /logs HTTP/1.1" 200 -
+Database connection established
+Database cursor obtained
+Loading user with ID 5
+Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+{'account_id': 10, 'user_id': 5, 'balance': Decimal('180.00'), 'account_type': 'checking', 'account_status': 'Active', 'currency_code': 'AFN', 'account_name': 'blablabla', 'username': 'kokelej123456'}
+127.0.0.1 - - [07/Mar/2024 17:48:28] "[32mPOST /select_account HTTP/1.1[0m" 302 -
+Loading user with ID 5
+Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+Database connection established
+Database cursor obtained
+Database connection established
+Database cursor obtained
+Database connection established
+Database cursor obtained
+127.0.0.1 - - [07/Mar/2024 17:48:28] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:48:28] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:28] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:28] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:28] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:28] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:28] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+127.0.0.1 - - [07/Mar/2024 17:48:39] "GET /logs HTTP/1.1" 200 -
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [07/Mar/2024 17:52:32] "[32mGET /logout HTTP/1.1[0m" 302 -
+127.0.0.1 - - [07/Mar/2024 17:52:32] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 17:56:00] "GET /logs HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2024 23:18:38] "GET /logs HTTP/1.1" 200 -
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+2024-03-07 23:31:34,730 [INFO] - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-03-07 23:31:34,730 [INFO] - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-03-07 23:31:34,731 [INFO] - werkzeug - [33mPress CTRL+C to quit[0m
+2024-03-07 23:31:34,731 [INFO] - werkzeug - [33mPress CTRL+C to quit[0m
+2024-03-07 23:31:46,352 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:31:46] "GET /logs HTTP/1.1" 200 -
+2024-03-07 23:31:46,352 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:31:46] "GET /logs HTTP/1.1" 200 -
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+App started
+
+Main Application Rules:
+/static/<path:filename>
+/deposit
+/withdraw
+/transfer
+/transaction_history
+/generate_and_save_document
+/dashboard
+/dashboard
+/create_account
+/create_account
+/select_account
+/select_account
+/get_balance
+/get-balance
+/
+/
+/register
+/register
+/logout
+/logout
+/login
+/search_accounts
+/logs
+2024-03-07 23:34:16,616 [INFO] - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-03-07 23:34:16,616 [INFO] - werkzeug - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-03-07 23:34:16,617 [INFO] - werkzeug - [33mPress CTRL+C to quit[0m
+2024-03-07 23:34:16,617 [INFO] - werkzeug - [33mPress CTRL+C to quit[0m
+2024-03-07 23:34:24,866 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:24] "GET /login HTTP/1.1" 200 -
+2024-03-07 23:34:24,866 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:24] "GET /login HTTP/1.1" 200 -
+2024-03-07 23:34:28,041 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:28] "GET /logs HTTP/1.1" 200 -
+2024-03-07 23:34:28,041 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:28] "GET /logs HTTP/1.1" 200 -
+2024-03-07 23:34:34,932 [INFO] - DatabaseHandling.authentication - Attempting to log in with username kokelej123456 and password 123
+2024-03-07 23:34:35,167 [INFO] - DatabaseHandling.authentication - Login successful
+2024-03-07 23:34:35,168 [INFO] - root - Redirecting to: /dashboard
+2024-03-07 23:34:35,170 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-03-07 23:34:35,170 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-03-07 23:34:35,175 [INFO] - root - Loading user with ID 5
+2024-03-07 23:34:35,179 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:34:35,180 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:34:35,180 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:34:35,181 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:34:35,181 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:34:35,189 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:34:35,189 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:34:35,190 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:34:35,190 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:34:35,210 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:34:35,210 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:34:35,351 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,351 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,354 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,355 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,354 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,355 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,359 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,360 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,359 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,360 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,480 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:34:35,480 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:35] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:34:38,158 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:38] "GET /logs HTTP/1.1" 200 -
+2024-03-07 23:34:38,158 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:34:38] "GET /logs HTTP/1.1" 200 -
+2024-03-07 23:35:58,852 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:35:58,852 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:35:58,853 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:35:58,853 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:35:58,855 [INFO] - root - Loading user with ID 5
+2024-03-07 23:35:58,857 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:35:58,858 [INFO] - routes.account_routes.select_account - {'account_id': 10, 'user_id': 5, 'balance': Decimal('180.00'), 'account_type': 'checking', 'account_status': 'Active', 'currency_code': 'AFN', 'account_name': 'blablabla', 'username': 'kokelej123456'}
+2024-03-07 23:35:58,861 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[32mPOST /select_account HTTP/1.1[0m" 302 -
+2024-03-07 23:35:58,861 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[32mPOST /select_account HTTP/1.1[0m" 302 -
+2024-03-07 23:35:58,865 [INFO] - root - Loading user with ID 5
+2024-03-07 23:35:58,867 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:35:58,868 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:35:58,868 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:35:58,869 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:35:58,869 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:35:58,878 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:35:58,878 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:35:58,879 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:35:58,879 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:35:58,881 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:35:58,881 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:35:58,882 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:35:58,882 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:35:58,891 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:35:58,891 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:35:58,911 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,911 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,920 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,921 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,922 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,920 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,924 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,921 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,922 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+2024-03-07 23:35:58,924 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:58] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+2024-03-07 23:35:59,424 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:59] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:35:59,424 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:35:59] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:36:05,142 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:05,142 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:05,143 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:05,143 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:05,147 [INFO] - routes.search_routes.search - [{'account_id': 7, 'account_name': 'asdadsa'}]
+2024-03-07 23:36:05,149 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:36:05] "POST /search_accounts HTTP/1.1" 200 -
+2024-03-07 23:36:05,149 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:36:05] "POST /search_accounts HTTP/1.1" 200 -
+2024-03-07 23:36:10,829 [INFO] - root - Fetching account details for Account ID: 10
+2024-03-07 23:36:10,830 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:10,830 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:10,831 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:10,831 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:10,833 [INFO] - root - Account ID: 10, Balance: 180.00
+2024-03-07 23:36:10,853 [INFO] - root - Updated balance for the source account
+2024-03-07 23:36:10,857 [INFO] - root - Updated balance for the destination account
+2024-03-07 23:36:10,862 [INFO] - root - Logged the transfer transaction for the source account
+2024-03-07 23:36:10,863 [INFO] - root - Logged the transfer transaction for the destination account
+2024-03-07 23:36:10,864 [INFO] - root - Transfer successful! Amount: 12.0, From Account ID: 10, To Account ID: 7
+2024-03-07 23:36:10,866 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:36:10] "[32mPOST /transfer HTTP/1.1[0m" 302 -
+2024-03-07 23:36:10,866 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:36:10] "[32mPOST /transfer HTTP/1.1[0m" 302 -
+2024-03-07 23:36:10,872 [INFO] - root - Loading user with ID 5
+2024-03-07 23:36:10,875 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:36:10,876 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:10,876 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:10,877 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:10,877 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:10,883 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:10,883 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:10,884 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:10,884 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:10,886 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:10,886 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:36:10,887 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:10,887 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:36:10,896 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:36:10] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:36:10,896 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:36:10] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:36:13,895 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:36:13] "GET /logs HTTP/1.1" 200 -
+2024-03-07 23:36:13,895 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:36:13] "GET /logs HTTP/1.1" 200 -
+2024-03-07 23:37:43,216 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:43] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:37:43,217 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:43] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:37:43,216 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:43] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:37:43,217 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:43] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:37:45,255 [INFO] - root - Fetching account details for Account ID: 10
+2024-03-07 23:37:45,256 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:37:45,256 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:37:45,256 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:37:45,256 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:37:45,258 [INFO] - root - Account ID: 10, Balance: 168.00
+2024-03-07 23:37:45,261 [INFO] - root - Updated balance for the source account
+2024-03-07 23:37:45,263 [INFO] - root - Updated balance for the destination account
+2024-03-07 23:37:45,266 [INFO] - root - Logged the transfer transaction for the source account
+2024-03-07 23:37:45,268 [INFO] - root - Logged the transfer transaction for the destination account
+2024-03-07 23:37:45,270 [INFO] - root - Transfer successful! Amount: 12.0, From Account ID: 10, To Account ID: 7
+2024-03-07 23:37:45,272 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:45] "[32mPOST /transfer HTTP/1.1[0m" 302 -
+2024-03-07 23:37:45,272 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:45] "[32mPOST /transfer HTTP/1.1[0m" 302 -
+2024-03-07 23:37:45,280 [INFO] - root - Loading user with ID 5
+2024-03-07 23:37:45,282 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:37:45,284 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:37:45,284 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:37:45,284 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:37:45,284 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:37:45,293 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:37:45,293 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:37:45,294 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:37:45,294 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:37:45,297 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:37:45,297 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:37:45,297 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:37:45,297 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:37:45,307 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:45] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:37:45,307 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:45] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:37:59,502 [INFO] - root - Loading user with ID 5
+2024-03-07 23:37:59,504 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:37:59,505 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:59] "[35m[1mGET /get_balance HTTP/1.1[0m" 500 -
+2024-03-07 23:37:59,505 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:37:59] "[35m[1mGET /get_balance HTTP/1.1[0m" 500 -
+2024-03-07 23:38:00,509 [INFO] - root - Loading user with ID 5
+2024-03-07 23:38:00,511 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:38:00,512 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:00] "[35m[1mGET /get_balance HTTP/1.1[0m" 500 -
+2024-03-07 23:38:00,512 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:00] "[35m[1mGET /get_balance HTTP/1.1[0m" 500 -
+2024-03-07 23:38:01,507 [INFO] - root - Loading user with ID 5
+2024-03-07 23:38:01,509 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:38:01,511 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:01] "[35m[1mGET /get_balance HTTP/1.1[0m" 500 -
+2024-03-07 23:38:01,511 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:01] "[35m[1mGET /get_balance HTTP/1.1[0m" 500 -
+2024-03-07 23:38:02,502 [INFO] - root - Loading user with ID 5
+2024-03-07 23:38:02,504 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:38:02,505 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[35m[1mGET /get_balance HTTP/1.1[0m" 500 -
+2024-03-07 23:38:02,505 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[35m[1mGET /get_balance HTTP/1.1[0m" 500 -
+2024-03-07 23:38:02,873 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:38:02,873 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:38:02,874 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:38:02,874 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:38:02,875 [INFO] - root - Loading user with ID 5
+2024-03-07 23:38:02,876 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:38:02,878 [INFO] - routes.account_routes.select_account - {'account_id': 10, 'user_id': 5, 'balance': Decimal('156.00'), 'account_type': 'checking', 'account_status': 'Active', 'currency_code': 'AFN', 'account_name': 'blablabla', 'username': 'kokelej123456'}
+2024-03-07 23:38:02,881 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[32mPOST /select_account HTTP/1.1[0m" 302 -
+2024-03-07 23:38:02,881 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[32mPOST /select_account HTTP/1.1[0m" 302 -
+2024-03-07 23:38:02,887 [INFO] - root - Loading user with ID 5
+2024-03-07 23:38:02,888 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:38:02,889 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:38:02,889 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:38:02,890 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:38:02,890 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:38:02,898 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:38:02,898 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:38:02,900 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:38:02,900 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:38:02,902 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:38:02,902 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:38:02,903 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:38:02,903 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:38:02,912 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:38:02,912 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:38:02,941 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,941 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,949 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,950 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,951 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,949 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,952 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,950 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,951 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+2024-03-07 23:38:02,952 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:02] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+2024-03-07 23:38:03,174 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:03] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:38:03,174 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:38:03] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:39:35,492 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:35,492 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:35,494 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:35,494 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:35,495 [INFO] - routes.search_routes.search - [{'account_id': 7, 'account_name': 'asdadsa'}]
+2024-03-07 23:39:35,496 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:39:35] "POST /search_accounts HTTP/1.1" 200 -
+2024-03-07 23:39:35,496 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:39:35] "POST /search_accounts HTTP/1.1" 200 -
+2024-03-07 23:39:49,498 [INFO] - root - Fetching account details for Account ID: 10
+2024-03-07 23:39:49,500 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:49,500 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:49,501 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:49,501 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:49,502 [INFO] - root - Account ID: 10, Balance: 156.00
+2024-03-07 23:39:49,511 [INFO] - root - Updated balance for the source account
+2024-03-07 23:39:49,514 [INFO] - root - Updated balance for the destination account
+2024-03-07 23:39:49,516 [INFO] - root - Logged the transfer transaction for the source account
+2024-03-07 23:39:49,518 [INFO] - root - Logged the transfer transaction for the destination account
+2024-03-07 23:39:49,519 [INFO] - root - Transfer successful! Amount: 22.0, From Account ID: 10, To Account ID: 7
+2024-03-07 23:39:49,520 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:39:49] "[32mPOST /transfer HTTP/1.1[0m" 302 -
+2024-03-07 23:39:49,520 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:39:49] "[32mPOST /transfer HTTP/1.1[0m" 302 -
+2024-03-07 23:39:49,535 [INFO] - root - Loading user with ID 5
+2024-03-07 23:39:49,538 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:39:49,540 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:49,540 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:49,540 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:49,540 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:49,555 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:49,555 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:49,556 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:49,556 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:49,559 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:49,559 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:39:49,560 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:49,560 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:39:49,574 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:39:49] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:39:49,574 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:39:49] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:40:01,518 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:40:01,518 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:40:01,519 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:40:01,519 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:40:01,520 [INFO] - root - Loading user with ID 5
+2024-03-07 23:40:01,523 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:40:01,524 [INFO] - routes.account_routes.select_account - {'account_id': 10, 'user_id': 5, 'balance': Decimal('134.00'), 'account_type': 'checking', 'account_status': 'Active', 'currency_code': 'AFN', 'account_name': 'blablabla', 'username': 'kokelej123456'}
+2024-03-07 23:40:01,526 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[32mPOST /select_account HTTP/1.1[0m" 302 -
+2024-03-07 23:40:01,526 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[32mPOST /select_account HTTP/1.1[0m" 302 -
+2024-03-07 23:40:01,533 [INFO] - root - Loading user with ID 5
+2024-03-07 23:40:01,536 [INFO] - root - Loaded user: User('kokelej123456', 'ivankokalovic123456@protonmail.ch1123')
+2024-03-07 23:40:01,537 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:40:01,537 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:40:01,538 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:40:01,538 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:40:01,549 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:40:01,549 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:40:01,550 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:40:01,550 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:40:01,552 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:40:01,552 [INFO] - DatabaseHandling.connection - Database connection established
+2024-03-07 23:40:01,553 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:40:01,553 [INFO] - DatabaseHandling.connection - Database cursor obtained
+2024-03-07 23:40:01,562 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:40:01,562 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "GET /dashboard HTTP/1.1" 200 -
+2024-03-07 23:40:01,586 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,588 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,586 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,590 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,588 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/javascripts/search_accounts.js HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,590 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,590 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/javascripts/transfer.js HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,591 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,590 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/javascripts/updateBalance.js HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,591 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/javascripts/dropdown.js HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,969 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
+2024-03-07 23:40:01,969 [INFO] - werkzeug - 127.0.0.1 - - [07/Mar/2024 23:40:01] "[36mGET /static/icons/site.webmanifest HTTP/1.1[0m" 304 -
