@@ -17,18 +17,19 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(128), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
 
-    two_factor_auth = db.Column(db.String(255), nullable=True)
+    # Multi-factor authentication fields
+    two_factor_auth = db.Column(db.Boolean, default=False)
+    two_factor_auth_code = db.Column(db.String(255), nullable=True)
+    two_factor_auth_expiry = db.Column(db.DateTime, nullable=True)
+
     account_created = db.Column(db.DateTime, default=func.now())
     last_login = db.Column(db.DateTime, nullable=True)
 
-    # If you have a balance column, add it here, otherwise remove it from __repr__
-    # balance = db.Column(db.Float, nullable=False, default=0.0)
     @property
     def id(self):
         return self.user_id
 
     def __repr__(self):
-        # Make sure all referenced fields exist in this class.
         return f"User('{self.username}', '{self.email}')"
 
 
@@ -63,11 +64,6 @@ class SignedDocument(db.Model):
     __tablename__ = "signed_documents"
     document_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
-
-    # Log available columns for 'transactions' table
-    transactions_columns = db.inspect(Transaction).columns.keys()
-    logging.info(f"Columns in 'transactions' table: {transactions_columns}")
-
     transaction_id = db.Column(db.Integer, db.ForeignKey("transactions.transaction_id"))
     transaction = relationship("Transaction", backref="signed_documents")
     timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

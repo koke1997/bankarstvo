@@ -1,5 +1,3 @@
-
-
 # **Banking Application**
 
 ## **Description**
@@ -13,6 +11,12 @@ This project is a comprehensive banking application built in Python. It features
 - **Balance Checking**: Users can check their account balance.
 - **Database Connectivity**: Manages secure connections to the database.
 - **Data Validation**: Ensures integrity and correctness of user input.
+- **Real-Time Notifications**: Users receive real-time notifications for transactions and account alerts, enhancing user engagement.
+- **Multi-Factor Authentication**: Enhances security for user accounts by supporting multi-factor authentication.
+- **Document Signing and Management**: Expanded features allow users to handle official documents more efficiently.
+- **Wider Currency Support**: The app now supports a wider range of currencies for financial transactions, catering to a global audience.
+- **User Feedback and Support System**: A new system introduced to improve user satisfaction and app usability.
+- **Enhanced Logging System**: The logging system is enhanced for better audit trails and debugging, facilitating maintenance and support.
 
 ## **Installation**
 
