@@ -6,6 +6,9 @@ from DatabaseHandling.connection import get_db_cursor
 import logging
 import traceback
 
+# Import for real-time notifications
+from RealtimeUpdates.websocket_client import send_notification
+
 @transaction_routes.route("/transfer", methods=["GET", "POST"], endpoint="transfer")
 def transfer():
     if request.method == "POST":
@@ -79,6 +82,9 @@ def transfer():
 
                 logging.info(f"Transfer successful! Amount: {transfer_amount}, From Account ID: {from_account_id}, To Account ID: {to_account_id}")
                 flash("Transfer successful!", "success")
+
+                # Send real-time notification for successful transfer
+                send_notification(f"Transfer of {transfer_amount} successful to account ID: {to_account_id}")
             else:
                 logging.warning(f"Insufficient balance for transfer! Amount: {transfer_amount}, Account ID: {from_account_id}")
                 flash("Insufficient balance for transfer!", "error")
