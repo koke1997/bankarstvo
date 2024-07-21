@@ -75,3 +75,54 @@ class SignedDocument(db.Model):
 
     def __repr__(self):
         return f"Document(User ID: '{self.user_id}', Transaction ID: '{self.transaction_id}', Timestamp: '{self.timestamp}', Sender: '{self.sender}', Receiver: '{self.receiver}')"
+
+
+class CryptoAsset(db.Model):
+    __tablename__ = "crypto_assets"
+    asset_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    symbol = db.Column(db.String(10), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
+    balance = db.Column(db.Numeric(20, 8), nullable=False)
+
+    def __repr__(self):
+        return f"CryptoAsset('{self.name}', '{self.symbol}', Balance: '{self.balance}')"
+
+
+class StockAsset(db.Model):
+    __tablename__ = "stock_assets"
+    asset_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    symbol = db.Column(db.String(10), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
+    shares = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"StockAsset('{self.name}', '{self.symbol}', Shares: '{self.shares}')"
+
+
+class MarketplaceItem(db.Model):
+    __tablename__ = "marketplace_items"
+    item_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    price = db.Column(db.Numeric(20, 2), nullable=False)
+    seller_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
+    buyer_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=True)
+    status = db.Column(db.String(50), nullable=False, default="available")
+
+    def __repr__(self):
+        return f"MarketplaceItem('{self.name}', Price: '{self.price}', Status: '{self.status}')"
+
+
+class MarketplaceTransaction(db.Model):
+    __tablename__ = "marketplace_transactions"
+    transaction_id = db.Column(db.Integer, primary_key=True)
+    item_id = db.Column(db.Integer, db.ForeignKey("marketplace_items.item_id"), nullable=False)
+    buyer_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
+    seller_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
+    timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    amount = db.Column(db.Numeric(20, 2), nullable=False)
+
+    def __repr__(self):
+        return f"MarketplaceTransaction(Item ID: '{self.item_id}', Buyer ID: '{self.buyer_id}', Seller ID: '{self.seller_id}', Amount: '{self.amount}')"

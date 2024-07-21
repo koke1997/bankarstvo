@@ -39,12 +39,18 @@ def create_app():
     from routes.user_routes import user_routes
     from routes.search_routes.search import search_routes  # Import the search_routes blueprint
     from routes.logger_routes.log_routes import log_routes
+    from routes.transaction_routes.crypto import crypto_routes
+    from routes.transaction_routes.stock import stock_routes
+    from routes.marketplace_routes import marketplace_routes
 
     app.register_blueprint(transaction_routes)
     app.register_blueprint(account_routes)
     app.register_blueprint(user_routes)
     app.register_blueprint(search_routes)  # Register the search_routes blueprint
     app.register_blueprint(log_routes)
+    app.register_blueprint(crypto_routes)
+    app.register_blueprint(stock_routes)
+    app.register_blueprint(marketplace_routes)
 
     # Log rules for each Blueprint
     logger.info("\nMain Application Rules:")
