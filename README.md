@@ -17,6 +17,8 @@ This project is a comprehensive banking application built in Python. It features
 - **Wider Currency Support**: The app now supports a wider range of currencies for financial transactions, catering to a global audience.
 - **User Feedback and Support System**: A new system introduced to improve user satisfaction and app usability.
 - **Enhanced Logging System**: The logging system is enhanced for better audit trails and debugging, facilitating maintenance and support.
+- **Crypto & Stock Trading**: Users can engage in crypto and stock trading via popular free-to-use APIs. This feature is configurable to allow the application to become SaaS in the future.
+- **Digital Marketplace**: Users can sell items in an internal digital marketplace, similar to eBay. This feature is also configurable.
 
 ## **Installation**
 
