@@ -50,6 +50,10 @@ Keep in mind you will need a mysql database running in background in order to ru
 **Running the Application:**
 <pre><code>python app.py</code></pre>
 
+## **Demo Page**
+
+A demo page for the banking application is available, showcasing single components and improved documentation with endpoints enlisted on one page. You can access the demo page [here](https://koke1997.github.io/bankarstvo/).
+
 ## **Configuration**
 
 - Update the `app_factory.py` & `DatabaseHandling\connection.py` file with your database and other environment-specific settings.

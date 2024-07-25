@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Application Documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .nav-link {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Banking Application Documentation</h1>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-link active" id="nav-components-tab" data-toggle="tab" href="#nav-components" role="tab" aria-controls="nav-components" aria-selected="true">Components</a>
+                <a class="nav-link" id="nav-endpoints-tab" data-toggle="tab" href="#nav-endpoints" role="tab" aria-controls="nav-endpoints" aria-selected="false">Endpoints</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-components" role="tabpanel" aria-labelledby="nav-components-tab">
+                <h2>Components</h2>
+                <section id="user-registration">
+                    <h3>User Registration</h3>
+                    <p>This component allows new users to register for the banking service.</p>
+                    <pre><code>
+POST /register
+{
+    "username": "example",
+    "email": "example@example.com",
+    "password": "password"
+}
+                    </code></pre>
+                </section>
+                <section id="user-login">
+                    <h3>User Login</h3>
+                    <p>This component allows existing users to log in securely.</p>
+                    <pre><code>
+POST /login
+{
+    "username": "example",
+    "password": "password"
+}
+                    </code></pre>
+                </section>
+                <section id="balance-checking">
+                    <h3>Balance Checking</h3>
+                    <p>This component allows users to check their account balance.</p>
+                    <pre><code>
+GET /balance
+                    </code></pre>
+                </section>
+                <section id="transaction-history">
+                    <h3>Transaction History</h3>
+                    <p>This component allows users to view their transaction history.</p>
+                    <pre><code>
+GET /transactions
+                    </code></pre>
+                </section>
+            </div>
+            <div class="tab-pane fade" id="nav-endpoints" role="tabpanel" aria-labelledby="nav-endpoints-tab">
+                <h2>Endpoints</h2>
+                <section id="register-endpoint">
+                    <h3>Register</h3>
+                    <p>Endpoint for user registration.</p>
+                    <pre><code>
+POST /register
+{
+    "username": "example",
+    "email": "example@example.com",
+    "password": "password"
+}
+                    </code></pre>
+                </section>
+                <section id="login-endpoint">
+                    <h3>Login</h3>
+                    <p>Endpoint for user login.</p>
+                    <pre><code>
+POST /login
+{
+    "username": "example",
+    "password": "password"
+}
+                    </code></pre>
+                </section>
+                <section id="balance-endpoint">
+                    <h3>Balance</h3>
+                    <p>Endpoint for checking account balance.</p>
+                    <pre><code>
+GET /balance
+                    </code></pre>
+                </section>
+                <section id="transactions-endpoint">
+                    <h3>Transactions</h3>
+                    <p>Endpoint for viewing transaction history.</p>
+                    <pre><code>
+GET /transactions
+                    </code></pre>
+                </section>
+            </div>
+        </div>
+        <footer>
+            <p>For more information, visit our <a href="https://github.com/koke1997/bankarstvo">GitHub repository</a>.</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
