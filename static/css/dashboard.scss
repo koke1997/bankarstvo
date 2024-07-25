@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+form {
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+#account-choice {
+    width: 100%; /* Make sure the select element takes full width */
+    margin-bottom: 10px; /* Add margin for spacing */
+}
+
+.btn {
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #40e0d0;
+    color: #ffffff;
+}
+
+/* Shimmering wave effect for buttons */
+.btn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    transform: skewX(-20deg) translateX(-100%);
+    transition: none;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.btn:hover::before {
+    transform: skewX(-20deg) translateX(300%);
+    transition: transform 0.7s ease;
+}
+
+option.selected {
+    background-color: #f8f9fa; 
+    color: #343a40;
+}
