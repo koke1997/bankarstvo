@@ -59,6 +59,9 @@ This project is a comprehensive banking application built in Python. It features
 5. **Build the Project**
    <pre><code>npm run build</code></pre>
 
+6. **Create .github/labeler.yml Configuration File**
+   <pre><code>touch .github/labeler.yml</code></pre>
+
 ## **Usage**
 
 Keep in mind you will need a mysql database running in background in order to run this app properly. 
