@@ -3,6 +3,7 @@ import subprocess
 from app_factory import create_app
 import argparse
 from core.plot_diagram import plot_routes_diagram, extract_all_routes
+from flask import render_template
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -21,12 +22,12 @@ if __name__ == '__main__':
         # Add route to serve the Vue.js application
         @app.route('/')
         def index():
-            return app.send_static_file('index.html')
+            return render_template('index.html')
 
         # Add route to serve the documentation page
         @app.route('/docs')
         def docs():
-            return app.send_static_file('docs/index.html')
+            return render_template('index.html')
 
         # Run the Flask application with the debugger enabled
         subprocess.run(["flask", "run", "--debugger"])
