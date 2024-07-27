@@ -1,32 +1,31 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches:
       - main
-
 permissions:
   contents: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
-
+        node-version: '16' # Updated to use the latest stable version of Node.js
+        cache: 'npm' # Enable caching of npm dependencies
     - name: Install dependencies
       run: npm install
-
     - name: Build project
       run: npm run build
-
+    - name: Check if build was successful
+      run: |
+        if [ ! -d "./docs" ]; then
+          echo "Build directory does not exist, build failed."
+          exit 1
+        fi
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
