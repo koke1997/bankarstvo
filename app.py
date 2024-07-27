@@ -18,5 +18,10 @@ if __name__ == '__main__':
         # Set the FLASK_APP environment variable
         os.environ["FLASK_APP"] = "app.py"
 
+        # Add route to serve the Vue.js application
+        @app.route('/')
+        def index():
+            return app.send_static_file('index.html')
+
         # Run the Flask application with the debugger enabled
         subprocess.run(["flask", "run", "--debugger"])

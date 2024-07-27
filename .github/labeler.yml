@@ -1,0 +1,43 @@
+# This is a basic configuration file for the labeler action.
+# It defines rules to label files modified based on the paths that are modified in a pull request.
+
+# Label for changes in Python files
+python:
+  - '*.py'
+  - '**/*.py'
+
+# Label for changes in JavaScript files
+javascript:
+  - '*.js'
+  - '**/*.js'
+
+# Label for changes in HTML files
+html:
+  - '*.html'
+  - '**/*.html'
+
+# Label for changes in CSS/SCSS files
+css:
+  - '*.css'
+  - '*.scss'
+  - '**/*.css'
+  - '**/*.scss'
+
+# Label for changes in Markdown files
+markdown:
+  - '*.md'
+  - '**/*.md'
+
+# Label for changes in YAML files
+yaml:
+  - '*.yml'
+  - '**/*.yml'
+
+# Label for changes in JSON files
+json:
+  - '*.json'
+  - '**/*.json'
+
+# Label for changes in GitHub Actions workflows
+github-actions:
+  - '.github/workflows/*'

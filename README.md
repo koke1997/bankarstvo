@@ -19,6 +19,16 @@ This project is a comprehensive banking application built in Python. It features
 - **Enhanced Logging System**: The logging system is enhanced for better audit trails and debugging, facilitating maintenance and support.
 - **Crypto & Stock Trading**: Users can engage in crypto and stock trading via popular free-to-use APIs. This feature is configurable to allow the application to become SaaS in the future.
 - **Digital Marketplace**: Users can sell items in an internal digital marketplace, similar to eBay. This feature is also configurable.
+- **Bootstrap Integration**: Improved design and responsiveness using Bootstrap CSS and components.
+- **Vue.js Integration**: Dynamic content rendering using Vue.js framework.
+- **SASS/SCSS Styling**: Enhanced styling with SASS/SCSS, converting existing CSS to SASS/SCSS and organizing styles into reusable components.
+- **Data Visualization**: Integration of Charts.js for financial data visualization.
+- **Node.js/Express Server**: Backend routes for API requests and database interactions.
+- **Secure Database Setup**: Configuration of MySQL securely using environment variables for sensitive data.
+- **CI/CD Pipeline**: Automated deployment to GitHub Pages using GitHub Actions.
+- **Improved Navigation**: Implementation of a navigation bar for easy access to different sections.
+- **User Interactions**: Inclusion of forms for user inputs (e.g., login, transactions) and implementation of JWT for secure authentication.
+- **SEO and Accessibility**: Optimization for search engines with meta tags and descriptive titles, ensuring compliance with WCAG for accessibility.
 
 ## **Installation**
 
@@ -43,6 +53,15 @@ This project is a comprehensive banking application built in Python. It features
 3. **Install Dependencies**
    <pre><code>pip install -r requirements.txt</code></pre>
 
+4. **Install Node.js Dependencies**
+   <pre><code>npm install</code></pre>
+
+5. **Build the Project**
+   <pre><code>npm run build</code></pre>
+
+6. **Create .github/labeler.yml Configuration File**
+   <pre><code>touch .github/labeler.yml</code></pre>
+
 ## **Usage**
 
 Keep in mind you will need a mysql database running in background in order to run this app properly. 
@@ -57,7 +76,11 @@ A demo page for the banking application is available, showcasing single componen
 ## **Configuration**
 
 - Update the `app_factory.py` & `DatabaseHandling\connection.py` file with your database and other environment-specific settings.
+-------fix-gh-pages-deploy
 - Ensure that the `GITHUB_TOKEN` secret is configured with write permissions for the `gh-pages` branch.
+=======
+- Ensure the `GITHUB_TOKEN` secret is configured with write permissions for the `gh-pages` branch.
+----- main
 
 ## **Contributing**
 
