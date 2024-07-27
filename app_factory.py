@@ -43,6 +43,7 @@ def create_app():
     from routes.transaction_routes.crypto import crypto_routes
     from routes.transaction_routes.stock import stock_routes
     from routes.marketplace_routes import marketplace_routes
+    from routes.documentation_routes import documentation_routes  # Import the documentation_routes blueprint
 
     app.register_blueprint(transaction_routes)
     app.register_blueprint(account_routes)
@@ -52,6 +53,7 @@ def create_app():
     app.register_blueprint(crypto_routes)
     app.register_blueprint(stock_routes)
     app.register_blueprint(marketplace_routes)
+    app.register_blueprint(documentation_routes)  # Register the documentation_routes blueprint
 
     # Log rules for each Blueprint
     logger.info("\nMain Application Rules:")

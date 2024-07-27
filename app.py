@@ -23,5 +23,10 @@ if __name__ == '__main__':
         def index():
             return app.send_static_file('index.html')
 
+        # Add route to serve the documentation page
+        @app.route('/docs')
+        def docs():
+            return app.send_static_file('docs/index.html')
+
         # Run the Flask application with the debugger enabled
         subprocess.run(["flask", "run", "--debugger"])
