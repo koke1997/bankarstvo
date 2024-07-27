@@ -5,6 +5,7 @@ from flask import Flask, render_template, request
 from utils.extensions import db, bcrypt, login_manager, create_extensions
 from logging.config import fileConfig
 import os
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
@@ -25,7 +26,7 @@ def create_app():
 
     # Configuration settings
     app.config["SECRET_KEY"] = "5791628bb0b13ce0c676dfde280ba245"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://ikokalovic:Mikrovela1!@localhost:3306/banking_app"
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI", "mysql+pymysql://ikokalovic:Mikrovela1!@localhost:3306/banking_app")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     create_extensions(app)
@@ -82,6 +83,8 @@ def create_app():
         handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
         account_logger.addHandler(handler)
 
+    # Enable CORS support
+    CORS(app)
 
     # Custom 404 error handler
     @app.errorhandler(404)
