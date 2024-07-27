@@ -112,6 +112,62 @@ GET /balance
 GET /transactions
                     </code></pre>
                 </section>
+                <section id="full-endpoint-list">
+                    <h3>Full Endpoint List</h3>
+                    <p>Comprehensive list of all endpoints, similar to Swagger or Postman documentation.</p>
+                    <pre><code>
+GET /accounts
+{
+    "description": "Retrieve all accounts",
+    "example_response": {
+        "accounts": [
+            {
+                "account_id": 1,
+                "account_name": "Checking Account",
+                "balance": 1000.00
+            },
+            {
+                "account_id": 2,
+                "account_name": "Savings Account",
+                "balance": 5000.00
+            }
+        ]
+    }
+}
+
+POST /accounts
+{
+    "description": "Create a new account",
+    "example_request": {
+        "account_name": "New Account",
+        "initial_balance": 0.00
+    },
+    "example_response": {
+        "message": "Account created successfully",
+        "account_id": 3
+    }
+}
+
+PUT /accounts/{account_id}
+{
+    "description": "Update an existing account",
+    "example_request": {
+        "account_name": "Updated Account Name"
+    },
+    "example_response": {
+        "message": "Account updated successfully"
+    }
+}
+
+DELETE /accounts/{account_id}
+{
+    "description": "Delete an account",
+    "example_response": {
+        "message": "Account deleted successfully"
+    }
+}
+                    </code></pre>
+                </section>
             </div>
             <div class="tab-pane fade" id="nav-features" role="tabpanel" aria-labelledby="nav-features-tab">
                 <h2>Features</h2>

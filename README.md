@@ -73,6 +73,14 @@ Keep in mind you will need a mysql database running in background in order to ru
 
 A demo page for the banking application is available, showcasing single components and improved documentation with endpoints enlisted on one page. You can access the demo page [here](https://koke1997.github.io/bankarstvo/).
 
+### **Accessing the Enhanced Demo Page**
+
+To access the enhanced demo page with a comprehensive list of all endpoints, follow these steps:
+
+1. **Run the Application**: Ensure the application is running by executing `python app.py`.
+2. **Open the Demo Page**: Open your web browser and navigate to `http://localhost:5000/docs`.
+3. **Explore the Documentation**: The enhanced demo page includes detailed descriptions and examples for each endpoint, similar to Swagger or Postman documentation.
+
 ## **Configuration**
 
 - Update the `app_factory.py` & `DatabaseHandling\connection.py` file with your database and other environment-specific settings.
