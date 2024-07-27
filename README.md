@@ -76,7 +76,11 @@ A demo page for the banking application is available, showcasing single componen
 ## **Configuration**
 
 - Update the `app_factory.py` & `DatabaseHandling\connection.py` file with your database and other environment-specific settings.
+-------fix-gh-pages-deploy
+- Ensure that the `GITHUB_TOKEN` secret is configured with write permissions for the `gh-pages` branch.
+=======
 - Ensure the `GITHUB_TOKEN` secret is configured with write permissions for the `gh-pages` branch.
+----- main
 
 ## **Contributing**
 
