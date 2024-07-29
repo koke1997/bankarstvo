@@ -4,8 +4,10 @@
   "description": "Banking application",
   "main": "index.js",
   "scripts": {
-    "test": "pytest",
-    "build": "sass static/css/dashboard.scss static/css/dashboard.css && webpack --config webpack.config.js"
+    "test": "pytest && npm run lint",
+    "build": "sass static/css/dashboard.scss static/css/dashboard.css && webpack --config webpack.config.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "author": "koke1997",
   "license": "MIT",
@@ -15,5 +17,9 @@
     "vue": "^3.2.26",
     "sass": "^1.43.4",
     "chart.js": "^3.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "prettier": "^2.3.2"
   }
 }
