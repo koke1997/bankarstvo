@@ -4,7 +4,7 @@
   "description": "Banking application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "pytest",
     "build": "sass static/css/dashboard.scss static/css/dashboard.css && webpack --config webpack.config.js"
   },
   "author": "koke1997",
