@@ -1,47 +1,30 @@
 name: Continuous Deployment
-
 on:
   push:
     branches:
       - main
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14'
-
+    - name: Install MySQL Server
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y mysql-server
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'your_root_password';"
+        sudo mysql -e "FLUSH PRIVILEGES;"
     - name: Install dependencies
       run: |
         npm install
-
     - name: Build project
       run: |
         npm run build
-
-    - name: Set up MySQL
-      run: |
-        sudo apt-get update
-        sudo apt-get install mysql-server
-        sudo service mysql start
-        mysql -e "CREATE DATABASE IF NOT EXISTS banking_app;"
-        mysql -e "CREATE USER IF NOT EXISTS 'ikokalovic'@'localhost' IDENTIFIED BY 'Mikrovela1!';"
-        mysql -e "GRANT ALL PRIVILEGES ON banking_app.* TO 'ikokalovic'@'localhost';"
-        mysql -e "FLUSH PRIVILEGES;"
-
-    - name: Set up Flyway
-      run: |
-        wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.11.4/flyway-commandline-7.11.4-linux-x64.tar.gz | tar xvz
-        sudo ln -s `pwd`/flyway-7.11.4/flyway /usr/local/bin
-        flyway -configFiles=tests/flyway.conf migrate
-
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
