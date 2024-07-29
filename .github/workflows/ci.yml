@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9'  # Upgrade to Python 3.9
+        python-version: '3.9'
 
     - name: Install dependencies
       run: |
@@ -28,10 +28,10 @@ jobs:
 
     - name: Set up MySQL
       env:
-        MYSQL_ROOT_PASSWORD: root_password  # Replace with your desired root password
-        MYSQL_DATABASE: banking_app
-        MYSQL_USER: ikokalovic
-        MYSQL_PASSWORD: Mikrovela1!
+        MYSQL_ROOT_PASSWORD: 'rootpassword'  # Use a secure password here
+        MYSQL_DATABASE: 'banking_app'
+        MYSQL_USER: 'ikokalovic'
+        MYSQL_PASSWORD: 'Mikrovela1!'
       run: |
         sudo apt-get update
         sudo apt-get install -y mysql-server
@@ -44,7 +44,7 @@ jobs:
 
     - name: Wait for MySQL to be ready
       run: |
-        while ! mysqladmin ping -h"localhost" --silent; do
+        while ! mysqladmin ping -h"localhost" -u root -p${{ env.MYSQL_ROOT_PASSWORD }} --silent; do
           echo "Waiting for database connection..."
           sleep 2
         done
@@ -57,11 +57,11 @@ jobs:
 
     - name: Run tests
       env:
-        MYSQL_HOST: localhost
-        MYSQL_PORT: 3306
-        MYSQL_USER: ikokalovic
-        MYSQL_PASSWORD: Mikrovela1!
-        MYSQL_DATABASE: banking_app
+        MYSQL_HOST: 'localhost'
+        MYSQL_PORT: '3306'
+        MYSQL_USER: 'ikokalovic'
+        MYSQL_PASSWORD: 'Mikrovela1!'
+        MYSQL_DATABASE: 'banking_app'
       run: |
         pytest
 
