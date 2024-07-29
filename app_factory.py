@@ -5,9 +5,11 @@ from logging.config import fileConfig
 
 from flask import Flask, render_template, request
 from flask_cors import CORS
+from flask_socketio import SocketIO
 
 from utils.extensions import create_extensions, db, bcrypt, login_manager
 
+socketio = SocketIO()
 
 def create_app():
     app = Flask(__name__)
@@ -34,6 +36,7 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     create_extensions(app)
+    socketio.init_app(app)
 
     login_manager.login_view = "user_routes.login"
     login_manager.login_message_category = "info"
