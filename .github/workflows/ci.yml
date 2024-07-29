@@ -31,8 +31,10 @@ jobs:
         sudo systemctl start mysql
         echo "Checking MySQL Service Status"
         sudo systemctl status mysql
-        echo "Altering MySQL root user password"
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'your_root_password';"
+        echo "Listing MySQL users"
+        sudo mysql -e "SELECT User, Host FROM mysql.user;"
+        echo "Disabling password for root user"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'auth_socket';"
         echo "Flushing MySQL privileges"
         sudo mysql -e "FLUSH PRIVILEGES;"
         echo "MySQL setup completed"
