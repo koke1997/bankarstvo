@@ -24,26 +24,30 @@ jobs:
         sudo apt-get install -y mysql-server
         echo "==================== Starting MySQL Service ===================="
         sudo systemctl start mysql
-        echo "==================== Printing MySQL default user and password from /etc/mysql/debian.cnf ===================="
-        sudo cat /etc/mysql/debian.cnf
+        echo "==================== Retrieving MySQL default user and password from /etc/mysql/debian.cnf ===================="
         DEBIAN_SYS_MAINT_PASSWORD=$(sudo grep -oP 'password\s*=\s*\K.*' /etc/mysql/debian.cnf)
-        echo "==================== Using debian-sys-maint password: $DEBIAN_SYS_MAINT_PASSWORD ===================="
+        echo "==================== Using debian-sys-maint password ===================="
 
         echo "==================== Checking MySQL Users ===================="
-        sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" > mysql_users.txt
-        cat mysql_users.txt
+        if sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" > mysql_users.txt; then
+          echo "==================== MySQL Users ===================="
+          cat mysql_users.txt
 
-        if grep -q "root" mysql_users.txt; then
-          echo "==================== Root user exists ===================="
-          ROOT_PASSWORD=$(sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT authentication_string FROM mysql.user WHERE User='root' AND Host='localhost';" | tail -n 1)
-          echo "==================== Root user password: ${ROOT_PASSWORD} ===================="
+          if grep -q "root" mysql_users.txt; then
+            echo "==================== Root user exists ===================="
+            ROOT_PASSWORD=$(sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT authentication_string FROM mysql.user WHERE User='root' AND Host='localhost';" | tail -n 1)
+            echo "==================== Root user password retrieved ===================="
+          else
+            echo "==================== Root user does not exist, creating root user ===================="
+            ROOT_PASSWORD="satoviUnazadDraganaMirkovic"
+            sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "CREATE USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';"
+            sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;"
+            sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "FLUSH PRIVILEGES;"
+            echo "==================== Root user created with password: ${ROOT_PASSWORD} ===================="
+          fi
         else
-          echo "==================== Root user does not exist, creating root user ===================="
-          ROOT_PASSWORD="satoviUnazadDraganaMirkovic"
-          sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "CREATE USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';"
-          sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;"
-          sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "FLUSH PRIVILEGES;"
-          echo "==================== Root user created with password: ${ROOT_PASSWORD} ===================="
+          echo "==================== Failed to check MySQL users ===================="
+          exit 1
         fi
 
         echo "==================== Restarting MySQL Service ===================="
