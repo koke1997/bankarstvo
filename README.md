@@ -59,10 +59,7 @@ This project is a comprehensive banking application built in Python. It features
 5. **Build the Project**
    <pre><code>npm run build</code></pre>
 
-6. **Create .github/labeler.yml Configuration File**
-   <pre><code>touch .github/labeler.yml</code></pre>
-
-7. **Set up MySQL Database**
+6. **Set up MySQL Database**
    <pre><code>
    # Install MySQL Server
    sudo apt-get update
@@ -83,7 +80,7 @@ This project is a comprehensive banking application built in Python. It features
    FLUSH PRIVILEGES;
    </code></pre>
 
-8. **Configure Environment Variables**
+7. **Configure Environment Variables**
    <pre><code>
    # Create a .env file in the project root directory and add the following environment variables
    DATABASE_USER=ikokalovic
