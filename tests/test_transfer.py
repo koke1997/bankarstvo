@@ -3,12 +3,20 @@ from flask import Flask, session
 from flask.testing import FlaskClient
 from routes.transaction_routes.transfer import transfer
 from DatabaseHandling.connection import get_db_cursor
+import os
 
 @pytest.fixture
 def app():
     app = Flask(__name__)
     app.config['TESTING'] = True
     app.secret_key = 'test_secret_key'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'.format(
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        host=os.getenv('DB_HOST'),
+        port=os.getenv('DB_PORT'),
+        database=os.getenv('DB_NAME')
+    )
     app.register_blueprint(transfer)
     return app
 

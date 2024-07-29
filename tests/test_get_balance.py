@@ -2,6 +2,30 @@ import pytest
 from flask import session
 from DatabaseHandling.connection import get_db_cursor
 from routes.account_routes.get_balance import get_balance
+import os
+from app_factory import create_app
+from utils.extensions import db
+
+@pytest.fixture
+def app():
+    app = create_app()
+    app.config.update({
+        "TESTING": True,
+        "SQLALCHEMY_DATABASE_URI": 'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'.format(
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            host=os.getenv('DB_HOST'),
+            port=os.getenv('DB_PORT'),
+            database=os.getenv('DB_NAME')
+        ),
+    })
+
+    with app.app_context():
+        db.create_all()
+        yield app
+
+    with app.app_context():
+        db.drop_all()
 
 @pytest.fixture
 def client(app):

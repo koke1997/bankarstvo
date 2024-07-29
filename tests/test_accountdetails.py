@@ -8,7 +8,13 @@ from app_factory import create_app
 def test_client():
     flask_app = create_app()
     flask_app.config['TESTING'] = True
-    flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'.format(
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        host=os.getenv('DB_HOST'),
+        port=os.getenv('DB_PORT'),
+        database=os.getenv('DB_NAME')
+    )
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     testing_client = flask_app.test_client()

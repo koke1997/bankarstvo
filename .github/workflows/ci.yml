@@ -35,6 +35,16 @@ jobs:
         sudo systemctl status mysql
         echo "Listing MySQL users"
         sudo mysql -u root -e "SELECT User, Host FROM mysql.user;"
+    - name: Install Flyway
+      run: |
+        echo "Downloading Flyway"
+        wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.10.0/flyway-commandline-7.10.0-linux-x64.tar.gz | tar xvz
+        echo "Installing Flyway"
+        sudo ln -s `pwd`/flyway-7.10.0/flyway /usr/local/bin
+    - name: Run Flyway migrations
+      run: |
+        echo "Running Flyway migrations"
+        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password= -locations=filesystem:sql/migrations migrate
     - name: Install dependencies
       run: |
         echo "Upgrading pip"

@@ -19,6 +19,16 @@ jobs:
         sudo apt-get install -y mysql-server
         sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'your_root_password';"
         sudo mysql -e "FLUSH PRIVILEGES;"
+    - name: Install Flyway
+      run: |
+        echo "Downloading Flyway"
+        wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.10.0/flyway-commandline-7.10.0-linux-x64.tar.gz | tar xvz
+        echo "Installing Flyway"
+        sudo ln -s `pwd`/flyway-7.10.0/flyway /usr/local/bin
+    - name: Run Flyway migrations
+      run: |
+        echo "Running Flyway migrations"
+        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password=your_root_password -locations=filesystem:sql/migrations migrate
     - name: Install dependencies
       run: |
         npm install
@@ -30,3 +40,17 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+    - name: Install Python dependencies
+      run: |
+        echo "Upgrading pip"
+        python -m pip install --upgrade pip
+        echo "Installing dependencies from requirements.txt"
+        pip install -r requirements.txt
+    - name: Run tests
+      run: |
+        echo "Running tests"
+        pytest
