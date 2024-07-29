@@ -1,6 +1,6 @@
 import os
 import subprocess
-from app_factory import create_app
+from app_factory import create_app, socketio
 import argparse
 from core.plot_diagram import plot_routes_diagram, extract_all_routes
 from flask import render_template
@@ -30,4 +30,4 @@ if __name__ == '__main__':
             return render_template('index.html')
 
         # Run the Flask application with the debugger enabled
-        subprocess.run(["flask", "run", "--debugger"])
+        socketio.run(app, debug=True)
