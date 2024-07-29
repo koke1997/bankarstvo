@@ -32,9 +32,20 @@ def restart_app():
     stop_app()
     start_app()
 
+def status_app():
+    try:
+        with open(PID_FILE, 'r') as f:
+            pid = int(f.read())
+        if psutil.pid_exists(pid):
+            logger.info(f"App is running with PID: {pid}")
+        else:
+            logger.info("App is not running")
+    except FileNotFoundError:
+        logger.info("App is not running")
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        logger.info("Usage: python cli.py {start|stop|restart}")
+        logger.info("Usage: python cli.py {start|stop|restart|status}")
         sys.exit(1)
 
     command = sys.argv[1]
@@ -45,6 +56,8 @@ if __name__ == "__main__":
         stop_app()
     elif command == "restart":
         restart_app()
+    elif command == "status":
+        status_app()
     else:
         logger.info(f"Unknown command: {command}")
         sys.exit(1)

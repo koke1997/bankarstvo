@@ -1,107 +1,52 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
 
 form {
-    max-width: 300px;
-    margin: 20px auto;
+  max-width: 300px;
+  margin: 20px auto;
 }
 
 #account-choice {
-    width: 100%; /* Make sure the select element takes full width */
-    margin-bottom: 10px; /* Add margin for spacing */
+  width: 100%; /* Make sure the select element takes full width */
+  margin-bottom: 10px; /* Add margin for spacing */
 }
 
 .btn {
-    padding: 15px 30px;
-    margin: 10px;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #40e0d0;
-    color: #ffffff;
+  padding: 15px 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #40e0d0;
+  color: #ffffff;
 }
 
 /* Shimmering wave effect for buttons */
 .btn::before {
-    content: '';
-    display: block;
-    position: absolute;
-    background: rgba(255, 255, 255, 0.5);
-    width: 60px;
-    height: 100%;
-    left: 0;
-    transform: skewX(-20deg) translateX(-100%);
-    transition: none;
-    pointer-events: none;
-    z-index: 2;
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  width: 60px;
+  height: 100%;
+  left: 0;
+  transform: skewX(-20deg) translateX(-100%);
+  transition: none;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .btn:hover::before {
-    transform: skewX(-20deg) translateX(300%);
-    transition: transform 0.7s ease;
+  transform: skewX(-20deg) translateX(300%);
+  transition: transform 0.7s ease;
 }
 
 option.selected {
-    background-color: #f8f9fa; 
-    color: #343a40;
+  background-color: #f8f9fa;
+  color: #343a40;
 }
 
-/* Styles for the new forms and table */
-.card {
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.table {
-    width: 100%;
-    margin: 20px auto;
-    border-collapse: collapse;
-}
-
-.table th, .table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.table th {
-    background-color: #f2f2f2;
-}
-
-.table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Consistent look and feel for the banking application */
-body {
-    background-color: #f0f8ff;  /* AliceBlue */
-}
-
-h2, h3 {
-    color: #1E90FF;  /* DodgerBlue */
-}
-
-.btn-primary {
-    background-color: #1E90FF;  /* DodgerBlue */
-    color: white;
-}
-
-.btn-secondary {
-    background-color: white;
-    color: #1E90FF;  /* DodgerBlue */
-    border: 2px solid #1E90FF;
-}
-
-.center-container {
-    text-align: center;
-    margin-top: 10%;
-}
+/*# sourceMappingURL=dashboard.css.map */
