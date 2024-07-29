@@ -62,16 +62,53 @@ This project is a comprehensive banking application built in Python. It features
 6. **Create .github/labeler.yml Configuration File**
    <pre><code>touch .github/labeler.yml</code></pre>
 
+7. **Set up MySQL Database**
+   <pre><code>
+   # Install MySQL Server
+   sudo apt-get update
+   sudo apt-get install mysql-server
+
+   # Secure MySQL Installation
+   sudo mysql_secure_installation
+
+   # Log in to MySQL
+   sudo mysql -u root -p
+
+   # Create a new database
+   CREATE DATABASE banking_app;
+
+   # Create a new user and grant privileges
+   CREATE USER 'ikokalovic'@'localhost' IDENTIFIED BY 'Mikrovela1!';
+   GRANT ALL PRIVILEGES ON banking_app.* TO 'ikokalovic'@'localhost';
+   FLUSH PRIVILEGES;
+   </code></pre>
+
+8. **Configure Environment Variables**
+   <pre><code>
+   # Create a .env file in the project root directory and add the following environment variables
+   DATABASE_USER=ikokalovic
+   DATABASE_PASSWORD=Mikrovela1!
+   DATABASE_HOST=localhost
+   DATABASE_PORT=3306
+   DATABASE_NAME=banking_app
+   </code></pre>
+
 ## **Usage**
 
 Keep in mind you will need a mysql database running in background in order to run this app properly. 
 
 **Running the Application:**
-<pre><code>python app.py</code></pre>
+<pre><code>
+# Start MySQL Server
+sudo service mysql start
+
+# Run the Flask Application
+python app.py
+</code></pre>
 
 ## **Demo Page**
 
-A demo page for the banking application is available, showcasing single components and improved documentation with endpoints enlisted on one page. You can access the demo page [here](https://koke1997.github.io/bankarstvo/).
+A demo page for the banking application is available, showcasing single components and improved documentation with endpoints enlisted on one page. You can access the demo page [here](https://koke1997.github.io/bankarstvo/index.html).
 
 ### **Accessing the Enhanced Demo Page**
 
@@ -153,3 +190,15 @@ To access the improved GitHub Pages, follow these steps:
 1. **Run the Application**: Ensure the application is running by executing `python app.py`.
 2. **Open the GitHub Pages**: Open your web browser and navigate to `https://koke1997.github.io/bankarstvo/index.html`.
 3. **Explore the Improvements**: The GitHub Pages now includes a navigation bar, a user feedback section, and a recent transactions section.
+
+## **Improved Documentation Page**
+
+The documentation page has been improved to provide a more comprehensive overview of the project, including detailed descriptions and examples for each endpoint, similar to Swagger or Postman documentation.
+
+### **Accessing the Improved Documentation Page**
+
+To access the improved documentation page, follow these steps:
+
+1. **Run the Application**: Ensure the application is running by executing `python app.py`.
+2. **Open the Documentation Page**: Open your web browser and navigate to `http://localhost:5000/docs`.
+3. **Explore the Documentation**: The documentation page now includes detailed descriptions and examples for each endpoint, similar to Swagger or Postman documentation.
