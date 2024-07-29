@@ -126,3 +126,30 @@ class MarketplaceTransaction(db.Model):
 
     def __repr__(self):
         return f"MarketplaceTransaction(Item ID: '{self.item_id}', Buyer ID: '{self.buyer_id}', Seller ID: '{self.seller_id}', Amount: '{self.amount}')"
+
+
+class Loan(db.Model):
+    __tablename__ = "loans"
+    loan_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
+    amount = db.Column(db.Numeric(20, 2), nullable=False)
+    interest_rate = db.Column(db.Float, nullable=False)
+    term = db.Column(db.Integer, nullable=False)  # Term in months
+    start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    end_date = db.Column(db.DateTime, nullable=False)
+    status = db.Column(db.String(50), nullable=False, default="active")
+
+    def __repr__(self):
+        return f"Loan(User ID: '{self.user_id}', Amount: '{self.amount}', Interest Rate: '{self.interest_rate}', Term: '{self.term}', Status: '{self.status}')"
+
+
+class Payment(db.Model):
+    __tablename__ = "payments"
+    payment_id = db.Column(db.Integer, primary_key=True)
+    loan_id = db.Column(db.Integer, db.ForeignKey("loans.loan_id"), nullable=False)
+    amount = db.Column(db.Numeric(20, 2), nullable=False)
+    payment_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    status = db.Column(db.String(50), nullable=False, default="completed")
+
+    def __repr__(self):
+        return f"Payment(Loan ID: '{self.loan_id}', Amount: '{self.amount}', Payment Date: '{self.payment_date}', Status: '{self.status}')"

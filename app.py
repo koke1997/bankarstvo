@@ -29,5 +29,15 @@ if __name__ == '__main__':
         def docs():
             return render_template('index.html')
 
+        # Add new route to serve the Vue.js application
+        @app.route('/vue')
+        def vue():
+            return render_template('vue.html')
+
+        # Add new route to serve the documentation page
+        @app.route('/documentation')
+        def documentation():
+            return render_template('documentation.html')
+
         # Run the Flask application with the debugger enabled
         subprocess.run(["flask", "run", "--debugger"])

@@ -1,17 +1,20 @@
 # app_factory.py
-import traceback
 import logging
-from flask import Flask, render_template, request
-from utils.extensions import db, bcrypt, login_manager, create_extensions
-from logging.config import fileConfig
 import os
+from logging.config import fileConfig
+
+from flask import Flask, render_template, request
 from flask_cors import CORS
+
+from utils.extensions import create_extensions, db, bcrypt, login_manager
+
 
 def create_app():
     app = Flask(__name__)
 
-    #Load the logging configuration
+    # Load the logging configuration
     fileConfig(os.path.join('configuration', 'logging.conf'))
+
     # Set up a separate logger
     logger = logging.getLogger('root')
     logger.setLevel(logging.INFO)
@@ -26,7 +29,8 @@ def create_app():
 
     # Configuration settings
     app.config["SECRET_KEY"] = "5791628bb0b13ce0c676dfde280ba245"
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI", "mysql+pymysql://ikokalovic:Mikrovela1!@localhost:3306/banking_app")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI",
+                                                      "mysql+pymysql://ikokalovic:Mikrovela1!@localhost:3306/banking_app")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     create_extensions(app)
@@ -65,7 +69,7 @@ def create_app():
     log_handler.setLevel(logging.DEBUG)  # Change to WARNING if needed
     logger.addHandler(log_handler)
 
-    #Set logging from werkzeug to app.log file
+    # Set logging from werkzeug to app.log file
     werkzeug_logger = logging.getLogger('werkzeug')
     for handler in logger.handlers:
         handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
@@ -93,10 +97,12 @@ def create_app():
     def page_not_found(e):
         # Log available URLs
         available_urls = [rule.rule for rule in app.url_map.iter_rules()]
-        logging.error(f"404 Not Found: {request.url}. The requested URL was not found on the server. Available URLs: {available_urls}")
+        logging.error(
+            f"404 Not Found: {request.url}. The requested URL was not found on the server. Available URLs: {available_urls}")
 
         # Render the error page
-        return render_template("error.html", error_message=f"404 Not Found: {request.url}. The requested URL was not found on the server. If you entered the URL manually, please check your spelling and try again."), 404
+        return render_template("error.html",
+                               error_message=f"404 Not Found: {request.url}. The requested URL was not found on the server. If you entered the URL manually, please check your spelling and try again."), 404
 
     @app.errorhandler(Exception)
     def log_error(exception):
@@ -105,4 +111,5 @@ def create_app():
 
         # Render the error template with the error message
         return render_template("error.html", error_message=error_message), 500
+
     return app
