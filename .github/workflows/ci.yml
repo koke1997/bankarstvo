@@ -28,11 +28,11 @@ jobs:
         sudo cat /etc/mysql/debian.cnf
         DEBIAN_SYS_MAINT_PASSWORD=$(sudo grep -oP 'password\s*=\s*\K.*' /etc/mysql/debian.cnf)
         echo "==================== Using debian-sys-maint password: $DEBIAN_SYS_MAINT_PASSWORD ===================="
-        
+
         echo "==================== Checking MySQL Users ===================="
         sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" > mysql_users.txt
         cat mysql_users.txt
-        
+
         if grep -q "root" mysql_users.txt; then
           echo "==================== Root user exists ===================="
           ROOT_PASSWORD=$(sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT authentication_string FROM mysql.user WHERE User='root' AND Host='localhost';" | tail -n 1)
@@ -45,7 +45,7 @@ jobs:
           sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "FLUSH PRIVILEGES;"
           echo "==================== Root user created with password: ${ROOT_PASSWORD} ===================="
         fi
-        
+
         echo "==================== Restarting MySQL Service ===================="
         sudo systemctl restart mysql
         echo "==================== Checking MySQL Service Status ===================="
