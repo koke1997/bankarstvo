@@ -26,25 +26,19 @@ jobs:
         sudo systemctl start mysql
         echo "Printing MySQL default user and password from /etc/mysql/debian.cnf"
         sudo cat /etc/mysql/debian.cnf
-        echo "Configuring MySQL for passwordless root access"
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
+        echo "Setting MySQL root user password"
+        ROOT_PASSWORD="satoviUnazadDraganaMirkovic"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';"
         sudo mysql -e "FLUSH PRIVILEGES;"
+        echo "Configuring MySQL for passwordless root access"
+        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
+        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
         echo "Restarting MySQL Service"
         sudo systemctl restart mysql
         echo "Checking MySQL Service Status"
         sudo systemctl status mysql
         echo "Listing MySQL users"
-        sudo mysql -u root -e "SELECT User, Host FROM mysql.user;"
-    - name: Install Flyway
-      run: |
-        echo "Downloading Flyway"
-        wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.10.0/flyway-commandline-7.10.0-linux-x64.tar.gz | tar xvz
-        echo "Installing Flyway"
-        sudo ln -s `pwd`/flyway-7.10.0/flyway /usr/local/bin
-    - name: Run Flyway migrations
-      run: |
-        echo "Running Flyway migrations"
-        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password= -locations=filesystem:sql/migrations migrate
+        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;"
     - name: Install dependencies
       run: |
         echo "Upgrading pip"
