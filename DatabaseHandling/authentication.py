@@ -1,4 +1,5 @@
 import traceback
+import pyotp
 
 #DatabaseHandling/authentication.py
 from utils.extensions import bcrypt
@@ -9,11 +10,19 @@ from .session_clearing  import clear_session
 import logging
 logger = logging.getLogger(__name__)
 
-def login_func(username, password):
+def login_func(username, password, otp_code=None):
     try:
         logger.info(f"Attempting to log in with username {username} and password {password}")
         user = User.query.filter_by(username=username).first()
         if user and bcrypt.check_password_hash(user.password_hash, password):
+            if user.two_factor_auth:
+                if otp_code is None:
+                    logger.warning("OTP code is required for users with two-factor authentication enabled")
+                    return False
+                totp = pyotp.TOTP(user.two_factor_auth_secret)
+                if not totp.verify(otp_code):
+                    logger.warning("Invalid OTP code")
+                    return False
             login_user(user)
             logger.info("Login successful")
             return True

@@ -1,6 +1,34 @@
 import pytest
 from FiatHandling.accountdetails import get_account_details
 from unittest.mock import patch, MagicMock
+from flask_sqlalchemy import SQLAlchemy
+from app_factory import create_app
+
+@pytest.fixture(scope='module')
+def test_client():
+    flask_app = create_app()
+    flask_app.config['TESTING'] = True
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    testing_client = flask_app.test_client()
+
+    ctx = flask_app.app_context()
+    ctx.push()
+
+    yield testing_client
+
+    ctx.pop()
+
+@pytest.fixture(scope='module')
+def init_database():
+    db = SQLAlchemy()
+    db.create_all()
+
+    yield db
+
+    db.session.remove()
+    db.drop_all()
 
 @pytest.fixture
 def mock_db_connection():

@@ -1,5 +1,4 @@
 name: Continuous Integration
-
 on:
   push:
     branches:
@@ -7,30 +6,48 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9'  # Upgrade to Python 3.9
-
+        python-version: '3.9'
+    - name: Install MySQL Server
+      run: |
+        echo "Updating package list"
+        sudo apt-get update
+        echo "Installing MySQL Server"
+        sudo apt-get install -y mysql-server
+        echo "Starting MySQL Service"
+        sudo systemctl start mysql
+        echo "Printing MySQL default user and password from /etc/mysql/debian.cnf"
+        sudo cat /etc/mysql/debian.cnf
+        echo "Configuring MySQL for passwordless root access"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
+        sudo mysql -e "FLUSH PRIVILEGES;"
+        echo "Restarting MySQL Service"
+        sudo systemctl restart mysql
+        echo "Checking MySQL Service Status"
+        sudo systemctl status mysql
+        echo "Listing MySQL users"
+        sudo mysql -u root -e "SELECT User, Host FROM mysql.user;"
     - name: Install dependencies
       run: |
+        echo "Upgrading pip"
         python -m pip install --upgrade pip
+        echo "Installing dependencies from requirements.txt"
         pip install -r requirements.txt
-
     - name: Run tests
       run: |
+        echo "Running tests"
         pytest
-
     - name: Run linting
       run: |
+        echo "Installing npm packages"
         npm install
+        echo "Running linting"
         npm run lint

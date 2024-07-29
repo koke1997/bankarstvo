@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     two_factor_auth = db.Column(db.Boolean, default=False)
     two_factor_auth_code = db.Column(db.String(255), nullable=True)
     two_factor_auth_expiry = db.Column(db.DateTime, nullable=True)
+    two_factor_auth_secret = db.Column(db.String(255), nullable=True)
 
     account_created = db.Column(db.DateTime, default=func.now())
     last_login = db.Column(db.DateTime, nullable=True)
@@ -79,7 +80,7 @@ class SignedDocument(db.Model):
 
 class CryptoAsset(db.Model):
     __tablename__ = "crypto_assets"
-    asset_id = db.Column(db.Integer, primary_key=True)
+    asset_id = db.Column(db.Integer, primary key=True)
     name = db.Column(db.String(255), nullable=False)
     symbol = db.Column(db.String(10), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
@@ -91,7 +92,7 @@ class CryptoAsset(db.Model):
 
 class StockAsset(db.Model):
     __tablename__ = "stock_assets"
-    asset_id = db.Column(db.Integer, primary_key=True)
+    asset_id = db.Column(db.Integer, primary key=True)
     name = db.Column(db.String(255), nullable=False)
     symbol = db.Column(db.String(10), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
@@ -103,7 +104,7 @@ class StockAsset(db.Model):
 
 class MarketplaceItem(db.Model):
     __tablename__ = "marketplace_items"
-    item_id = db.Column(db.Integer, primary_key=True)
+    item_id = db.Column(db.Integer, primary key=True)
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=True)
     price = db.Column(db.Numeric(20, 2), nullable=False)
@@ -117,7 +118,7 @@ class MarketplaceItem(db.Model):
 
 class MarketplaceTransaction(db.Model):
     __tablename__ = "marketplace_transactions"
-    transaction_id = db.Column(db.Integer, primary_key=True)
+    transaction_id = db.Column(db.Integer, primary key=True)
     item_id = db.Column(db.Integer, db.ForeignKey("marketplace_items.item_id"), nullable=False)
     buyer_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
     seller_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
@@ -130,7 +131,7 @@ class MarketplaceTransaction(db.Model):
 
 class Loan(db.Model):
     __tablename__ = "loans"
-    loan_id = db.Column(db.Integer, primary_key=True)
+    loan_id = db.Column(db.Integer, primary key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
     amount = db.Column(db.Numeric(20, 2), nullable=False)
     interest_rate = db.Column(db.Float, nullable=False)
@@ -145,7 +146,7 @@ class Loan(db.Model):
 
 class Payment(db.Model):
     __tablename__ = "payments"
-    payment_id = db.Column(db.Integer, primary_key=True)
+    payment_id = db.Column(db.Integer, primary key=True)
     loan_id = db.Column(db.Integer, db.ForeignKey("loans.loan_id"), nullable=False)
     amount = db.Column(db.Numeric(20, 2), nullable=False)
     payment_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

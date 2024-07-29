@@ -35,6 +35,9 @@ def create_app():
                                                       "mysql+pymysql://ikokalovic:Mikrovela1!@localhost:3306/banking_app")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+    if app.config["TESTING"]:
+        app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+
     create_extensions(app)
     socketio.init_app(app)
 
