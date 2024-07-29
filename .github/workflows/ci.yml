@@ -26,19 +26,21 @@ jobs:
         sudo systemctl start mysql
         echo "Printing MySQL default user and password from /etc/mysql/debian.cnf"
         sudo cat /etc/mysql/debian.cnf
+        DEBIAN_SYS_MAINT_PASSWORD=$(sudo grep -oP 'password\s*=\s*\K.*' /etc/mysql/debian.cnf)
+        echo "Using debian-sys-maint password: $DEBIAN_SYS_MAINT_PASSWORD"
         echo "Setting MySQL root user password"
         ROOT_PASSWORD="satoviUnazadDraganaMirkovic"
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';"
-        sudo mysql -e "FLUSH PRIVILEGES;"
-        echo "Configuring MySQL for passwordless root access"
-        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
-        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
+        echo "Attempting to set root password to: ${ROOT_PASSWORD}"
+        sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';" || echo "Failed to set root password"
+        sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "FLUSH PRIVILEGES;" || echo "Failed to flush privileges"
+        echo "Attempting to log in as root with password: ${ROOT_PASSWORD}"
+        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" || echo "Failed to log in as root with password: ${ROOT_PASSWORD}"
         echo "Restarting MySQL Service"
         sudo systemctl restart mysql
         echo "Checking MySQL Service Status"
         sudo systemctl status mysql
         echo "Listing MySQL users"
-        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;"
+        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" || echo "Failed to list MySQL users"
     - name: Install dependencies
       run: |
         echo "Upgrading pip"
