@@ -36,6 +36,12 @@ jobs:
         mysql -e "GRANT ALL PRIVILEGES ON banking_app.* TO 'ikokalovic'@'localhost';"
         mysql -e "FLUSH PRIVILEGES;"
 
+    - name: Set up Flyway
+      run: |
+        wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.11.4/flyway-commandline-7.11.4-linux-x64.tar.gz | tar xvz
+        sudo ln -s `pwd`/flyway-7.11.4/flyway /usr/local/bin
+        flyway -configFiles=tests/flyway.conf migrate
+
     - name: Run tests
       run: |
         pytest

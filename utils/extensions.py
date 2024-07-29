@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import logging
+import pyotp
+
 logger = logging.getLogger(__name__)
 
 db = SQLAlchemy()
