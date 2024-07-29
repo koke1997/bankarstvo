@@ -24,9 +24,13 @@ jobs:
         sudo apt-get install -y mysql-server
         echo "Starting MySQL Service"
         sudo systemctl start mysql
-        echo "Deactivating password for root user"
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"
+        echo "Printing MySQL default user and password from /etc/mysql/debian.cnf"
+        sudo cat /etc/mysql/debian.cnf
+        echo "Configuring MySQL for passwordless root access"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
         sudo mysql -e "FLUSH PRIVILEGES;"
+        echo "Restarting MySQL Service"
+        sudo systemctl restart mysql
         echo "Checking MySQL Service Status"
         sudo systemctl status mysql
         echo "Listing MySQL users"
