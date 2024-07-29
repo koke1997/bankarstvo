@@ -103,6 +103,17 @@ sudo service mysql start
 python app.py
 </code></pre>
 
+**Using CI/CD Workflows:**
+
+The project includes GitHub Actions workflows for continuous integration and continuous deployment. These workflows are triggered on push and pull request events.
+
+- **Continuous Integration (CI)**: Runs tests and linting on pull requests and commits to the main branch.
+- **Continuous Deployment (CD)**: Deploys the application to GitHub Pages on successful builds.
+
+**Running Tests:**
+
+To run tests locally, use the following command:
+<pre><code>npm test</code></pre>
 
 ## **Contributing**
 

@@ -1,0 +1,25 @@
+name: Issue Automation
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  automate-issues:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Label issues
+      uses: actions/labeler@v4
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        configuration-path: ".github/labeler.yml"
+
+    - name: Assign issues
+      uses: actions/assign-issue@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        assignees: 'koke1997'
