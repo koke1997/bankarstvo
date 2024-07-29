@@ -18,42 +18,53 @@ jobs:
         python-version: '3.9'
     - name: Install MySQL Server
       run: |
-        echo "Updating package list"
+        echo "==================== Updating package list ===================="
         sudo apt-get update
-        echo "Installing MySQL Server"
+        echo "==================== Installing MySQL Server ===================="
         sudo apt-get install -y mysql-server
-        echo "Starting MySQL Service"
+        echo "==================== Starting MySQL Service ===================="
         sudo systemctl start mysql
-        echo "Printing MySQL default user and password from /etc/mysql/debian.cnf"
+        echo "==================== Printing MySQL default user and password from /etc/mysql/debian.cnf ===================="
         sudo cat /etc/mysql/debian.cnf
         DEBIAN_SYS_MAINT_PASSWORD=$(sudo grep -oP 'password\s*=\s*\K.*' /etc/mysql/debian.cnf)
-        echo "Using debian-sys-maint password: $DEBIAN_SYS_MAINT_PASSWORD"
-        echo "Setting MySQL root user password"
-        ROOT_PASSWORD="satoviUnazadDraganaMirkovic"
-        echo "Attempting to set root password to: ${ROOT_PASSWORD}"
-        sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';" || echo "Failed to set root password"
-        sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "FLUSH PRIVILEGES;" || echo "Failed to flush privileges"
-        echo "Attempting to log in as root with password: ${ROOT_PASSWORD}"
-        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" || echo "Failed to log in as root with password: ${ROOT_PASSWORD}"
-        echo "Restarting MySQL Service"
+        echo "==================== Using debian-sys-maint password: $DEBIAN_SYS_MAINT_PASSWORD ===================="
+        
+        echo "==================== Checking MySQL Users ===================="
+        sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" > mysql_users.txt
+        cat mysql_users.txt
+        
+        if grep -q "root" mysql_users.txt; then
+          echo "==================== Root user exists ===================="
+          ROOT_PASSWORD=$(sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT authentication_string FROM mysql.user WHERE User='root' AND Host='localhost';" | tail -n 1)
+          echo "==================== Root user password: ${ROOT_PASSWORD} ===================="
+        else
+          echo "==================== Root user does not exist, creating root user ===================="
+          ROOT_PASSWORD="satoviUnazadDraganaMirkovic"
+          sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "CREATE USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';"
+          sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;"
+          sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "FLUSH PRIVILEGES;"
+          echo "==================== Root user created with password: ${ROOT_PASSWORD} ===================="
+        fi
+        
+        echo "==================== Restarting MySQL Service ===================="
         sudo systemctl restart mysql
-        echo "Checking MySQL Service Status"
+        echo "==================== Checking MySQL Service Status ===================="
         sudo systemctl status mysql
-        echo "Listing MySQL users"
-        sudo mysql -u root -p"${ROOT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" || echo "Failed to list MySQL users"
+        echo "==================== Listing MySQL users ===================="
+        sudo mysql -u debian-sys-maint -p"${DEBIAN_SYS_MAINT_PASSWORD}" -e "SELECT User, Host FROM mysql.user;" || echo "Failed to list MySQL users"
     - name: Install dependencies
       run: |
-        echo "Upgrading pip"
+        echo "==================== Upgrading pip ===================="
         python -m pip install --upgrade pip
-        echo "Installing dependencies from requirements.txt"
+        echo "==================== Installing dependencies from requirements.txt ===================="
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        echo "Running tests"
+        echo "==================== Running tests ===================="
         pytest
     - name: Run linting
       run: |
-        echo "Installing npm packages"
+        echo "==================== Installing npm packages ===================="
         npm install
-        echo "Running linting"
+        echo "==================== Running linting ===================="
         npm run lint
