@@ -1,0 +1,33 @@
+name: PR Failure Issue
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-failure:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Check for failed jobs
+      if: failure()
+      uses: actions/github-script@v4
+      with:
+        script: |
+          const { context, github } = require('@actions/github');
+          const issueTitle = `PR #${context.payload.pull_request.number} failed`;
+          const issueBody = `
+            The following job failed:
+            - **Job Name**: ${context.job}
+            - **Failure Message**: ${context.payload.pull_request.title}
+            - **Workflow Run**: ${context.payload.pull_request.html_url}
+          `;
+          await github.issues.create({
+            ...context.repo,
+            title: issueTitle,
+            body: issueBody,
+            labels: ['bug', 'PR Failure']
+          });
