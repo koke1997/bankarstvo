@@ -17,7 +17,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y mysql-server
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'your_root_password';"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '${{ secrets.MYSQL_ROOT_PASSWORD }}';"
         sudo mysql -e "FLUSH PRIVILEGES;"
     - name: Install Flyway
       run: |
@@ -28,7 +28,7 @@ jobs:
     - name: Run Flyway migrations
       run: |
         echo "Running Flyway migrations"
-        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password=your_root_password -locations=filesystem:sql/migrations migrate
+        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password=${{ secrets.MYSQL_ROOT_PASSWORD }} -locations=filesystem:sql/migrations migrate
     - name: Install dependencies
       run: |
         npm install

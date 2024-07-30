@@ -32,7 +32,7 @@ def create_app():
     # Configuration settings
     app.config["SECRET_KEY"] = "5791628bb0b13ce0c676dfde280ba245"
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI",
-                                                      "mysql+pymysql://ikokalovic:Mikrovela1!@localhost:3306/banking_app")
+                                                      f"mysql+pymysql://{os.getenv('DATABASE_USER')}:{os.getenv('DATABASE_PASSWORD')}@{os.getenv('DATABASE_HOST')}:{os.getenv('DATABASE_PORT')}/{os.getenv('DATABASE_NAME')}")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     if app.config["TESTING"]:
