@@ -18,9 +18,10 @@ jobs:
       run: |
         sudo apt-get update
         sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server mysql-client
-        sudo systemctl stop mysql
-        sudo mysqld_safe --skip-grant-tables &
-        sleep 10  # Wait for MySQL to fully start up in skip-grant-tables mode
+        sudo mkdir -p /var/run/mysqld
+        sudo chown mysql:mysql /var/run/mysqld
+        sudo systemctl start mysql
+        sleep 10  # Wait for MySQL to fully start up
 
     - name: Create User and Database
       run: |
@@ -28,9 +29,6 @@ jobs:
         sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'ci_user'@'127.0.0.1' WITH GRANT OPTION;"
         sudo mysql -e "FLUSH PRIVILEGES;"
         sudo mysql -u ci_user -e "CREATE DATABASE banking_app;"
-        sudo mysqladmin shutdown
-        sudo systemctl start mysql
-        sleep 10  # Wait for MySQL to fully start up in normal mode
 
   run-flyway:
     runs-on: ubuntu-latest
