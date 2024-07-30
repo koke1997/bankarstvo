@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import patch, MagicMock
 from DatabaseHandling.connection import connect_db, get_db_cursor
+import os
 
 @patch('DatabaseHandling.connection.pool.get_connection')
 def test_connect_db(mock_get_connection):

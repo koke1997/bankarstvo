@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import patch, MagicMock
 from FiatHandling.deposit import deposit
+import os
 
 @pytest.fixture
 def mock_db():
