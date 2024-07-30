@@ -1,6 +1,7 @@
 import mysql.connector
 from mysql.connector import pooling
 import logging
+import os
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
@@ -8,11 +9,11 @@ logger = logging.getLogger(__name__)
 
 # Initialize the connection pool
 DATABASE_CONFIG = {
-    "user": "ikokalovic",
-    "password": "Mikrovela1!",
-    "host": "localhost",
-    "port": 3306,
-    "database": "banking_app",
+    "user": os.getenv("DATABASE_USER"),
+    "password": os.getenv("DATABASE_PASSWORD"),
+    "host": os.getenv("DATABASE_HOST"),
+    "port": int(os.getenv("DATABASE_PORT")),
+    "database": os.getenv("DATABASE_NAME"),
     "charset": "utf8mb4",
     "autocommit": True,
 }

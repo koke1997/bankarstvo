@@ -31,14 +31,14 @@ jobs:
         echo "Waiting for MySQL to be fully ready"
         sleep 20  # Wait for MySQL to fully start up
         echo "Setting MySQL root password"
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root_password'; FLUSH PRIVILEGES;"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${{ secrets.MYSQL_ROOT_PASSWORD }}'; FLUSH PRIVILEGES;"
         echo "Creating database banking_app"
-        sudo mysql -u root -proot_password -e "CREATE DATABASE banking_app;"
+        sudo mysql -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "CREATE DATABASE banking_app;"
 
     - name: Set up MySQL Database from Template
       run: |
         echo "Setting up database from template"
-        sudo mysql -u root -proot_password banking_app < template_for_database.sql
+        sudo mysql -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} banking_app < template_for_database.sql
 
     - name: Install Flyway
       run: |
@@ -50,7 +50,7 @@ jobs:
     - name: Run Flyway migrations
       run: |
         echo "Running Flyway migrations"
-        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password=root_password -locations=filesystem:sql/migrations migrate
+        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password=${{ secrets.MYSQL_ROOT_PASSWORD }} -locations=filesystem:sql/migrations migrate
 
     - name: Install dependencies
       run: |
