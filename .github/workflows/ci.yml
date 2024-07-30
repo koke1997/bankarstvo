@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  test:
+  setup-mysql:
     runs-on: ubuntu-20.04
 
     services:
@@ -42,6 +42,14 @@ jobs:
           sleep 5
         done
 
+  install-dependencies:
+    runs-on: ubuntu-20.04
+    needs: setup-mysql
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -52,6 +60,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest
+
+  run-tests:
+    runs-on: ubuntu-20.04
+    needs: install-dependencies
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
     - name: Run tests
       run: |
