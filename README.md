@@ -138,3 +138,71 @@ Contributions are welcome. Here's how you can contribute:
 ## **Contact**
 
 For queries or contributions, contact me at [ivankokalovic@protonmail.ch](mailto:ivankokalovic@protonmail.ch).
+
+## **Automatic Issue Creation on PR Failure**
+
+This project includes a GitHub Actions workflow to automatically create issues when a pull request (PR) fails. This helps in tracking and resolving issues promptly.
+
+### **Workflow Description**
+
+The new GitHub Actions workflow file `pr_failure_issue.yml` is designed to detect PR failures and create issues automatically. The workflow is triggered by `pull_request` events and checks for failed jobs. If a job fails, the workflow creates a new issue using the `actions/github-script` action. The issue includes details about the failed job, such as the job name, failure message, and a link to the failed workflow run.
+
+### **Configuration and Usage**
+
+1. **Create the Workflow File**
+
+   Create a new file named `pr_failure_issue.yml` in the `.github/workflows` directory of your repository.
+
+2. **Define the Workflow**
+
+   Add the following content to the `pr_failure_issue.yml` file:
+
+   ```yaml
+   name: PR Failure Issue
+
+   on:
+     pull_request:
+       types: [opened, synchronize, reopened]
+
+   jobs:
+     check-failure:
+       runs-on: ubuntu-latest
+
+       steps:
+       - name: Checkout code
+         uses: actions/checkout@v2
+
+       - name: Check for failed jobs
+         if: failure()
+         uses: actions/github-script@v4
+         with:
+           script: |
+             const { context, github } = require('@actions/github');
+             const issueTitle = `PR #${context.payload.pull_request.number} failed`;
+             const issueBody = `
+               The following job failed:
+               - **Job Name**: ${context.job}
+               - **Failure Message**: ${context.payload.pull_request.title}
+               - **Workflow Run**: ${context.payload.pull_request.html_url}
+             `;
+             await github.issues.create({
+               ...context.repo,
+               title: issueTitle,
+               body: issueBody,
+               labels: ['bug', 'PR Failure']
+             });
+   ```
+
+3. **Commit and Push**
+
+   Commit the new workflow file and push it to your repository:
+
+   ```sh
+   git add .github/workflows/pr_failure_issue.yml
+   git commit -m "Add workflow for automatic issue creation on PR failure"
+   git push origin main
+   ```
+
+4. **Verify**
+
+   Create a pull request and ensure that the workflow runs. If the PR fails, an issue should be automatically created in your repository.
