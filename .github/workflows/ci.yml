@@ -12,10 +12,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
+
     - name: Install MySQL Server and Client
       run: |
         echo "Updating package list"
@@ -33,39 +35,48 @@ jobs:
           echo "MySQL socket not found, exiting"
           exit 1
         fi
-        echo "Listing all MySQL users for debugging"
-        sudo mysql -e "SELECT User, Host FROM mysql.user;"
-        echo "Creating new MySQL user"
-        sudo mysql -e "CREATE USER 'ci_user'@'127.0.0.1' IDENTIFIED BY '${{ secrets.MYSQL_CI_USER_PASSWORD }}';"
-        sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'ci_user'@'127.0.0.1' WITH GRANT OPTION;"
+
+    - name: Set up MySQL Root Password and Create User/Database
+      run: |
+        echo "Setting MySQL root password"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '${{ secrets.MYSQL_ROOT_PASSWORD }}';"
         sudo mysql -e "FLUSH PRIVILEGES;"
-        echo "New MySQL user 'ci_user' created with password: ${{ secrets.MYSQL_CI_USER_PASSWORD }}"
+        echo "Creating new MySQL user"
+        sudo mysql -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "CREATE USER 'ci_user'@'127.0.0.1' IDENTIFIED BY '${{ secrets.MYSQL_CI_USER_PASSWORD }}';"
+        sudo mysql -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "GRANT ALL PRIVILEGES ON *.* TO 'ci_user'@'127.0.0.1' WITH GRANT OPTION;"
+        sudo mysql -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "FLUSH PRIVILEGES;"
         echo "Creating database banking_app"
-        sudo mysql -h 127.0.0.1 -u ci_user -p${{ secrets.MYSQL_CI_USER_PASSWORD }} -e "CREATE DATABASE banking_app;"
+        sudo mysql -u ci_user -p${{ secrets.MYSQL_CI_USER_PASSWORD }} -e "CREATE DATABASE banking_app;"
+
     - name: Set up MySQL Database from Template
       run: |
         echo "Setting up database from template"
-        sudo mysql -h 127.0.0.1 -u ci_user -p${{ secrets.MYSQL_CI_USER_PASSWORD }} banking_app < template_for_database.sql
+        sudo mysql -u ci_user -p${{ secrets.MYSQL_CI_USER_PASSWORD }} banking_app < template_for_database.sql
+
     - name: Install Flyway
       run: |
         echo "Downloading Flyway"
         wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.10.0/flyway-commandline-7.10.0-linux-x64.tar.gz | tar xvz
         echo "Installing Flyway"
         sudo ln -s `pwd`/flyway-7.10.0/flyway /usr/local/bin
+
     - name: Run Flyway migrations
       run: |
         echo "Running Flyway migrations"
         flyway -url=jdbc:mysql://127.0.0.1:3306/banking_app -user=ci_user -password=${{ secrets.MYSQL_CI_USER_PASSWORD }} -locations=filesystem:sql/migrations migrate
+
     - name: Install dependencies
       run: |
         echo "Upgrading pip"
         python -m pip install --upgrade pip
         echo "Installing dependencies from requirements.txt"
         pip install -r requirements.txt
+
     - name: Run tests
       run: |
         echo "Running tests"
         pytest
+
     - name: Run linting
       run: |
         echo "Installing npm packages"
