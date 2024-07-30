@@ -6,64 +6,54 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
-
     - name: Install MySQL Server and Client
       run: |
         echo "Updating package list"
         sudo apt-get update
         echo "Installing MySQL Server and Client"
         sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server mysql-client
+        echo "Configuring MySQL root user"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '${{ secrets.MYSQL_ROOT_PASSWORD }}'; FLUSH PRIVILEGES;"
         echo "Starting MySQL Service"
         sudo systemctl start mysql
         echo "Waiting for MySQL to be fully ready"
         sleep 20  # Wait for MySQL to fully start up
-        echo "Setting MySQL root password"
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${{ secrets.MYSQL_ROOT_PASSWORD }}'; FLUSH PRIVILEGES;"
         echo "Creating database banking_app"
         sudo mysql -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "CREATE DATABASE banking_app;"
-
     - name: Set up MySQL Database from Template
       run: |
         echo "Setting up database from template"
         sudo mysql -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} banking_app < template_for_database.sql
-
     - name: Install Flyway
       run: |
         echo "Downloading Flyway"
         wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.10.0/flyway-commandline-7.10.0-linux-x64.tar.gz | tar xvz
         echo "Installing Flyway"
         sudo ln -s `pwd`/flyway-7.10.0/flyway /usr/local/bin
-
     - name: Run Flyway migrations
       run: |
         echo "Running Flyway migrations"
         flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password=${{ secrets.MYSQL_ROOT_PASSWORD }} -locations=filesystem:sql/migrations migrate
-
     - name: Install dependencies
       run: |
         echo "Upgrading pip"
         python -m pip install --upgrade pip
         echo "Installing dependencies from requirements.txt"
         pip install -r requirements.txt
-
     - name: Run tests
       run: |
         echo "Running tests"
         pytest
-
     - name: Run linting
       run: |
         echo "Installing npm packages"
