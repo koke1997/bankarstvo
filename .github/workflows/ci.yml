@@ -22,12 +22,20 @@ jobs:
         sudo apt-get update
         echo "Installing MySQL Server and Client"
         sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server mysql-client
-        echo "Configuring MySQL root user"
-        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '${{ secrets.MYSQL_ROOT_PASSWORD }}'; FLUSH PRIVILEGES;"
         echo "Starting MySQL Service"
         sudo systemctl start mysql
         echo "Waiting for MySQL to be fully ready"
         sleep 20  # Wait for MySQL to fully start up
+        echo "Checking MySQL service status"
+        sudo systemctl status mysql
+        echo "Verifying MySQL socket"
+        if [ ! -S /var/run/mysqld/mysqld.sock ]; then
+          echo "MySQL socket not found, exiting"
+          exit 1
+        fi
+        echo "Configuring MySQL root user"
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '${{ secrets.MYSQL_ROOT_PASSWORD }}'; FLUSH PRIVILEGES;"
+        echo "MySQL root user configured with password: ${{ secrets.MYSQL_ROOT_PASSWORD }}"
         echo "Creating database banking_app"
         sudo mysql -u root -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "CREATE DATABASE banking_app;"
     - name: Set up MySQL Database from Template
