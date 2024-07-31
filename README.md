@@ -208,3 +208,45 @@ The new GitHub Actions workflow file `pr_failure_issue.yml` is designed to detec
 4. **Verify**
 
    Create a pull request and ensure that the workflow runs. If the PR fails, an issue should be automatically created in your repository.
+
+## **Collecting Results from Failed Automations**
+
+This project includes a mechanism to collect results from failed automations into a folder. This helps in tracking and resolving issues promptly.
+
+### **Mechanism Description**
+
+The new mechanism is designed to collect results from failed automations and save them into a folder named `failed_automations`. Each file is named with a unique identifier to ensure that the files are easily distinguishable.
+
+### **Configuration and Usage**
+
+1. **Create the Folder**
+
+   Ensure that the folder named `failed_automations` exists in the project root directory. If it does not exist, it will be created automatically by the mechanism.
+
+2. **Unique Identifier Naming Convention**
+
+   Each file saved in the `failed_automations` folder is named with a unique identifier. The unique identifier is generated using the current date and time in the format `YYYYMMDDHHMMSSfff`.
+
+3. **Example Code**
+
+   Here is an example of how the mechanism is implemented in the code:
+
+   ```python
+   import os
+   from datetime import datetime
+
+   def collect_failed_automation_results(error):
+       folder_name = "failed_automations"
+       if not os.path.exists(folder_name):
+           os.makedirs(folder_name)
+       
+       unique_id = datetime.now().strftime("%Y%m%d%H%M%S%f")
+       file_name = f"{folder_name}/failed_automation_{unique_id}.log"
+       
+       with open(file_name, "w") as file:
+           file.write(str(error))
+   ```
+
+4. **Verify**
+
+   Trigger a failed automation and ensure that the results are collected and saved in the `failed_automations` folder with a unique identifier.
