@@ -62,8 +62,9 @@ jobs:
       if: failure()
       run: |
         echo "Collecting errors..."
-        echo "Error in job: ${{ github.job }}" >> errors.log
-        echo "Error message: ${{ failure() }}" >> errors.log
+        mkdir -p error_logs
+        echo "Error in job: ${{ github.job }}" >> error_logs/errors.log
+        echo "Error message: ${{ failure() }}" >> error_logs/errors.log
 
   code_quality:
     needs: build
