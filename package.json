@@ -7,7 +7,10 @@
     "test": "pytest && npm run lint",
     "build": "sass static/css/dashboard.scss static/css/dashboard.css && webpack --config webpack.config.js",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test:unit": "pytest",
+    "test:lint": "eslint .",
+    "test:all": "npm run test:unit && npm run test:lint"
   },
   "author": "koke1997",
   "license": "MIT",

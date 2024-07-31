@@ -53,10 +53,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run tests
+    - name: Run unit tests
       run: |
         pip install pytest
         python -m pytest
+
+    - name: Run linting
+      run: |
+        npm install eslint
+        npx eslint **/*.js
 
     - name: Collect errors
       if: failure()
