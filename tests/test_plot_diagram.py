@@ -54,3 +54,65 @@ def test_plot_detailed_routes_diagram():
     plot_detailed_routes_diagram(extracted_routes)
     # No assertion needed, just ensure no exceptions are raised
     assert True  # Ensure the function runs without errors
+
+def test_extract_routes_from_file_no_routes():
+    # Create a temporary file with no routes
+    with open('temp_no_routes.py', 'w') as f:
+        f.write("""
+def no_routes():
+    pass
+        """)
+
+    routes = extract_routes_from_file('temp_no_routes.py')
+    assert len(routes) == 0
+
+def test_extract_all_routes_empty(monkeypatch):
+    def mock_extract_routes_from_file(file_path):
+        return []
+
+    monkeypatch.setattr('core.plot_diagram.extract_routes_from_file', mock_extract_routes_from_file)
+
+    extracted_routes = extract_all_routes()
+    assert len(extracted_routes) == 0
+
+def test_plot_routes_diagram_empty():
+    extracted_routes = {}
+    plot_routes_diagram(extracted_routes)
+    # No assertion needed, just ensure no exceptions are raised
+
+def test_plot_detailed_routes_diagram_empty():
+    extracted_routes = {}
+    plot_detailed_routes_diagram(extracted_routes)
+    # No assertion needed, just ensure no exceptions are raised
+    assert True  # Ensure the function runs without errors
+
+def test_extract_routes_from_file_no_routes():
+    # Create a temporary file with no routes
+    with open('temp_no_routes.py', 'w') as f:
+        f.write("""
+def no_routes():
+    pass
+        """)
+
+    routes = extract_routes_from_file('temp_no_routes.py')
+    assert len(routes) == 0
+
+def test_extract_all_routes_empty(monkeypatch):
+    def mock_extract_routes_from_file(file_path):
+        return []
+
+    monkeypatch.setattr('core.plot_diagram.extract_routes_from_file', mock_extract_routes_from_file)
+
+    extracted_routes = extract_all_routes()
+    assert len(extracted_routes) == 0
+
+def test_plot_routes_diagram_empty():
+    extracted_routes = {}
+    plot_routes_diagram(extracted_routes)
+    # No assertion needed, just ensure no exceptions are raised
+
+def test_plot_detailed_routes_diagram_empty():
+    extracted_routes = {}
+    plot_detailed_routes_diagram(extracted_routes)
+    # No assertion needed, just ensure no exceptions are raised
+    assert True  # Ensure the function runs without errors

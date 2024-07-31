@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - develop
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -54,3 +55,96 @@ jobs:
       run: |
         echo "Running tests"
         pytest
+
+  deploy-staging:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install MySQL Server
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y mysql-server
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '${{ secrets.MYSQL_ROOT_PASSWORD }}';"
+        sudo mysql -e "FLUSH PRIVILEGES;"
+    - name: Install Flyway
+      run: |
+        echo "Downloading Flyway"
+        wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.10.0/flyway-commandline-7.10.0-linux-x64.tar.gz | tar xvz
+        echo "Installing Flyway"
+        sudo ln -s `pwd`/flyway-7.10.0/flyway /usr/local/bin
+    - name: Run Flyway migrations
+      run: |
+        echo "Running Flyway migrations"
+        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password=${{ secrets.MYSQL_ROOT_PASSWORD }} -locations=filesystem:sql/migrations migrate
+    - name: Install dependencies
+      run: |
+        npm install
+    - name: Build project
+      run: |
+        npm run build
+    - name: Deploy to Staging
+      run: |
+        echo "Deploying to Staging"
+        # Add your deployment script/command here
+
+  deploy-production:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install MySQL Server
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y mysql-server
+        sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '${{ secrets.MYSQL_ROOT_PASSWORD }}';"
+        sudo mysql -e "FLUSH PRIVILEGES;"
+    - name: Install Flyway
+      run: |
+        echo "Downloading Flyway"
+        wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.10.0/flyway-commandline-7.10.0-linux-x64.tar.gz | tar xvz
+        echo "Installing Flyway"
+        sudo ln -s `pwd`/flyway-7.10.0/flyway /usr/local/bin
+    - name: Run Flyway migrations
+      run: |
+        echo "Running Flyway migrations"
+        flyway -url=jdbc:mysql://localhost:3306/banking_app -user=root -password=${{ secrets.MYSQL_ROOT_PASSWORD }} -locations=filesystem:sql/migrations migrate
+    - name: Install dependencies
+      run: |
+        npm install
+    - name: Build project
+      run: |
+        npm run build
+    - name: Deploy to Production
+      run: |
+        echo "Deploying to Production"
+        # Add your deployment script/command here
+
+  resolve_conflicts:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    - name: Fetch main branch
+      run: |
+        git fetch origin main
+    - name: Merge main into current branch
+      run: |
+        git merge origin/main
+    - name: Push changes
+      run: |
+        git push origin HEAD

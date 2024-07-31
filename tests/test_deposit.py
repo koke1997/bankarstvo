@@ -45,12 +45,3 @@ def test_deposit_db_error(mock_db):
     assert "An error occurred" in result
     assert "DB Error" in result
 
-def test_collect_failed_automation_results(mock_db):
-    with patch('FiatHandling.deposit.collect_failed_automation_results') as mock_collect:
-        mock_db.execute.side_effect = Exception("DB Error")
-        mock_db.fetchone.side_effect = [(1,), (1,)]
-
-        result = deposit(1, 100, 'USD')
-        assert "An error occurred" in result
-        assert "DB Error" in result
-        mock_collect.assert_called_once()

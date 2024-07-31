@@ -1,6 +1,7 @@
 import pytest
 from DatabaseHandling.balancecheck import get_user_balance, check_balance
 from core.models import User
+from unittest.mock import patch, MagicMock
 
 @pytest.fixture
 def mock_user(mocker):
@@ -30,4 +31,18 @@ def test_check_balance_no_result(mocker):
     mocker.patch('DatabaseHandling.balancecheck.connect_db', return_value=mocker.Mock(cursor=lambda: mock_cursor))
     balance = check_balance(1)
     assert balance is None
-    assert balance == None
+
+def test_check_balance_invalid_user(mocker):
+    mock_cursor = mocker.Mock()
+    mock_cursor.fetchone.return_value = None
+    mocker.patch('DatabaseHandling.balancecheck.connect_db', return_value=mocker.Mock(cursor=lambda: mock_cursor))
+    balance = check_balance(999)
+    assert balance is None
+
+def test_check_balance_db_error(mocker):
+    mock_cursor = mocker.Mock()
+    mock_cursor.fetchone.side_effect = Exception("DB Error")
+    mocker.patch('DatabaseHandling.balancecheck.connect_db', return_value=mocker.Mock(cursor=lambda: mock_cursor))
+    with pytest.raises(Exception) as excinfo:
+        check_balance(1)
+    assert str(excinfo.value) == "DB Error"

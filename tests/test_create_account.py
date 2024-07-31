@@ -63,3 +63,85 @@ def test_create_account(client, user):
             assert account["account_name"] == "Test Account"
             assert account["account_type"] == "checking"
             assert account["currency_code"] == "USD"
+
+def test_create_account_invalid_currency(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.create_account"), data={
+            "account_name": "Test Account",
+            "account_type": "checking",
+            "currency_code": "INVALID"
+        })
+        assert response.status_code == 400  # Bad Request
+        assert b"Invalid currency code" in response.data
+
+def test_create_account_missing_fields(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.create_account"), data={
+            "account_name": "",
+            "account_type": "checking",
+            "currency_code": "USD"
+        })
+        assert response.status_code == 400  # Bad Request
+        assert b"Missing required fields" in response.data
+
+def test_create_account_duplicate_account(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.create_account"), data={
+            "account_name": "Test Account",
+            "account_type": "checking",
+            "currency_code": "USD"
+        })
+        assert response.status_code == 302  # Redirects to dashboard
+        assert b"Account created successfully!" in response.data
+
+        response = client.post(url_for("account_routes.create_account"), data={
+            "account_name": "Test Account",
+            "account_type": "checking",
+            "currency_code": "USD"
+        })
+        assert response.status_code == 400  # Bad Request
+        assert b"Account with this name already exists" in response.data
+
+def test_create_account_invalid_currency(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.create_account"), data={
+            "account_name": "Test Account",
+            "account_type": "checking",
+            "currency_code": "INVALID"
+        })
+        assert response.status_code == 400  # Bad Request
+        assert b"Invalid currency code" in response.data
+
+def test_create_account_missing_fields(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.create_account"), data={
+            "account_name": "",
+            "account_type": "checking",
+            "currency_code": "USD"
+        })
+        assert response.status_code == 400  # Bad Request
+        assert b"Missing required fields" in response.data
+
+def test_create_account_duplicate_account(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.create_account"), data={
+            "account_name": "Test Account",
+            "account_type": "checking",
+            "currency_code": "USD"
+        })
+        assert response.status_code == 302  # Redirects to dashboard
+        assert b"Account created successfully!" in response.data
+
+        response = client.post(url_for("account_routes.create_account"), data={
+            "account_name": "Test Account",
+            "account_type": "checking",
+            "currency_code": "USD"
+        })
+        assert response.status_code == 400  # Bad Request
+        assert b"Account with this name already exists" in response.data
