@@ -45,3 +45,23 @@ def test_get_balance_no_account_selected(client):
     assert response.status_code == 400
     assert "error" in response.json
     assert response.json["error"] == "No account selected"
+
+def test_get_balance_invalid_account(client):
+    with client.session_transaction() as sess:
+        sess["selected_account_id"] = 999  # Assuming 999 is an invalid account_id
+
+    response = client.get("/get_balance")
+    assert response.status_code == 400
+    assert "error" in response.json
+    assert response.json["error"] == "Invalid account"
+
+def test_get_balance_db_error(client, mocker):
+    mocker.patch('DatabaseHandling.connection.get_db_cursor', side_effect=Exception("DB Error"))
+
+    with client.session_transaction() as sess:
+        sess["selected_account_id"] = 1
+
+    response = client.get("/get_balance")
+    assert response.status_code == 500
+    assert "error" in response.json
+    assert response.json["error"] == "An error occurred while fetching the balance"

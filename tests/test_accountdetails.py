@@ -12,8 +12,7 @@ def test_client():
         user=os.getenv('DB_USER'),
         password=os.getenv('DB_PASSWORD'),
         host=os.getenv('DB_HOST'),
-        port=os.getenv('DB_PORT'),
-        database=os.getenv('DB_NAME')
+        port=os.getenv('DB_PORT')
     )
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -59,3 +58,24 @@ def test_get_account_details(mock_db_connection):
     assert details[1] == 'test_user@example.com'
     assert details[2] == '2022-01-01'
     assert details[3] == '2022-01-02'
+
+def test_get_account_details_invalid_user(mock_db_connection):
+    user_id = 999
+    mock_db_connection.fetchone.return_value = None
+
+    details = get_account_details(user_id)
+
+    assert details is None
+    mock_db_connection.execute.assert_called_once_with("SELECT username, email, account_created, last_login FROM Users WHERE user_id = %s", (user_id,))
+    mock_db_connection.close.assert_called_once()
+
+def test_get_account_details_db_error(mock_db_connection):
+    user_id = 1
+    mock_db_connection.execute.side_effect = Exception("DB Error")
+
+    with pytest.raises(Exception) as excinfo:
+        get_account_details(user_id)
+
+    assert str(excinfo.value) == "DB Error"
+    mock_db_connection.execute.assert_called_once_with("SELECT username, email, account_created, last_login FROM Users WHERE user_id = %s", (user_id,))
+    mock_db_connection.close.assert_called_once()

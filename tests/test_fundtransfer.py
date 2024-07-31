@@ -71,3 +71,46 @@ def test_transfer_invalid_receiver_account(mock_db):
 
     result = transfer(1, 999, 100, 'USD')
     assert result == "Receiver's account is invalid."
+
+def test_transfer_invalid_sender_account(mock_db):
+    mock_db.fetchone.side_effect = [
+        None,  # Sender's account validation
+    ]
+
+    result = transfer(999, 2, 100, 'USD')
+    assert result == "Sender's account is invalid."
+
+def test_transfer_db_error(mock_db):
+    mock_db.fetchone.side_effect = [
+        (1, 1000),  # Sender's account and balance
+        (2, 500)    # Receiver's account and balance
+    ]
+    mock_db.execute.side_effect = Exception("DB Error")
+
+    result = transfer(1, 2, 100, 'USD')
+    assert "An error occurred" in result
+    assert "DB Error" in result
+
+def test_transfer_same_account(mock_db):
+    mock_db.fetchone.side_effect = [
+        (1, 1000),  # Sender's account and balance
+    ]
+
+    result = transfer(1, 1, 100, 'USD')
+    assert result == "Cannot transfer to the same account."
+
+def test_transfer_negative_amount(mock_db):
+    mock_db.fetchone.side_effect = [
+        (1, 1000),  # Sender's account and balance
+    ]
+
+    result = transfer(1, 2, -100, 'USD')
+    assert result == "Invalid transfer amount."
+
+def test_transfer_zero_amount(mock_db):
+    mock_db.fetchone.side_effect = [
+        (1, 1000),  # Sender's account and balance
+    ]
+
+    result = transfer(1, 2, 0, 'USD')
+    assert result == "Invalid transfer amount."

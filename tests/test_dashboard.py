@@ -83,3 +83,42 @@ def test_dashboard_transfer(client, user):
         assert b"Transfer successful!" in response.data
         assert b"transactions" in response.data
         assert b"balance" in response.data
+
+def test_dashboard_invalid_account_selection(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.dashboard"), data={
+            "account_choice": "invalid"
+        })
+        assert response.status_code == 400
+        assert b"Invalid account selection" in response.data
+
+def test_dashboard_no_account_selected(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.dashboard"), data={
+            "account_choice": None
+        })
+        assert response.status_code == 400
+        assert b"No account selected" in response.data
+
+def test_dashboard_transfer_insufficient_funds(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.dashboard"), data={
+            "transfer_button": "transfer",
+            "amount": 1000000,  # Assuming this amount exceeds the user's balance
+            "recipient_account_id": 2
+        })
+        assert response.status_code == 400
+        assert b"Insufficient funds" in response.data
+
+def test_dashboard_search_no_results(client, user):
+    with client:
+        login_user(user)
+        response = client.post(url_for("account_routes.dashboard"), data={
+            "search_button": "search",
+            "recipient": "nonexistentuser"
+        })
+        assert response.status_code == 200
+        assert b"No results found" in response.data
