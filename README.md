@@ -227,3 +227,22 @@ Logs from failed jobs during PR checks are now saved to help with debugging and 
 
 - **CI Workflow**: Added steps to split the `Run tests` step into `Run unit tests` and `Run linting`, and to save logs from failed jobs.
 - **PR Failure Issue Workflow**: Added a step to save logs from failed jobs during PR checks.
+
+## **Splitting Errors and Saving Logs**
+
+The project now includes enhancements to split errors from linting and functional testing, and to save logs from failed jobs during PR checks.
+
+### **Splitting Errors**
+
+Errors from linting and functional testing are now split to provide better clarity and debugging information. The following scripts have been added to `package.json`:
+
+- **Unit Tests**: `npm run test:unit`
+- **Linting**: `npm run test:lint`
+- **All Tests**: `npm run test:all`
+
+### **Saving Logs from Failed Jobs**
+
+Logs from failed jobs during PR checks are now saved to help with debugging and issue resolution. The following steps have been added to the CI/CD workflows:
+
+- **CI Workflow**: Added steps to split the `Run tests` step into `Run unit tests` and `Run linting`, and to save logs from failed jobs.
+- **PR Failure Issue Workflow**: Added a step to save logs from failed jobs during PR checks.

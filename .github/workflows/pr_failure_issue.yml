@@ -49,3 +49,12 @@ jobs:
         echo "Job: ${{ github.job }}" >> pr_failure_logs/pr_failure.log
         echo "Failure message: ${{ failure() }}" >> pr_failure_logs/pr_failure.log
         echo "Workflow run: ${{ github.event.pull_request.html_url }}" >> pr_failure_logs/pr_failure.log
+
+    - name: Save logs from failed jobs
+      if: failure()
+      run: |
+        mkdir -p pr_failure_logs
+        echo "Error in PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}" >> pr_failure_logs/pr_failure.log
+        echo "Job: ${{ github.job }}" >> pr_failure_logs/pr_failure.log
+        echo "Failure message: ${{ failure() }}" >> pr_failure_logs/pr_failure.log
+        echo "Workflow run: ${{ github.event.pull_request.html_url }}" >> pr_failure_logs/pr_failure.log
