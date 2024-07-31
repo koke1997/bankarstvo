@@ -55,3 +55,7 @@ def test_get_account_details(mock_db_connection):
     assert details == expected_details
     mock_db_connection.execute.assert_called_once_with("SELECT username, email, account_created, last_login FROM Users WHERE user_id = %s", (user_id,))
     mock_db_connection.close.assert_called_once()
+    assert details[0] == 'test_user'
+    assert details[1] == 'test_user@example.com'
+    assert details[2] == '2022-01-01'
+    assert details[3] == '2022-01-02'

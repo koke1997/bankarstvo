@@ -71,3 +71,4 @@ def test_withdraw_db_error(mock_db):
 
     result = withdraw(1, 100)
     assert "An error occurred" in result
+    assert "DB Error" in result

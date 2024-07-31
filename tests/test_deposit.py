@@ -43,3 +43,4 @@ def test_deposit_db_error(mock_db):
 
     result = deposit(1, 100, 'USD')
     assert "An error occurred" in result
+    assert "DB Error" in result

@@ -80,3 +80,4 @@ def test_sell_stock_insufficient_balance(client):
             response = client.post('/stock/sell', json=data)
             assert response.status_code == 400
             assert response.json['error'] == 'Insufficient stock balance'
+            assert response.json['error'] == 'Insufficient stock balance'

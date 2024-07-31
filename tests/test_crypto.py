@@ -68,3 +68,29 @@ def test_sell_crypto(client: FlaskClient):
     response = client.post('/crypto/sell', json={'user_id': user_id, 'symbol': symbol, 'amount': amount})
     assert response.status_code == 200
     assert response.json['message'] == 'Crypto sold successfully'
+
+def test_sell_crypto_insufficient_balance(client: FlaskClient):
+    user_id = 1
+    symbol = 'bitcoin'
+    amount = 2.0
+
+    # Mock the get_user_balance and update_user_balance functions
+    def mock_get_user_balance(user_id):
+        return 100000.0
+
+    def mock_update_user_balance(user_id, new_balance):
+        pass
+
+    # Replace the real functions with the mock functions
+    crypto_routes.get_user_balance = mock_get_user_balance
+    crypto_routes.update_user_balance = mock_update_user_balance
+
+    # Add a crypto asset to the database
+    with client.application.app_context():
+        crypto_asset = CryptoAsset(user_id=user_id, symbol=symbol, balance=1.0)
+        db.session.add(crypto_asset)
+        db.session.commit()
+
+    response = client.post('/crypto/sell', json={'user_id': user_id, 'symbol': symbol, 'amount': amount})
+    assert response.status_code == 400
+    assert response.json['error'] == 'Insufficient crypto balance'

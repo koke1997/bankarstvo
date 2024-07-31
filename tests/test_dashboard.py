@@ -81,3 +81,5 @@ def test_dashboard_transfer(client, user):
         })
         assert response.status_code == 200
         assert b"Transfer successful!" in response.data
+        assert b"transactions" in response.data
+        assert b"balance" in response.data

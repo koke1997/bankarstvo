@@ -59,3 +59,7 @@ def test_select_account(client, user):
             account = cursor.fetchone()
             assert account is not None
             assert account["account_id"] == 1
+            assert account["user_id"] == user.user_id
+            assert account["account_type"] is not None
+            assert account["balance"] is not None
+            assert account["currency_code"] is not None

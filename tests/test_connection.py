@@ -26,3 +26,5 @@ def test_get_db_cursor(mock_connect_db):
     assert cursor == mock_cursor
     mock_connect_db.assert_called_once()
     mock_connection.cursor.assert_called_once_with(dictionary=True)
+    assert cursor is not None
+    assert connection is not None

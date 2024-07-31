@@ -30,3 +30,4 @@ def test_check_balance_no_result(mocker):
     mocker.patch('DatabaseHandling.balancecheck.connect_db', return_value=mocker.Mock(cursor=lambda: mock_cursor))
     balance = check_balance(1)
     assert balance is None
+    assert balance == None
