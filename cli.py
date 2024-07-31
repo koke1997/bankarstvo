@@ -4,20 +4,25 @@ import os
 import signal
 import psutil
 import logging
+
 logger = logging.getLogger(__name__)
 
-PID_FILE = 'app.pid'
+PID_FILE = "app.pid"
+
 
 def start_app():
-    python_interpreter = os.path.join(os.path.dirname(sys.executable), 'python')
-    process = subprocess.Popen([python_interpreter, "app.py"], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
+    python_interpreter = os.path.join(os.path.dirname(sys.executable), "python")
+    process = subprocess.Popen(
+        [python_interpreter, "app.py"], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+    )
     logger.info(f"App started with PID: {process.pid}")
-    with open(PID_FILE, 'w') as f:
+    with open(PID_FILE, "w") as f:
         f.write(str(process.pid))
+
 
 def stop_app():
     try:
-        with open(PID_FILE, 'r') as f:
+        with open(PID_FILE, "r") as f:
             pid = int(f.read())
         parent = psutil.Process(pid)
         for child in parent.children(recursive=True):  # or parent.children() for recursive=False
@@ -28,13 +33,15 @@ def stop_app():
     except FileNotFoundError:
         logger.info("App is not running")
 
+
 def restart_app():
     stop_app()
     start_app()
 
+
 def status_app():
     try:
-        with open(PID_FILE, 'r') as f:
+        with open(PID_FILE, "r") as f:
             pid = int(f.read())
         if psutil.pid_exists(pid):
             logger.info(f"App is running with PID: {pid}")
@@ -42,6 +49,7 @@ def status_app():
             logger.info("App is not running")
     except FileNotFoundError:
         logger.info("App is not running")
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:

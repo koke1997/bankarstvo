@@ -13,9 +13,10 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+
 @account_routes.route("/dashboard", methods=["GET", "POST"], endpoint="dashboard")
 def dashboard():
-    
+
     if not current_user.is_authenticated:
         flash("User not logged in", "error")
         return redirect(url_for("user_routes.login"))
@@ -99,7 +100,7 @@ def dashboard():
                         transactions=transaction_history(),
                         transfer_form=transfer_form,
                         search_results=search_results,
-                        recipient_username=transfer_form.recipient.data
+                        recipient_username=transfer_form.recipient.data,
                     )
                 except Exception as e:
                     current_app.logger.error(
@@ -108,7 +109,7 @@ def dashboard():
                     flash(f"An error occurred while searching for accounts: {e}", "error")
 
         elif "transfer_button" in request.form:
-            transactions=transaction_history()
+            transactions = transaction_history()
 
     # Search for accounts based on recipient username
     return render_template(
@@ -121,5 +122,5 @@ def dashboard():
         transactions=transaction_history(),
         transfer_form=transfer_form,
         search_results=search_results,
-        recipient_username=transfer_form.recipient.data  # Add this line to pass the recipient username
+        recipient_username=transfer_form.recipient.data,  # Add this line to pass the recipient username
     )

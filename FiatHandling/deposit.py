@@ -9,6 +9,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 def deposit(user_id, amount, currency_code):
     """
     This function handles the deposit of funds for a user.
@@ -19,7 +20,9 @@ def deposit(user_id, amount, currency_code):
     cursor = get_db_cursor(db)
 
     try:
-        logger.info(f"Attempting deposit: User ID {user_id}, Amount {amount}, Currency {currency_code}")
+        logger.info(
+            f"Attempting deposit: User ID {user_id}, Amount {amount}, Currency {currency_code}"
+        )
 
         # Validation
         if not validate_currency(currency_code):
@@ -27,12 +30,16 @@ def deposit(user_id, amount, currency_code):
             return "Invalid currency code"
 
         # Fetch the account_id for the given user_id and currency_code
-        account_query = "SELECT account_id FROM accounts WHERE user_id = %s AND currency_code = %s"
+        account_query = (
+            "SELECT account_id FROM accounts WHERE user_id = %s AND currency_code = %s"
+        )
         cursor.execute(account_query, (user_id, currency_code))
         account = cursor.fetchone()
 
         if not account:
-            logger.warning(f"Account not found for user {user_id} with currency {currency_code}")
+            logger.warning(
+                f"Account not found for user {user_id} with currency {currency_code}"
+            )
             return "Account not found for user with given currency"
         account_id = account[0]
 
@@ -45,7 +52,9 @@ def deposit(user_id, amount, currency_code):
         cursor.execute(update_query, (amount, account_id))
         db.commit()
 
-        logger.info(f"Deposit successful: User ID {user_id}, Amount {amount}, Currency {currency_code}")
+        logger.info(
+            f"Deposit successful: User ID {user_id}, Amount {amount}, Currency {currency_code}"
+        )
 
         return "Deposit successful"
 

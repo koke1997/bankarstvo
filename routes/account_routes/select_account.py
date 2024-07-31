@@ -4,7 +4,9 @@ from flask_login import current_user
 from . import account_routes
 from DatabaseHandling.connection import get_db_cursor
 import logging
+
 logger = logging.getLogger(__name__)
+
 
 @account_routes.route("/select_account", methods=["POST"])
 def select_account():
@@ -23,7 +25,7 @@ def select_account():
                 (selected_account_id, current_user.get_id()),  # Get user_id from current_user
             )
             selected_account = cursor.fetchone()
-            logger.info(selected_account) # Log the selected account
+            logger.info(selected_account)  # Log the selected account
         except Exception as e:
             logger.error(f"Database error: {e}")  # Log the exception
             flash("Failed to select account due to a database error", "error")

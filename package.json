@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "test:unit": "pytest",
     "test:lint": "eslint .",
-    "test:all": "npm run test:unit && npm run test:lint"
+    "test:all": "npm run test:unit && npm run test:lint",
+    "jslint": "jslint **/*.js"
   },
   "author": "koke1997",
   "license": "MIT",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "eslint": "^7.32.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "jslint": "^0.12.0"
   }
 }

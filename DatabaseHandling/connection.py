@@ -1,7 +1,7 @@
-import mysql.connector
-from mysql.connector import pooling
 import logging
+import mysql.connector
 import os
+from mysql.connector import pooling
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
