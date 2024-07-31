@@ -20,7 +20,7 @@ jobs:
         run: |
           pylint **/*.py
 
-  eslint:
+  jslint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -31,10 +31,10 @@ jobs:
           node-version: '14'
       - name: Install dependencies
         run: |
-          npm install eslint
-      - name: Run eslint
+          npm install jslint
+      - name: Run jslint
         run: |
-          npx eslint **/*.js
+          npx jslint **/*.js
 
   stylelint:
     runs-on: ubuntu-latest
@@ -51,3 +51,20 @@ jobs:
       - name: Run stylelint
         run: |
           npx stylelint **/*.{css,scss}
+
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black
+      - name: Run black
+        run: |
+          black .

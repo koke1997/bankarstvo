@@ -1,4 +1,4 @@
-#withdraw.py
+# withdraw.py
 
 import mysql.connector
 from DatabaseHandling.connection import connect_db, get_db_cursor
@@ -8,6 +8,7 @@ import logging
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 def withdraw(user_id, amount):
     """
@@ -41,7 +42,9 @@ def withdraw(user_id, amount):
         balance = cursor.fetchone()[0]
 
         if balance < amount:
-            logger.warning(f"Insufficient balance for withdrawal: User ID {user_id}, Balance {balance}, Amount {amount}")
+            logger.warning(
+                f"Insufficient balance for withdrawal: User ID {user_id}, Balance {balance}, Amount {amount}"
+            )
             return "Insufficient balance for withdrawal"
 
         # Update balance

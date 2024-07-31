@@ -80,7 +80,7 @@ class SignedDocument(db.Model):
 
 class CryptoAsset(db.Model):
     __tablename__ = "crypto_assets"
-    asset_id = db.Column(db.Integer, primary key=True)
+    asset_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     symbol = db.Column(db.String(10), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
@@ -92,7 +92,7 @@ class CryptoAsset(db.Model):
 
 class StockAsset(db.Model):
     __tablename__ = "stock_assets"
-    asset_id = db.Column(db.Integer, primary key=True)
+    asset_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     symbol = db.Column(db.String(10), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
@@ -104,7 +104,7 @@ class StockAsset(db.Model):
 
 class MarketplaceItem(db.Model):
     __tablename__ = "marketplace_items"
-    item_id = db.Column(db.Integer, primary key=True)
+    item_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=True)
     price = db.Column(db.Numeric(20, 2), nullable=False)
@@ -118,7 +118,7 @@ class MarketplaceItem(db.Model):
 
 class MarketplaceTransaction(db.Model):
     __tablename__ = "marketplace_transactions"
-    transaction_id = db.Column(db.Integer, primary key=True)
+    transaction_id = db.Column(db.Integer, primary_key=True)
     item_id = db.Column(db.Integer, db.ForeignKey("marketplace_items.item_id"), nullable=False)
     buyer_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
     seller_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
@@ -131,7 +131,7 @@ class MarketplaceTransaction(db.Model):
 
 class Loan(db.Model):
     __tablename__ = "loans"
-    loan_id = db.Column(db.Integer, primary key=True)
+    loan_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
     amount = db.Column(db.Numeric(20, 2), nullable=False)
     interest_rate = db.Column(db.Float, nullable=False)

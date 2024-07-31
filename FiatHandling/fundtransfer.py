@@ -2,7 +2,9 @@ import mysql.connector
 from DatabaseHandling.connection import connect_db, get_db_cursor
 from validation_utils import validate_account, validate_currency
 import logging
+
 logger = logging.getLogger(__name__)
+
 
 def transfer(sender_user_id, receiver_account_id, amount, currency_code):
     """
@@ -19,7 +21,9 @@ def transfer(sender_user_id, receiver_account_id, amount, currency_code):
             return "Invalid currency code."
 
         # Fetch the sender's account_id using sender_user_id and currency_code
-        sender_query = "SELECT account_id, balance FROM accounts WHERE user_id = %s AND currency_code = %s"
+        sender_query = (
+            "SELECT account_id, balance FROM accounts WHERE user_id = %s AND currency_code = %s"
+        )
         cursor.execute(sender_query, (sender_user_id, currency_code))
         sender_account = cursor.fetchone()
 
