@@ -5,6 +5,7 @@ from MediaHandling.pdf_handling import generate_pdf, save_document_to_db
 import logging
 import io
 import base64
+import os
 from datetime import datetime
 
 @transaction_routes.route("/deposit", methods=["GET", "POST"], endpoint="deposit")
@@ -36,7 +37,19 @@ def deposit():
         except Exception as e:
             logging.error(f"An error occurred during deposit: {e}")
             flash(f"An error occurred during deposit: {e}", "error")
+            collect_failed_automation_results(e)
 
         return redirect(url_for("account_routes.dashboard"))
 
     return render_template("dashboard.html")
+
+def collect_failed_automation_results(error):
+    folder_name = "failed_automations"
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+    
+    unique_id = datetime.now().strftime("%Y%m%d%H%M%S%f")
+    file_name = f"{folder_name}/failed_automation_{unique_id}.log"
+    
+    with open(file_name, "w") as file:
+        file.write(str(error))

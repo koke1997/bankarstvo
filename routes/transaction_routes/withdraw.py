@@ -5,6 +5,8 @@ from . import transaction_routes
 from DatabaseHandling.connection import get_db_cursor
 import logging
 import traceback
+import os
+from datetime import datetime
 logger = logging.getLogger(__name__)
 
 @transaction_routes.route("/withdraw", methods=["GET", "POST"], endpoint="withdraw")
@@ -53,7 +55,19 @@ def withdraw():
             flash(f"An error occurred during withdrawal: {str(e)}", "error")
             logger.info(f"Error details: {e}")
             traceback.print_exc()
+            collect_failed_automation_results(e)
 
         return redirect(url_for("account_routes.dashboard"))
 
     return render_template("dashboard.html")
+
+def collect_failed_automation_results(error):
+    folder_name = "failed_automations"
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+    
+    unique_id = datetime.now().strftime("%Y%m%d%H%M%S%f")
+    file_name = f"{folder_name}/failed_automation_{unique_id}.log"
+    
+    with open(file_name, "w") as file:
+        file.write(str(error))
