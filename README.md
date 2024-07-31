@@ -242,3 +242,15 @@ To expand test coverage, additional unit tests and integration tests have been a
 - `tests/test_fundtransfer.py`
 - `tests/test_get_balance.py`
 - `tests/test_plot_diagram.py`
+
+## **Error Collection from GitHub Actions**
+
+This project includes a functionality to collect errors from GitHub Actions into a file named `errors.log`. This helps in tracking and resolving issues promptly.
+
+### **How Errors are Collected**
+
+Errors from GitHub Actions workflows are collected and appended to the `errors.log` file. This is done by adding a new step in the `.github/workflows/ci.yml` file and modifying the `check-failure` job in the `.github/workflows/pr_failure_issue.yml` file.
+
+### **Where to Find the `errors.log` File**
+
+The `errors.log` file is located in the root directory of the repository. It contains details about the errors encountered during the GitHub Actions workflows.

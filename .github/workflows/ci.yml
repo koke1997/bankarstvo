@@ -58,6 +58,13 @@ jobs:
         pip install pytest
         python -m pytest
 
+    - name: Collect errors
+      if: failure()
+      run: |
+        echo "Collecting errors..."
+        echo "Error in job: ${{ github.job }}" >> errors.log
+        echo "Error message: ${{ failure() }}" >> errors.log
+
   code_quality:
     needs: build
     runs-on: ubuntu-latest
