@@ -72,3 +72,13 @@ def test_withdraw_db_error(mock_db):
     result = withdraw(1, 100)
     assert "An error occurred" in result
     assert "DB Error" in result
+
+def test_collect_failed_automation_results(mock_db):
+    with patch('FiatHandling.withdraw.collect_failed_automation_results') as mock_collect:
+        mock_db.execute.side_effect = Exception("DB Error")
+        mock_db.fetchone.side_effect = [(1,), (1000,)]
+
+        result = withdraw(1, 100)
+        assert "An error occurred" in result
+        assert "DB Error" in result
+        mock_collect.assert_called_once()

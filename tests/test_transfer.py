@@ -4,6 +4,7 @@ from flask.testing import FlaskClient
 from routes.transaction_routes.transfer import transfer
 from DatabaseHandling.connection import get_db_cursor
 import os
+from unittest.mock import patch, MagicMock
 
 @pytest.fixture
 def app():
@@ -85,3 +86,24 @@ def test_transfer_invalid_amount(client: FlaskClient):
     response = client.post('/transfer', data=data)
     assert response.status_code == 200
     assert b'Invalid transfer amount' in response.data
+
+def test_collect_failed_automation_results(client: FlaskClient):
+    with client.session_transaction() as sess:
+        sess['selected_account_id'] = 1
+
+    data = {
+        'amount': 100.0,
+        'recipient_account_id': 2
+    }
+
+    with patch('routes.transaction_routes.transfer.get_db_cursor') as mock_get_db_cursor, \
+         patch('routes.transaction_routes.transfer.collect_failed_automation_results') as mock_collect:
+        mock_cursor = MagicMock()
+        mock_get_db_cursor.return_value = (MagicMock(), mock_cursor)
+        mock_cursor.fetchone.side_effect = [{'balance': 200.0}, {'balance': 100.0}]
+        mock_cursor.execute.side_effect = Exception("DB Error")
+
+        response = client.post('/transfer', data=data)
+        assert response.status_code == 200
+        assert b'An error occurred during transfer' in response.data
+        mock_collect.assert_called_once()
