@@ -39,3 +39,11 @@ jobs:
         echo "Job: ${{ github.job }}" >> errors.log
         echo "Failure message: ${{ failure() }}" >> errors.log
         echo "Workflow run: ${{ github.event.pull_request.html_url }}" >> errors.log
+
+    - name: Append error details to errors.log
+      if: failure()
+      run: |
+        echo "Error in PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}" >> errors.log
+        echo "Job: ${{ github.job }}" >> errors.log
+        echo "Failure message: ${{ failure() }}" >> errors.log
+        echo "Workflow run: ${{ github.event.pull_request.html_url }}" >> errors.log

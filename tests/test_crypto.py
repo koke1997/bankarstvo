@@ -130,3 +130,39 @@ def test_get_crypto_balance_no_asset(client: FlaskClient):
     response = client.get(f'/crypto/balance/{user_id}/{symbol}')
     assert response.status_code == 404
     assert response.json['error'] == 'Crypto asset not found'
+
+def test_get_crypto_balance(client: FlaskClient):
+    user_id = 1
+    symbol = 'bitcoin'
+
+    # Mock the get_user_balance function
+    def mock_get_user_balance(user_id):
+        return 100000.0
+
+    # Replace the real function with the mock function
+    crypto_routes.get_user_balance = mock_get_user_balance
+
+    # Add a crypto asset to the database
+    with client.application.app_context():
+        crypto_asset = CryptoAsset(user_id=user_id, symbol=symbol, balance=1.0)
+        db.session.add(crypto_asset)
+        db.session.commit()
+
+    response = client.get(f'/crypto/balance/{user_id}/{symbol}')
+    assert response.status_code == 200
+    assert response.json['balance'] == 1.0
+
+def test_get_crypto_balance_no_asset(client: FlaskClient):
+    user_id = 1
+    symbol = 'bitcoin'
+
+    # Mock the get_user_balance function
+    def mock_get_user_balance(user_id):
+        return 100000.0
+
+    # Replace the real function with the mock function
+    crypto_routes.get_user_balance = mock_get_user_balance
+
+    response = client.get(f'/crypto/balance/{user_id}/{symbol}')
+    assert response.status_code == 404
+    assert response.json['error'] == 'Crypto asset not found'

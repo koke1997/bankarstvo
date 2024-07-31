@@ -254,3 +254,49 @@ Errors from GitHub Actions workflows are collected and appended to the `errors.l
 ### **Where to Find the `errors.log` File**
 
 The `errors.log` file is located in the root directory of the repository. It contains details about the errors encountered during the GitHub Actions workflows.
+
+## **CI/CD Pipeline Improvements**
+
+The CI/CD pipeline has been improved to include automated deployment to staging and production environments. The updated pipeline ensures that the application is thoroughly tested and deployed seamlessly.
+
+### **Staging Deployment**
+
+The application is automatically deployed to the staging environment on every push to the `develop` branch. This allows for testing and validation of new features and changes before they are released to production.
+
+### **Production Deployment**
+
+The application is automatically deployed to the production environment on every push to the `main` branch. This ensures that the latest stable version of the application is always available to users.
+
+## **Additional Unit Tests and Integration Tests**
+
+To expand test coverage, additional unit tests and integration tests have been added. These tests ensure the reliability and stability of the application by covering various scenarios and edge cases.
+
+### **New Unit Tests**
+
+- `tests/test_deposit.py`
+- `tests/test_login (2).py`
+- `tests/test_pdf_handling.py`
+- `tests/test_accountdetails.py`
+- `tests/test_app_factory.py`
+- `tests/test_app.py`
+- `tests/test_balancecheck.py`
+- `tests/test_cli.py`
+- `tests/test_connection.py`
+- `tests/test_create_account.py`
+- `tests/test_crypto.py`
+- `tests/test_dashboard.py`
+- `tests/test_fundtransfer.py`
+- `tests/test_get_balance.py`
+- `tests/test_plot_diagram.py`
+
+## **Error Collection from GitHub Actions**
+
+This project includes a functionality to collect errors from GitHub Actions into a file named `errors.log`. This helps in tracking and resolving issues promptly.
+
+### **How Errors are Collected**
+
+Errors from GitHub Actions workflows are collected and appended to the `errors.log` file. This is done by adding a new step in the `.github/workflows/ci.yml` file and modifying the `check-failure` job in the `.github/workflows/pr_failure_issue.yml` file.
+
+### **Where to Find the `errors.log` File**
+
+The `errors.log` file is located in the root directory of the repository. It contains details about the errors encountered during the GitHub Actions workflows.

@@ -129,3 +129,22 @@ jobs:
       run: |
         echo "Deploying to Production"
         # Add your deployment script/command here
+
+  resolve_conflicts:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    - name: Fetch main branch
+      run: |
+        git fetch origin main
+    - name: Merge main into current branch
+      run: |
+        git merge origin/main
+    - name: Push changes
+      run: |
+        git push origin HEAD

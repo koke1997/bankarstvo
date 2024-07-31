@@ -60,3 +60,22 @@ def test_app_logging(app):
     with app.app_context():
         app.logger.info("Test log message")
         assert "Test log message" in app.logger.handlers[0].stream.getvalue()
+
+def test_app_config(app):
+    assert app.config["DEBUG"] is False
+    assert app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] is False
+
+def test_app_routes(client):
+    response = client.get("/api/v1/resource")
+    assert response.status_code == 200
+    assert b"Resource data" in response.data
+
+def test_app_error_handling(client):
+    response = client.get("/api/v1/nonexistent")
+    assert response.status_code == 404
+    assert b"Not Found" in response.data
+
+def test_app_logging(app):
+    with app.app_context():
+        app.logger.info("Test log message")
+        assert "Test log message" in app.logger.handlers[0].stream.getvalue()
