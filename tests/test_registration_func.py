@@ -23,3 +23,5 @@ def test_register_user_success(mocker):
 def test_register_user_existing_user(mock_user):
     result = register_user("testuser", "test@example.com", "password")
     assert result is False
+    assert mock_user.username == "testuser"
+    assert mock_user.email == "test@example.com"

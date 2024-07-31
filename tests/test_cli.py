@@ -47,3 +47,4 @@ def test_status_app():
             status_app()
             mock_pid_exists.assert_called_once_with(1234)
             mock_file().close.assert_called_once()
+            assert mock_pid_exists.return_value == True

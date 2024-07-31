@@ -53,3 +53,4 @@ def test_plot_detailed_routes_diagram():
     }
     plot_detailed_routes_diagram(extracted_routes)
     # No assertion needed, just ensure no exceptions are raised
+    assert True  # Ensure the function runs without errors

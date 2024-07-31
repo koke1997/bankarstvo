@@ -37,3 +37,5 @@ def test_error_handler(client):
     response = client.get("/error")
     assert response.status_code == 500
     assert b"An error occurred" in response.data
+    assert b"Error" in response.data
+    assert b"500" in response.data

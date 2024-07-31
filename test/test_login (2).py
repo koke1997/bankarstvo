@@ -42,8 +42,8 @@ class TestLogin(unittest.TestCase):
         with self.client:
             response = self.client.post('/login', data={'username': 'kokelej123456', 'password': '123'})
             self.assertTrue(login_func('kokelej123456', '123'))
-
-        # You can also check the response here if needed
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b'Logged in successfully!', response.data)
 
     def test_login_failure_incorrect_credentials(self):
         # Simulate a request using the test client
