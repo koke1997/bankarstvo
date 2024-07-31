@@ -95,6 +95,27 @@ def create_app():
         handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
         account_logger.addHandler(handler)
 
+    # Set logging from DatabaseHandling.authentication to app.log file
+    auth_logger = logging.getLogger('DatabaseHandling.authentication')
+    auth_logger.setLevel(logging.INFO)
+    for handler in logger.handlers:
+        handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
+        auth_logger.addHandler(handler)
+
+    # Set logging from DatabaseHandling.registration_func to app.log file
+    registration_logger = logging.getLogger('DatabaseHandling.registration_func')
+    registration_logger.setLevel(logging.INFO)
+    for handler in logger.handlers:
+        handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
+        registration_logger.addHandler(handler)
+
+    # Set logging from DatabaseHandling.withdraw to app.log file
+    withdraw_logger = logging.getLogger('DatabaseHandling.withdraw')
+    withdraw_logger.setLevel(logging.INFO)
+    for handler in logger.handlers:
+        handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] - %(name)s - %(message)s'))
+        withdraw_logger.addHandler(handler)
+
     # Enable CORS support
     CORS(app)
 

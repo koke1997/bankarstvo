@@ -19,7 +19,12 @@ jobs:
         configuration-path: ".github/labeler.yml"
 
     - name: Assign issues
-      uses: actions/assign-issue@v1
+      uses: actions/assign-issue@v2
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         assignees: 'koke1997'
+
+    - name: Close duplicate issues
+      if: contains(github.event.issue.labels.*.name, 'duplicate')
+      run: |
+        gh issue close ${{ github.event.issue.number }} --comment "This issue is being closed because it is a duplicate."
