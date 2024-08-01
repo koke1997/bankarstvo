@@ -9,11 +9,11 @@ logger = logging.getLogger(__name__)
 
 # Initialize the connection pool
 DATABASE_CONFIG = {
-    "user": os.getenv("DATABASE_USER", "default_user"),
-    "password": os.getenv("DATABASE_PASSWORD", "default_password"),
-    "host": os.getenv("DATABASE_HOST", "localhost"),
-    "port": int(os.getenv("DATABASE_PORT", 3306)),  # Set default port to 3306
-    "database": os.getenv("DATABASE_NAME", "default_db"),
+    "user": os.getenv("DATABASE_USER"),
+    "password": os.getenv("DATABASE_PASSWORD"),
+    "host": os.getenv("DATABASE_HOST"),
+    "port": int(os.getenv("DATABASE_PORT")),
+    "database": os.getenv("DATABASE_NAME"),
     "charset": "utf8mb4",
     "autocommit": True,
 }
