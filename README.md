@@ -225,3 +225,179 @@ Logs from failed jobs during PR checks are now saved to help with debugging and 
 
 - **CI Workflow**: Added steps to split the `Run tests` step into `Run unit tests` and `Run linting`, and to save logs from failed jobs.
 - **PR Failure Issue Workflow**: Added a step to save logs from failed jobs during PR checks.
+
+## **Detailed Documentation for Individual Modules, Functions, and Classes**
+
+### **Modules**
+
+#### **app_factory.py**
+
+- **create_app()**: Initializes and configures the Flask application, including logging, database connections, and blueprints.
+
+#### **cli.py**
+
+- **start_app()**: Starts the application.
+- **stop_app()**: Stops the application.
+- **restart_app()**: Restarts the application.
+- **status_app()**: Checks the status of the application.
+
+### **Functions**
+
+#### **app_factory.py**
+
+- **create_app()**: Initializes and configures the Flask application, including logging, database connections, and blueprints.
+
+#### **cli.py**
+
+- **start_app()**: Starts the application.
+- **stop_app()**: Stops the application.
+- **restart_app()**: Restarts the application.
+- **status_app()**: Checks the status of the application.
+
+### **Classes**
+
+#### **core/models.py**
+
+- **User**: Represents a user in the system.
+- **Transaction**: Represents a transaction in the system.
+- **Account**: Represents an account in the system.
+- **SignedDocument**: Represents a signed document in the system.
+- **CryptoAsset**: Represents a crypto asset in the system.
+- **StockAsset**: Represents a stock asset in the system.
+- **MarketplaceItem**: Represents an item in the marketplace.
+- **MarketplaceTransaction**: Represents a transaction in the marketplace.
+- **Loan**: Represents a loan in the system.
+- **Payment**: Represents a payment in the system.
+
+## **Comprehensive Usage Instructions for Specific Features or Components**
+
+### **User Registration**
+
+To register a new user, send a POST request to the `/register` endpoint with the following JSON payload:
+
+```json
+{
+    "username": "example",
+    "email": "example@example.com",
+    "password": "password"
+}
+```
+
+### **User Login**
+
+To log in an existing user, send a POST request to the `/login` endpoint with the following JSON payload:
+
+```json
+{
+    "username": "example",
+    "password": "password"
+}
+```
+
+### **Balance Checking**
+
+To check the account balance, send a GET request to the `/balance` endpoint.
+
+### **Transaction History**
+
+To view the transaction history, send a GET request to the `/transactions` endpoint.
+
+## **Detailed API Documentation for Endpoints**
+
+### **Register Endpoint**
+
+Endpoint for user registration.
+
+```http
+POST /register
+{
+    "username": "example",
+    "email": "example@example.com",
+    "password": "password"
+}
+```
+
+### **Login Endpoint**
+
+Endpoint for user login.
+
+```http
+POST /login
+{
+    "username": "example",
+    "password": "password"
+}
+```
+
+### **Balance Endpoint**
+
+Endpoint for checking account balance.
+
+```http
+GET /balance
+```
+
+### **Transactions Endpoint**
+
+Endpoint for viewing transaction history.
+
+```http
+GET /transactions
+```
+
+### **Full Endpoint List**
+
+Comprehensive list of all endpoints, similar to Swagger or Postman documentation.
+
+```http
+GET /accounts
+{
+    "description": "Retrieve all accounts",
+    "example_response": {
+        "accounts": [
+            {
+                "account_id": 1,
+                "account_name": "Checking Account",
+                "balance": 1000.00
+            },
+            {
+                "account_id": 2,
+                "account_name": "Savings Account",
+                "balance": 5000.00
+            }
+        ]
+    }
+}
+
+POST /accounts
+{
+    "description": "Create a new account",
+    "example_request": {
+        "account_name": "New Account",
+        "initial_balance": 0.00
+    },
+    "example_response": {
+        "message": "Account created successfully",
+        "account_id": 3
+    }
+}
+
+PUT /accounts/{account_id}
+{
+    "description": "Update an existing account",
+    "example_request": {
+        "account_name": "Updated Account Name"
+    },
+    "example_response": {
+        "message": "Account updated successfully"
+    }
+}
+
+DELETE /accounts/{account_id}
+{
+    "description": "Delete an account",
+    "example_response": {
+        "message": "Account deleted successfully"
+    }
+}
+```

@@ -112,6 +112,18 @@ individual, or aggression toward or disparagement of classes of individuals.
 **Consequence**: A permanent ban from any sort of public interaction within
 the community.
 
+## Guidelines for Writing Documentation
+
+1. **Use Clear and Concise Language**: Ensure that your documentation is easy to understand and free of jargon.
+
+2. **Follow the Existing Structure**: Maintain consistency by following the structure and format of the existing documentation.
+
+3. **Provide Examples**: Include code examples and usage instructions to help users understand how to use the features or components.
+
+4. **Keep It Up-to-Date**: Regularly update the documentation to reflect any changes or new features in the project.
+
+5. **Use Proper Formatting**: Use markdown syntax for headings, lists, code blocks, and other formatting elements to enhance readability.
+
 ## Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant][homepage],
