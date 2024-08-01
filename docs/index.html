@@ -212,6 +212,35 @@ DELETE /accounts/{account_id}
             <div class="tab-pane fade" id="nav-usage" role="tabpanel" aria-labelledby="nav-usage-tab">
                 <h2>Usage</h2>
                 <p>Instructions for using the banking application.</p>
+                <section id="user-registration-usage">
+                    <h3>User Registration</h3>
+                    <p>To register a new user, send a POST request to the <code>/register</code> endpoint with the following JSON payload:</p>
+                    <pre><code>
+{
+    "username": "example",
+    "email": "example@example.com",
+    "password": "password"
+}
+                    </code></pre>
+                </section>
+                <section id="user-login-usage">
+                    <h3>User Login</h3>
+                    <p>To log in an existing user, send a POST request to the <code>/login</code> endpoint with the following JSON payload:</p>
+                    <pre><code>
+{
+    "username": "example",
+    "password": "password"
+}
+                    </code></pre>
+                </section>
+                <section id="balance-checking-usage">
+                    <h3>Balance Checking</h3>
+                    <p>To check the account balance, send a GET request to the <code>/balance</code> endpoint.</p>
+                </section>
+                <section id="transaction-history-usage">
+                    <h3>Transaction History</h3>
+                    <p>To view the transaction history, send a GET request to the <code>/transactions</code> endpoint.</p>
+                </section>
             </div>
             <div class="tab-pane fade" id="nav-improvements" role="tabpanel" aria-labelledby="nav-improvements-tab">
                 <h2>Improvements</h2>
