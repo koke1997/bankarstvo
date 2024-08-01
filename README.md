@@ -1,7 +1,5 @@
 # **Banking Application**
 
-[![codecov](https://codecov.io/gh/koke1997/bankarstvo/branch/main/graph/badge.svg)](https://codecov.io/gh/koke1997/bankarstvo)
-
 ## **Description**
 
 This project is a comprehensive banking application built in Python. It features modules for user registration, login, balance checking, and more, offering a robust framework for banking operations. The main idea is to create more smaller banks instead of having a few big banks in a country. The current challenge is the technology which should enable only real persons to use the banking system.

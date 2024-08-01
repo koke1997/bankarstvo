@@ -20,7 +20,6 @@ DATABASE_CONFIG = {
 
 pool = pooling.MySQLConnectionPool(pool_name="mypool", pool_size=10, **DATABASE_CONFIG)
 
-
 def connect_db():
     try:
         connection = pool.get_connection()
@@ -29,7 +28,6 @@ def connect_db():
     except mysql.connector.Error as err:
         logger.error(f"Error connecting to the database: {err}")
         raise
-
 
 def get_db_cursor():
     try:
