@@ -9,17 +9,16 @@ logger = logging.getLogger(__name__)
 
 # Initialize the connection pool
 DATABASE_CONFIG = {
-    "user": os.getenv("DATABASE_USER"),
-    "password": os.getenv("DATABASE_PASSWORD"),
-    "host": os.getenv("DATABASE_HOST"),
-    "port": int(os.getenv("DATABASE_PORT")),
-    "database": os.getenv("DATABASE_NAME"),
+    "user": os.getenv("DATABASE_USER", "default_user"),
+    "password": os.getenv("DATABASE_PASSWORD", "default_password"),
+    "host": os.getenv("DATABASE_HOST", "localhost"),
+    "port": int(os.getenv("DATABASE_PORT", 3306)),  # Set default port to 3306
+    "database": os.getenv("DATABASE_NAME", "default_db"),
     "charset": "utf8mb4",
     "autocommit": True,
 }
 
 pool = pooling.MySQLConnectionPool(pool_name="mypool", pool_size=10, **DATABASE_CONFIG)
-
 
 def connect_db():
     try:
@@ -29,7 +28,6 @@ def connect_db():
     except mysql.connector.Error as err:
         logger.error(f"Error connecting to the database: {err}")
         raise
-
 
 def get_db_cursor():
     try:
