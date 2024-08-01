@@ -3,7 +3,7 @@ from FiatHandling.accountdetails import get_account_details
 from unittest.mock import patch, MagicMock
 from flask_sqlalchemy import SQLAlchemy
 from app_factory import create_app
-
+import os
 
 @pytest.fixture(scope="module")
 def test_client():
@@ -16,6 +16,7 @@ def test_client():
         password=os.getenv("DB_PASSWORD"),
         host=os.getenv("DB_HOST"),
         port=os.getenv("DB_PORT"),
+        database=os.getenv("DB_NAME"),
     )
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -28,7 +29,6 @@ def test_client():
 
     ctx.pop()
 
-
 @pytest.fixture(scope="module")
 def init_database():
     db = SQLAlchemy()
@@ -39,7 +39,6 @@ def init_database():
     db.session.remove()
     db.drop_all()
 
-
 @pytest.fixture
 def mock_db_connection():
     with patch("FiatHandling.accountdetails.connect_db") as mock_connect_db:
@@ -48,7 +47,6 @@ def mock_db_connection():
         mock_connect_db.return_value = mock_conn
         mock_conn.cursor.return_value = mock_cursor
         yield mock_cursor
-
 
 def test_get_account_details(mock_db_connection):
     user_id = 1
@@ -73,7 +71,6 @@ def test_get_account_details(mock_db_connection):
     assert details[2] == "2022-01-01"
     assert details[3] == "2022-01-02"
 
-
 def test_get_account_details_invalid_user(mock_db_connection):
     user_id = 999
     mock_db_connection.fetchone.return_value = None
@@ -86,7 +83,6 @@ def test_get_account_details_invalid_user(mock_db_connection):
         (user_id,),
     )
     mock_db_connection.close.assert_called_once()
-
 
 def test_get_account_details_db_error(mock_db_connection):
     user_id = 1
