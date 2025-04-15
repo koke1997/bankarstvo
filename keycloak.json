@@ -1,0 +1,10 @@
+{
+  "realm": "bankarstvo",
+  "auth-server-url": "http://localhost:8080/auth",
+  "ssl-required": "external",
+  "resource": "bankarstvo-client",
+  "credentials": {
+    "secret": "your-client-secret"
+  },
+  "confidential-port": 0
+}

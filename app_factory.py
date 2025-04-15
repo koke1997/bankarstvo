@@ -8,6 +8,7 @@ from flask_cors import CORS
 from flask_socketio import SocketIO
 
 from utils.extensions import create_extensions, db, bcrypt, login_manager
+from keycloak import KeycloakOpenID
 
 socketio = SocketIO()
 
@@ -43,6 +44,14 @@ def create_app():
 
     login_manager.login_view = "user_routes.login"
     login_manager.login_message_category = "info"
+
+    # Keycloak configuration settings
+    keycloak_openid = KeycloakOpenID(
+        server_url=os.getenv("KEYCLOAK_SERVER_URL"),
+        client_id=os.getenv("KEYCLOAK_CLIENT_ID"),
+        realm_name=os.getenv("KEYCLOAK_REALM_NAME"),
+        client_secret_key=os.getenv("KEYCLOAK_CLIENT_SECRET_KEY")
+    )
 
     # Register Blueprints
     from routes.transaction_routes import transaction_routes

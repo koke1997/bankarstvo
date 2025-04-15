@@ -1,5 +1,6 @@
 import traceback
 import pyotp
+from keycloak import KeycloakOpenID
 
 #DatabaseHandling/authentication.py
 from utils.extensions import bcrypt
@@ -9,6 +10,13 @@ from flask import session
 from .session_clearing  import clear_session
 import logging
 logger = logging.getLogger(__name__)
+
+keycloak_openid = KeycloakOpenID(
+    server_url=os.getenv("KEYCLOAK_SERVER_URL"),
+    client_id=os.getenv("KEYCLOAK_CLIENT_ID"),
+    realm_name=os.getenv("KEYCLOAK_REALM_NAME"),
+    client_secret_key=os.getenv("KEYCLOAK_CLIENT_SECRET_KEY")
+)
 
 def login_func(username, password, otp_code=None):
     try:
