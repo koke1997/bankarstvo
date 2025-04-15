@@ -76,6 +76,29 @@ jobs:
         echo "Error in job: ${{ github.job }}" >> error_logs/errors.log
         echo "Error message: ${{ failure() }}" >> error_logs/errors.log
 
+    - name: Build Docker image
+      run: |
+        docker build -t koke1997/banking-app:latest .
+
+    - name: Log in to Docker Hub
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Push Docker image
+      run: |
+        docker push koke1997/banking-app:latest
+
+    - name: Set up kubectl
+      run: |
+        curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+        chmod +x ./kubectl
+        sudo mv ./kubectl /usr/local/bin/kubectl
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f k8s/service.yaml
+
   code_quality:
     needs: build
     runs-on: ubuntu-latest

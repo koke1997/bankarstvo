@@ -79,6 +79,50 @@ This document provides a comprehensive guide to the development process for the 
    DATABASE_NAME=banking_app
    ```
 
+## Kubernetes Deployment
+
+### Prerequisites
+
+- Docker installed on your local machine
+- Kubernetes cluster set up (e.g., Minikube, GKE, EKS, AKS)
+- kubectl installed and configured to interact with your Kubernetes cluster
+
+### Steps
+
+1. **Build Docker Image**
+
+   Build the Docker image for the application:
+
+   ```sh
+   docker build -t koke1997/banking-app:latest .
+   ```
+
+2. **Push Docker Image**
+
+   Push the Docker image to a container registry (e.g., Docker Hub):
+
+   ```sh
+   docker push koke1997/banking-app:latest
+   ```
+
+3. **Apply Kubernetes Manifests**
+
+   Apply the Kubernetes deployment and service configuration files:
+
+   ```sh
+   kubectl apply -f k8s/deployment.yaml
+   kubectl apply -f k8s/service.yaml
+   ```
+
+4. **Verify Deployment**
+
+   Verify that the application is running in your Kubernetes cluster:
+
+   ```sh
+   kubectl get pods
+   kubectl get services
+   ```
+
 ## Coding Standards
 
 1. **Follow PEP 8**: Ensure that your Python code adheres to the PEP 8 style guide.
