@@ -2,6 +2,10 @@ import logging
 import mysql.connector
 import os
 from mysql.connector import pooling
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO)

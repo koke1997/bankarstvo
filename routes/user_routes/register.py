@@ -2,8 +2,10 @@ from flask import request, redirect, url_for, flash, render_template
 from . import user_routes
 from DatabaseHandling.registration_func import register_user
 from core.models import User
+from utils.extensions import token_required
 
 @user_routes.route('/register', methods=['GET', 'POST'], endpoint="register")
+@token_required
 def register():
     if request.method == 'POST':
         username = request.form.get('username')

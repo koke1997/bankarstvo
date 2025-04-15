@@ -45,12 +45,24 @@ def create_app():
     login_manager.login_view = "user_routes.login"
     login_manager.login_message_category = "info"
 
-    # Keycloak configuration settings
+    # Load Keycloak configuration from environment variables
+    keycloak_config = {
+        "realm": os.getenv("KEYCLOAK_REALM", "bankarstvo"),
+        "auth-server-url": os.getenv("KEYCLOAK_AUTH_SERVER_URL", "http://localhost:8080/auth"),
+        "ssl-required": os.getenv("KEYCLOAK_SSL_REQUIRED", "external"),
+        "resource": os.getenv("KEYCLOAK_RESOURCE", "bankarstvo-client"),
+        "credentials": {
+            "secret": os.getenv("KEYCLOAK_CLIENT_SECRET", "your-client-secret")
+        },
+        "confidential-port": int(os.getenv("KEYCLOAK_CONFIDENTIAL_PORT", 0))
+    }
+
+    # Initialize Keycloak client
     keycloak_openid = KeycloakOpenID(
-        server_url=os.getenv("KEYCLOAK_SERVER_URL"),
-        client_id=os.getenv("KEYCLOAK_CLIENT_ID"),
-        realm_name=os.getenv("KEYCLOAK_REALM_NAME"),
-        client_secret_key=os.getenv("KEYCLOAK_CLIENT_SECRET_KEY")
+        server_url=keycloak_config["auth-server-url"],
+        client_id=keycloak_config["resource"],
+        realm_name=keycloak_config["realm"],
+        client_secret_key=keycloak_config["credentials"]["secret"]
     )
 
     # Register Blueprints
@@ -62,7 +74,7 @@ def create_app():
     from routes.transaction_routes.crypto import crypto_routes
     from routes.transaction_routes.stock import stock_routes
     from routes.marketplace_routes import marketplace_routes
-    from routes.documentation_routes import documentation_routes  # Import the documentation_routes blueprint
+    # from routes.documentation_routes import documentation_routes  # Import the documentation_routes blueprint
 
     app.register_blueprint(transaction_routes)
     app.register_blueprint(account_routes)
@@ -72,7 +84,7 @@ def create_app():
     app.register_blueprint(crypto_routes)
     app.register_blueprint(stock_routes)
     app.register_blueprint(marketplace_routes)
-    app.register_blueprint(documentation_routes)  # Register the documentation_routes blueprint
+    # app.register_blueprint(documentation_routes)  # Register the documentation_routes blueprint
 
     # Log rules for each Blueprint
     logger.info("\nMain Application Rules:")
@@ -139,6 +151,17 @@ def create_app():
         # Render the error page
         return render_template("error.html",
                                error_message=f"404 Not Found: {request.url}. The requested URL was not found on the server. If you entered the URL manually, please check your spelling and try again."), 404
+
+    # Add error handling for authentication-related issues
+    @app.errorhandler(401)
+    def unauthorized_error(e):
+        logger.error(f"Unauthorized access attempt: {request.url}")
+        return render_template("error.html", error_message="401 Unauthorized: Access is denied."), 401
+
+    @app.errorhandler(403)
+    def forbidden_error(e):
+        logger.error(f"Forbidden access attempt: {request.url}")
+        return render_template("error.html", error_message="403 Forbidden: You do not have permission to access this resource."), 403
 
     @app.errorhandler(Exception)
     def log_error(exception):

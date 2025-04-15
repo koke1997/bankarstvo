@@ -146,7 +146,7 @@ class Loan(db.Model):
 
 class Payment(db.Model):
     __tablename__ = "payments"
-    payment_id = db.Column(db.Integer, primary key=True)
+    payment_id = db.Column(db.Integer, primary_key=True)
     loan_id = db.Column(db.Integer, db.ForeignKey("loans.loan_id"), nullable=False)
     amount = db.Column(db.Numeric(20, 2), nullable=False)
     payment_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

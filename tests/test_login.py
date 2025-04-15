@@ -1,6 +1,9 @@
 import unittest
 import sys
 import os
+import jwt
+from unittest.mock import patch
+from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 # Adjust the Python path
@@ -8,7 +11,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from DatabaseHandling.authentication import login_func
 from app_factory import create_app
-from flask import Flask
 
 
 class TestLogin(unittest.TestCase):
@@ -63,6 +65,38 @@ class TestLogin(unittest.TestCase):
                 "/login", data={"username": "nonexistent_user", "password": "any_password"}
             )
             self.assertFalse(login_func("nonexistent_user", "any_password"))
+
+
+class TestOIDCIntegration:
+    def setup_method(self):
+        self.app = create_app()
+        self.client = self.app.test_client()
+
+    @patch("utils.extensions.requests.get")
+    def test_token_validation_success(self, mock_get):
+        # Mock Keycloak public key response
+        mock_get.return_value.json.return_value = {
+            "keys": [
+                {"x5c": ["mocked-public-key"]}
+            ]
+        }
+
+        # Mock a valid JWT token
+        valid_token = jwt.encode(
+            {"aud": os.getenv("KEYCLOAK_RESOURCE"), "iss": f"{os.getenv('KEYCLOAK_AUTH_SERVER_URL')}/realms/{os.getenv('KEYCLOAK_REALM')}"},
+            "mocked-public-key",
+            algorithm="RS256"
+        )
+
+        headers = {"Authorization": f"Bearer {valid_token}"}
+        response = self.client.get(url_for("user_routes.register"), headers=headers)
+        assert response.status_code == 200
+
+    def test_logout_flow(self):
+        # Simulate a logout request
+        response = self.client.get(url_for("user_routes.logout"))
+        assert response.status_code == 302  # Redirect to login
+        assert url_for("user_routes.login") in response.location
 
 
 if __name__ == "__main__":

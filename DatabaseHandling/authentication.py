@@ -1,6 +1,7 @@
 import traceback
 import pyotp
 from keycloak import KeycloakOpenID
+import os
 
 #DatabaseHandling/authentication.py
 from utils.extensions import bcrypt

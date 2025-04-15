@@ -4,3 +4,4 @@ venv/
 # Exclude Python bytecode cache folders
 __pycache__/
 *.pyc
+node_modules/
