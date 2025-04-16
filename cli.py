@@ -13,7 +13,7 @@ PID_FILE = "app.pid"
 def start_app():
     python_interpreter = os.path.join(os.path.dirname(sys.executable), "python")
     process = subprocess.Popen(
-        [python_interpreter, "app.py"], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+        [python_interpreter, "app.py"]
     )
     logger.info(f"App started with PID: {process.pid}")
     with open(PID_FILE, "w") as f:

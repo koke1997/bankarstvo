@@ -15,13 +15,7 @@ def app():
     app.config.update(
         {
             "TESTING": True,
-            "SQLALCHEMY_DATABASE_URI": "mysql+pymysql://{user}:{password}@{host}:{port}/{database}".format(
-                user=os.getenv("DB_USER"),
-                password=os.getenv("DB_PASSWORD"),
-                host=os.getenv("DB_HOST"),
-                port=os.getenv("DB_PORT"),
-                database=os.getenv("DB_NAME"),
-            ),
+            "SQLALCHEMY_DATABASE_URI": "sqlite:///:memory:",
         }
     )
 
@@ -53,7 +47,7 @@ def user(app):
         )
         db.session.add(user)
         db.session.commit()
-        return user
+        return db.session.get(User, user.user_id)
 
 
 def test_select_account(client, user):

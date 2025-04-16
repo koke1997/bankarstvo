@@ -9,23 +9,13 @@ from utils.extensions import db
 @pytest.fixture
 def app():
     app = create_app()
-    app.config.update(
-        {
-            "TESTING": True,
-            "SQLALCHEMY_DATABASE_URI": "mysql+pymysql://{user}:{password}@{host}:{port}/{database}".format(
-                user=os.getenv("DB_USER"),
-                password=os.getenv("DB_PASSWORD"),
-                host=os.getenv("DB_HOST"),
-                port=os.getenv("DB_PORT"),
-                database=os.getenv("DB_NAME"),
-            ),
-        }
-    )
-
+    app.config.update({
+        "TESTING": True,
+        "SQLALCHEMY_DATABASE_URI": "sqlite:///:memory:",
+    })
     with app.app_context():
         db.create_all()
         yield app
-
     with app.app_context():
         db.drop_all()
 
