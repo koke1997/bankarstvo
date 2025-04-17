@@ -46,7 +46,14 @@ def user(app):
 
 def test_get_user_balance(mock_account, app):
     with app.app_context():
-        balance = get_user_balance("test@example.com")
+        from core.models import Account, User
+        user = User(username="testuser2", email="test2@example.com", password_hash="pw")
+        db.session.add(user)
+        db.session.commit()
+        account = Account(account_type="checking", balance=100.0, currency_code="USD", user_id=user.user_id)
+        db.session.add(account)
+        db.session.commit()
+        balance = get_user_balance(user.email)
         assert balance == 100.0
 
 

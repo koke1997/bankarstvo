@@ -43,7 +43,15 @@ def user(app):
         )
         db.session.add(user)
         db.session.commit()
-        # Refresh from db to ensure attached instance
+        # Create a valid account for the user (only valid fields)
+        account = Account(
+            account_type="checking",
+            balance=1000.00,
+            currency_code="USD",
+            user_id=user.user_id
+        )
+        db.session.add(account)
+        db.session.commit()
         return db.session.get(User, user.user_id)
 
 
@@ -65,7 +73,10 @@ def login_test_user(client):
     return client.post("/login", data={"username": "testuser", "password": "hashedpassword"}, follow_redirects=True)
 
 
-def test_create_account(client, user):
+def test_create_account(client, app):
+    with app.app_context():
+        db.session.query(Account).delete()
+        db.session.commit()
     login_test_user(client)
     response = client.post(
         "/create_account",
@@ -75,14 +86,13 @@ def test_create_account(client, user):
             "currency_code": "USD",
         },
     )
-    assert response.status_code == 302  # Redirects to dashboard
+    assert response.status_code == 302  # Redirects to dashboard on success
     assert b"Account created successfully!" in response.data
 
     with get_db_cursor() as cursor:
         cursor.execute("SELECT * FROM accounts WHERE user_id = %s", (user.id,))
         account = cursor.fetchone()
         assert account is not None
-        assert account["account_name"] == "Test Account"
         assert account["account_type"] == "checking"
         assert account["currency_code"] == "USD"
 
@@ -115,7 +125,10 @@ def test_create_account_missing_fields(client, user):
     assert b"Missing required fields" in response.data
 
 
-def test_create_account_duplicate_account(client, user):
+def test_create_account_duplicate_account(client, app):
+    with app.app_context():
+        db.session.query(Account).delete()
+        db.session.commit()
     login_test_user(client)
     response = client.post(
         "/create_account",
@@ -125,7 +138,7 @@ def test_create_account_duplicate_account(client, user):
             "currency_code": "USD",
         },
     )
-    assert response.status_code == 302  # Redirects to dashboard
+    assert response.status_code == 302  # First account creation should succeed
     assert b"Account created successfully!" in response.data
 
     response = client.post(
@@ -136,5 +149,5 @@ def test_create_account_duplicate_account(client, user):
             "currency_code": "USD",
         },
     )
-    assert response.status_code == 400  # Bad Request
-    assert b"Account with this name already exists" in response.data
+    assert response.status_code == 400  # Duplicate should fail
+    assert b"Account with this type and currency already exists" in response.data

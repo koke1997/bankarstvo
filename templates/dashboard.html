@@ -70,7 +70,7 @@
                 <select name="account_choice" id="account-choice">
                     {% for account in accounts %}
                         <option value="{{ account.account_id }}" {% if account.account_id == selected_account_id %}selected{% endif %}>
-                            {{ account.account_name }}
+                            Account #{{ account.account_id }}
                         </option>
                     {% endfor %}
                 </select>
@@ -84,7 +84,6 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Account ID: {{ selected_account.account_id }}</li>
-              <li class="list-group-item">Account Name: {{ selected_account.account_name }}</li>
               <li class="list-group-item">Account Type: {{ selected_account.account_type }}</li>
               <li class="list-group-item">Balance: {{ selected_account.balance }}</li>
               <li class="list-group-item">Currency Code: {{ selected_account.currency_code }}</li>

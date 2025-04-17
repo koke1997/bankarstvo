@@ -32,8 +32,21 @@ def runner(app):
 @pytest.fixture
 def user(app):
     with app.app_context():
-        user = User(username="testuser", email="testuser@example.com", password_hash="hashedpassword")
+        user = User(
+            username="testuser",
+            email="testuser@example.com",
+            password_hash="hashedpassword",
+        )
         db.session.add(user)
+        db.session.commit()
+        # Create a valid account for the user (only valid fields)
+        account = Account(
+            account_type="checking",
+            balance=1000.00,
+            currency_code="USD",
+            user_id=user.user_id
+        )
+        db.session.add(account)
         db.session.commit()
         return db.session.get(User, user.user_id)
 
