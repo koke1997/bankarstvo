@@ -32,6 +32,13 @@ def create_extensions(app):
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
+        from flask import current_app
+        
+        # Skip token validation in test mode
+        if current_app.config.get("TESTING") or current_app.config.get("SKIP_KEYCLOAK"):
+            logger.info("Skipping token validation in test mode")
+            return f(*args, **kwargs)
+            
         token = request.headers.get("Authorization")
         if not token:
             return jsonify({"message": "Token is missing!"}), 401

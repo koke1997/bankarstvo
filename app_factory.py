@@ -1,6 +1,7 @@
 # app_factory.py
 import logging
 import os
+import sys  # Add sys module import
 from logging.config import fileConfig
 
 from flask import Flask, render_template, request
@@ -36,8 +37,12 @@ def create_app():
                                                       f"mysql+pymysql://{os.getenv('DATABASE_USER')}:{os.getenv('DATABASE_PASSWORD')}@{os.getenv('DATABASE_HOST')}:{os.getenv('DATABASE_PORT')}/{os.getenv('DATABASE_NAME')}")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    if app.config["TESTING"]:
+    # Check if we're in a testing environment
+    if app.config.get("TESTING") or "pytest" in sys.modules:
+        app.config["TESTING"] = True
         app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+        # Skip Keycloak setup in test mode
+        app.config["SKIP_KEYCLOAK"] = True
 
     create_extensions(app)
     socketio.init_app(app)
@@ -45,25 +50,33 @@ def create_app():
     login_manager.login_view = "user_routes.login"
     login_manager.login_message_category = "info"
 
-    # Load Keycloak configuration from environment variables
-    keycloak_config = {
-        "realm": os.getenv("KEYCLOAK_REALM", "bankarstvo"),
-        "auth-server-url": os.getenv("KEYCLOAK_AUTH_SERVER_URL", "http://localhost:8080/auth"),
-        "ssl-required": os.getenv("KEYCLOAK_SSL_REQUIRED", "external"),
-        "resource": os.getenv("KEYCLOAK_RESOURCE", "bankarstvo-client"),
-        "credentials": {
-            "secret": os.getenv("KEYCLOAK_CLIENT_SECRET", "your-client-secret")
-        },
-        "confidential-port": int(os.getenv("KEYCLOAK_CONFIDENTIAL_PORT", 0))
-    }
+    # Initialize Keycloak only if not in test mode
+    if not app.config.get("SKIP_KEYCLOAK", False):
+        # Load Keycloak configuration from environment variables
+        keycloak_config = {
+            "realm": os.getenv("KEYCLOAK_REALM", "bankarstvo"),
+            "auth-server-url": os.getenv("KEYCLOAK_AUTH_SERVER_URL", "http://localhost:8080/auth"),
+            "ssl-required": os.getenv("KEYCLOAK_SSL_REQUIRED", "external"),
+            "resource": os.getenv("KEYCLOAK_RESOURCE", "bankarstvo-client"),
+            "credentials": {
+                "secret": os.getenv("KEYCLOAK_CLIENT_SECRET", "your-client-secret")
+            },
+            "confidential-port": int(os.getenv("KEYCLOAK_CONFIDENTIAL_PORT", 0))
+        }
 
-    # Initialize Keycloak client
-    keycloak_openid = KeycloakOpenID(
-        server_url=keycloak_config["auth-server-url"],
-        client_id=keycloak_config["resource"],
-        realm_name=keycloak_config["realm"],
-        client_secret_key=keycloak_config["credentials"]["secret"]
-    )
+        # Initialize Keycloak client
+        try:
+            keycloak_openid = KeycloakOpenID(
+                server_url=keycloak_config["auth-server-url"],
+                client_id=keycloak_config["resource"],
+                realm_name=keycloak_config["realm"],
+                client_secret_key=keycloak_config["credentials"]["secret"]
+            )
+            app.config["KEYCLOAK_OPENID"] = keycloak_openid
+        except Exception as e:
+            logger.warning(f"Error initializing Keycloak: {e}")
+            if not app.debug:
+                logger.error("Failed to initialize Keycloak in production mode")
 
     # Register Blueprints
     from routes.transaction_routes import transaction_routes

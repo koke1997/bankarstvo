@@ -38,10 +38,7 @@
         <!-- Create account -->
         <form id="create_account-form" method="post" action="{{ url_for('account_routes.create_account') }}" class="mb-4">
             <h2>Create New Account</h2>
-            <div class="form-group">
-                <label for="account-name">Account Name:</label>
-                <input type="text" id="account-name" name="account_name" class="form-control" required>
-            </div>
+            <!-- Remove account name field which doesn't exist in database schema -->
             <div class="form-group">
                 <label for="country-code">Country:</label>
                 <select id="country-code" name="currency_code" class="form-control" required>

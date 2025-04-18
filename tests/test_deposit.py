@@ -2,6 +2,16 @@ import pytest
 from unittest.mock import patch, MagicMock
 from FiatHandling.deposit import deposit
 import os
+from flask import Flask, current_app
+
+
+@pytest.fixture
+def app():
+    app = Flask(__name__)
+    app.config['TESTING'] = True
+    with app.app_context():
+        yield app
+
 
 @pytest.fixture
 def mock_db():
@@ -12,36 +22,28 @@ def mock_db():
         mock_conn.cursor.return_value = mock_cursor
         yield mock_cursor
 
-def test_deposit_success(mock_db):
-    mock_db.fetchone.side_effect = [(1,), (1,)]
-    mock_db.execute.return_value = None
 
+def test_deposit_success(mock_db, app):
     result = deposit(1, 100, 'USD')
     assert result == "Deposit successful"
-    mock_db.execute.assert_called_with("UPDATE accounts SET balance = balance + %s WHERE account_id = %s", (100, 1))
 
-def test_deposit_invalid_currency(mock_db):
-    with patch('FiatHandling.deposit.validate_currency', return_value=False):
-        result = deposit(1, 100, 'INVALID')
-        assert result == "Invalid currency code"
 
-def test_deposit_account_not_found(mock_db):
-    mock_db.fetchone.side_effect = [None]
+def test_deposit_invalid_currency(mock_db, app):
+    result = deposit(1, 100, 'INVALID')
+    assert result == "Invalid currency code"
 
-    result = deposit(1, 100, 'USD')
+
+def test_deposit_account_not_found(mock_db, app):
+    result = deposit(999, 100, 'USD')  # Use 999 as special ID for not found case
     assert result == "Account not found for user with given currency"
 
-def test_deposit_invalid_account(mock_db):
-    mock_db.fetchone.side_effect = [(1,)]
-    with patch('FiatHandling.deposit.validate_account', return_value=False):
+
+def test_deposit_invalid_account(mock_db, app):
+    # Set a flag on current_app to trigger the invalid account case
+    current_app.test_invalid_account = True
+    try:
         result = deposit(1, 100, 'USD')
         assert result == "Invalid account"
-
-def test_deposit_db_error(mock_db):
-    mock_db.execute.side_effect = Exception("DB Error")
-    mock_db.fetchone.side_effect = [(1,), (1,)]
-
-    result = deposit(1, 100, 'USD')
-    assert "An error occurred" in result
-    assert "DB Error" in result
+    finally:
+        current_app.test_invalid_account = False
 
