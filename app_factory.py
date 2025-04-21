@@ -55,7 +55,7 @@ def create_app():
         # Load Keycloak configuration from environment variables
         keycloak_config = {
             "realm": os.getenv("KEYCLOAK_REALM", "bankarstvo"),
-            "auth-server-url": os.getenv("KEYCLOAK_AUTH_SERVER_URL", "http://localhost:8080/auth"),
+            "auth-server-url": os.getenv("KEYCLOAK_AUTH_SERVER_URL", "http://localhost:3790/auth"),
             "ssl-required": os.getenv("KEYCLOAK_SSL_REQUIRED", "external"),
             "resource": os.getenv("KEYCLOAK_RESOURCE", "bankarstvo-client"),
             "credentials": {

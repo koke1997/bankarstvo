@@ -6,7 +6,7 @@ import logging
 import pyotp
 from flask import request, jsonify
 from functools import wraps
-import jwt
+import jwt  # Replace 'from jwt import *' with 'import jwt'
 import requests
 import os
 

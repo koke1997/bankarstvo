@@ -11,8 +11,13 @@ services:
       - DATABASE_USER=root
       - DATABASE_PASSWORD=example
       - DATABASE_NAME=bankarstvo
+      - KEYCLOAK_AUTH_SERVER_URL=http://keycloak:3790/auth
+      - KEYCLOAK_REALM=bankarstvo
+      - KEYCLOAK_RESOURCE=bankarstvo-client
+      - KEYCLOAK_CLIENT_SECRET=your-client-secret
     depends_on:
       - mysql
+      - keycloak
 
   mysql:
     image: mysql:8.0
@@ -25,6 +30,22 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+  
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.1
+    container_name: keycloak
+    restart: always
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=dev-file
+    ports:
+      - "3790:8080"
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    command:
+      - "start-dev"
+      - "--import-realm"
 
 volumes:
   mysql_data:
