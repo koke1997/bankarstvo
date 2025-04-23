@@ -1,0 +1,199 @@
+syntax = "proto3";
+
+package banking.user;
+
+option java_multiple_files = true;
+option java_package = "com.bankarstvo.user";
+option go_package = "userservice";
+
+// User service definition
+service UserService {
+  // Authentication methods
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc Logout (LogoutRequest) returns (LogoutResponse);
+  rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  
+  // User management methods
+  rpc GetUserProfile (GetUserProfileRequest) returns (UserProfileResponse);
+  rpc UpdateUserProfile (UpdateUserProfileRequest) returns (UserProfileResponse);
+  rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+  rpc EnableTwoFactorAuth (TwoFactorAuthRequest) returns (TwoFactorAuthResponse);
+  rpc VerifyTwoFactorAuth (VerifyTwoFactorAuthRequest) returns (VerifyTwoFactorAuthResponse);
+  
+  // Admin methods (to be used by Django admin)
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+  rpc GetUserByID (GetUserByIDRequest) returns (UserProfileResponse);
+  rpc UpdateUserStatus (UpdateUserStatusRequest) returns (UpdateUserStatusResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+// Authentication messages
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+  bool remember_me = 3;
+}
+
+message LoginResponse {
+  bool success = 1;
+  string message = 2;
+  string access_token = 3;
+  string refresh_token = 4;
+  UserProfile user = 5;
+}
+
+message LogoutRequest {
+  string access_token = 1;
+}
+
+message LogoutResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+  bool success = 1;
+  string message = 2;
+  string access_token = 3;
+  string refresh_token = 4;
+}
+
+message RegisterRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string phone_number = 6;
+  string country_code = 7;
+}
+
+message RegisterResponse {
+  bool success = 1;
+  string message = 2;
+  int64 user_id = 3;
+}
+
+// User profile messages
+message UserProfile {
+  int64 id = 1;
+  string username = 2;
+  string email = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string phone_number = 6;
+  string country_code = 7;
+  bool verified = 8;
+  bool two_factor_enabled = 9;
+  string created_at = 10;
+  string updated_at = 11;
+  UserStatus status = 12;
+}
+
+enum UserStatus {
+  ACTIVE = 0;
+  INACTIVE = 1;
+  SUSPENDED = 2;
+  LOCKED = 3;
+}
+
+message GetUserProfileRequest {
+  int64 user_id = 1;
+}
+
+message UserProfileResponse {
+  bool success = 1;
+  string message = 2;
+  UserProfile user = 3;
+}
+
+message UpdateUserProfileRequest {
+  int64 user_id = 1;
+  string email = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string phone_number = 5;
+  string country_code = 6;
+}
+
+message ChangePasswordRequest {
+  int64 user_id = 1;
+  string current_password = 2;
+  string new_password = 3;
+}
+
+message ChangePasswordResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Two-factor authentication messages
+message TwoFactorAuthRequest {
+  int64 user_id = 1;
+}
+
+message TwoFactorAuthResponse {
+  bool success = 1;
+  string message = 2;
+  string secret_key = 3;
+  string qr_code_url = 4;
+}
+
+message VerifyTwoFactorAuthRequest {
+  int64 user_id = 1;
+  string code = 2;
+}
+
+message VerifyTwoFactorAuthResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Admin-related messages
+message ListUsersRequest {
+  int32 page = 1;
+  int32 limit = 2;
+  string sort_by = 3;
+  bool ascending = 4;
+  string search = 5;
+  UserStatus status_filter = 6;
+}
+
+message ListUsersResponse {
+  bool success = 1;
+  string message = 2;
+  repeated UserProfile users = 3;
+  int32 total_count = 4;
+  int32 page = 5;
+  int32 limit = 6;
+}
+
+message GetUserByIDRequest {
+  int64 user_id = 1;
+}
+
+message UpdateUserStatusRequest {
+  int64 user_id = 1;
+  UserStatus status = 2;
+  string reason = 3;
+}
+
+message UpdateUserStatusResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message DeleteUserRequest {
+  int64 user_id = 1;
+  string admin_password = 2;
+}
+
+message DeleteUserResponse {
+  bool success = 1;
+  string message = 2;
+}

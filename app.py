@@ -30,4 +30,6 @@ if __name__ == '__main__':
             return render_template('index.html')
 
         # Run the Flask application with the debugger enabled
-        socketio.run(app, debug=True)
+        # Add host='0.0.0.0' to make it accessible from outside the container
+        # Add allow_unsafe_werkzeug=True to avoid the Werkzeug warning in Docker
+        socketio.run(app, debug=True, host='0.0.0.0', allow_unsafe_werkzeug=True)

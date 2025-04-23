@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # Django application
+  django:
+    build:
+      context: ./django_app
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - keycloak
+    environment:
+      - DATABASE_NAME=bankarstvo
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=example
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+      - KEYCLOAK_REALM=bankarstvo
+      - KEYCLOAK_AUTH_SERVER_URL=http://keycloak:8080/auth
+      - KEYCLOAK_RESOURCE=bankarstvo-client
+      - KEYCLOAK_CLIENT_SECRET=your-client-secret
+    volumes:
+      - ./django_app:/app
+    restart: always
+
+  # Flask application (kept for backward compatibility)
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+      - keycloak
+    environment:
+      - DATABASE_NAME=bankarstvo
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=example
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+      - KEYCLOAK_REALM=bankarstvo
+      - KEYCLOAK_AUTH_SERVER_URL=http://keycloak:8080/auth
+      - KEYCLOAK_RESOURCE=bankarstvo-client
+      - KEYCLOAK_CLIENT_SECRET=your-client-secret
+    volumes:
+      - .:/app
+    restart: always
+
+  # Database
+  db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=bankarstvo
+      - MYSQL_ROOT_PASSWORD=example
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
+
+  # Keycloak for authentication
+  keycloak:
+    image: quay.io/keycloak/keycloak:20.0.3
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=mysql
+      - KC_DB_URL=jdbc:mysql://db:3306/keycloak
+      - KC_DB_USERNAME=root
+      - KC_DB_PASSWORD=example
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    command: 
+      - start-dev
+      - --import-realm
+    volumes:
+      - ./keycloak/bankarstvo-realm.json:/opt/keycloak/data/import/realm.json
+    restart: always
+
+volumes:
+  db_data:

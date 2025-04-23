@@ -1,0 +1,229 @@
+syntax = "proto3";
+
+package banking.account;
+
+option java_multiple_files = true;
+option java_package = "com.bankarstvo.account";
+option go_package = "accountservice";
+
+// Account service definition
+service AccountService {
+  // Account management
+  rpc CreateAccount (CreateAccountRequest) returns (AccountResponse);
+  rpc GetAccount (GetAccountRequest) returns (AccountResponse);
+  rpc GetAccounts (GetAccountsRequest) returns (GetAccountsResponse);
+  rpc UpdateAccount (UpdateAccountRequest) returns (AccountResponse);
+  rpc CloseAccount (CloseAccountRequest) returns (CloseAccountResponse);
+  
+  // Balance operations
+  rpc GetBalance (GetBalanceRequest) returns (BalanceResponse);
+  rpc GetBalanceHistory (GetBalanceHistoryRequest) returns (BalanceHistoryResponse);
+  
+  // Account details operations
+  rpc GetAccountStatement (GetAccountStatementRequest) returns (AccountStatementResponse);
+  rpc GetAccountDetails (GetAccountDetailsRequest) returns (AccountDetailsResponse);
+  
+  // Admin operations (to be used by Django admin)
+  rpc LockAccount (LockAccountRequest) returns (LockAccountResponse);
+  rpc UnlockAccount (UnlockAccountRequest) returns (UnlockAccountResponse);
+  rpc ListAllAccounts (ListAllAccountsRequest) returns (ListAllAccountsResponse);
+}
+
+// Account types
+enum AccountType {
+  CHECKING = 0;
+  SAVINGS = 1;
+  BUSINESS = 2;
+  INVESTMENT = 3;
+  CREDIT = 4;
+}
+
+// Account statuses
+enum AccountStatus {
+  ACTIVE = 0;
+  INACTIVE = 1;
+  LOCKED = 2;
+  CLOSED = 3;
+  PENDING = 4;
+}
+
+// Core account message
+message Account {
+  string account_id = 1;
+  int64 user_id = 2;
+  AccountType account_type = 3;
+  AccountStatus status = 4;
+  string currency = 5;
+  double balance = 6;
+  double available_balance = 7;
+  string name = 8;
+  string created_at = 9;
+  string updated_at = 10;
+  string iban = 11;
+  string swift_bic = 12;
+}
+
+// Create account messages
+message CreateAccountRequest {
+  int64 user_id = 1;
+  AccountType account_type = 2;
+  string currency = 3;
+  string name = 4;
+  double initial_deposit = 5;
+}
+
+message AccountResponse {
+  bool success = 1;
+  string message = 2;
+  Account account = 3;
+}
+
+// Get account messages
+message GetAccountRequest {
+  string account_id = 1;
+  int64 user_id = 2; // For authorization
+}
+
+message GetAccountsRequest {
+  int64 user_id = 1;
+  AccountType account_type = 2; // Optional filter
+  AccountStatus status = 3; // Optional filter
+}
+
+message GetAccountsResponse {
+  bool success = 1;
+  string message = 2;
+  repeated Account accounts = 3;
+  int32 total_count = 4;
+}
+
+// Update account messages
+message UpdateAccountRequest {
+  string account_id = 1;
+  int64 user_id = 2; // For authorization
+  string name = 3;
+}
+
+// Close account messages
+message CloseAccountRequest {
+  string account_id = 1;
+  int64 user_id = 2; // For authorization
+  string transfer_remaining_to_account_id = 3; // Where to transfer any remaining funds
+}
+
+message CloseAccountResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Balance messages
+message GetBalanceRequest {
+  string account_id = 1;
+  int64 user_id = 2; // For authorization
+}
+
+message BalanceResponse {
+  bool success = 1;
+  string message = 2;
+  string account_id = 3;
+  double balance = 4;
+  double available_balance = 5;
+  string currency = 6;
+  string as_of_date = 7;
+}
+
+// Balance history messages
+message GetBalanceHistoryRequest {
+  string account_id = 1;
+  int64 user_id = 2; // For authorization
+  string start_date = 3;
+  string end_date = 4;
+  string interval = 5; // daily, weekly, monthly
+}
+
+message BalanceHistoryEntry {
+  string date = 1;
+  double balance = 2;
+}
+
+message BalanceHistoryResponse {
+  bool success = 1;
+  string message = 2;
+  string account_id = 3;
+  string currency = 4;
+  repeated BalanceHistoryEntry history = 5;
+}
+
+// Account statement messages
+message GetAccountStatementRequest {
+  string account_id = 1;
+  int64 user_id = 2; // For authorization
+  string start_date = 3;
+  string end_date = 4;
+  string format = 5; // pdf, csv, json
+}
+
+message AccountStatementResponse {
+  bool success = 1;
+  string message = 2;
+  string account_id = 3;
+  string statement_url = 4; // URL to download the statement
+  bytes statement_data = 5; // Raw statement data (if requested)
+}
+
+// Account details messages
+message GetAccountDetailsRequest {
+  string account_id = 1;
+  int64 user_id = 2; // For authorization
+}
+
+message AccountDetailsResponse {
+  bool success = 1;
+  string message = 2;
+  Account account = 3;
+  string account_holder_name = 4;
+  string bank_name = 5;
+  string bank_address = 6;
+}
+
+// Admin operation messages
+message LockAccountRequest {
+  string account_id = 1;
+  string reason = 2;
+  int64 admin_id = 3;
+}
+
+message LockAccountResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message UnlockAccountRequest {
+  string account_id = 1;
+  string reason = 2;
+  int64 admin_id = 3;
+}
+
+message UnlockAccountResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ListAllAccountsRequest {
+  int32 page = 1;
+  int32 limit = 2;
+  string sort_by = 3;
+  bool ascending = 4;
+  AccountStatus status_filter = 5;
+  AccountType type_filter = 6;
+  string search = 7; // Search by account ID, name, or user ID
+}
+
+message ListAllAccountsResponse {
+  bool success = 1;
+  string message = 2;
+  repeated Account accounts = 3;
+  int32 total_count = 4;
+  int32 page = 5;
+  int32 limit = 6;
+}
