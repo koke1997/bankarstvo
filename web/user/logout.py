@@ -9,7 +9,8 @@ logger = logging.getLogger(__name__)
 
 # Create a Keycloak client using the environment variables from docker-compose.yml
 try:
-    from keycloak import KeycloakOpenID
+    # Import inside the try block to handle potential missing module gracefully
+    from keycloak_realm_configs import KeycloakOpenID
     keycloak_openid = KeycloakOpenID(
         server_url=os.getenv("KEYCLOAK_AUTH_SERVER_URL", "http://localhost:3790/auth"),
         client_id=os.getenv("KEYCLOAK_RESOURCE", "bankarstvo-client"),
@@ -17,9 +18,49 @@ try:
         client_secret_key=os.getenv("KEYCLOAK_CLIENT_SECRET", "your-client-secret")
     )
     keycloak_available = True
+except ImportError:
+    logger.warning("Keycloak module not installed, SSO logout won't be available")
+    keycloak_available = False
+    # Define a complete dummy class to avoid Pylance errors
+    class KeycloakOpenID:
+        def __init__(self, server_url=None, client_id=None, realm_name=None, client_secret_key=None):
+            self.server_url = server_url
+            self.client_id = client_id
+            self.realm_name = realm_name
+            self.client_secret_key = client_secret_key
+        
+        def logout(self, refresh_token=None):
+            # Dummy method for Pylance compatibility
+            logger.debug("Mock Keycloak logout called")
+            return True
+            
+    keycloak_openid = KeycloakOpenID(
+        server_url=os.getenv("KEYCLOAK_AUTH_SERVER_URL", "http://localhost:3790/auth"),
+        client_id=os.getenv("KEYCLOAK_RESOURCE", "bankarstvo-client"),
+        realm_name=os.getenv("KEYCLOAK_REALM", "bankarstvo")
+    )
 except Exception as e:
     logger.warning(f"Keycloak configuration error: {e}")
     keycloak_available = False
+    # Reuse the KeycloakOpenID class from above to avoid redeclaration
+    if 'KeycloakOpenID' not in locals():
+        class KeycloakOpenID:
+            def __init__(self, server_url=None, client_id=None, realm_name=None, client_secret_key=None):
+                self.server_url = server_url
+                self.client_id = client_id
+                self.realm_name = realm_name
+                self.client_secret_key = client_secret_key
+            
+            def logout(self, refresh_token=None):
+                # Dummy method for Pylance compatibility
+                logger.debug("Mock Keycloak logout called")
+                return True
+                
+    keycloak_openid = KeycloakOpenID(
+        server_url=os.getenv("KEYCLOAK_AUTH_SERVER_URL", "http://localhost:3790/auth"),
+        client_id=os.getenv("KEYCLOAK_RESOURCE", "bankarstvo-client"),
+        realm_name=os.getenv("KEYCLOAK_REALM", "bankarstvo")
+    )
 
 @user_routes.route('/logout', methods=['GET'], endpoint="logout")
 @token_required

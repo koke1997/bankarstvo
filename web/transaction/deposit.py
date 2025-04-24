@@ -1,7 +1,7 @@
-from flask import request, redirect, url_for, flash, session
-from DatabaseHandling.connection import get_db_cursor
+from flask import request, redirect, url_for, flash, session, render_template
+from utils.extensions import db
+from core.models import Account, Transaction
 from . import transaction_routes
-from MediaHandling.pdf_handling import generate_pdf, save_document_to_db
 import logging
 import io
 import base64
@@ -15,26 +15,33 @@ def deposit():
             deposit_amount = request.form.get("amount", type=float)
             account_id = session.get("selected_account_id")
 
-            conn, cursor = get_db_cursor()
-
-            update_query = "UPDATE accounts SET balance = balance + %s WHERE account_id = %s"
-            cursor.execute(update_query, (deposit_amount, account_id))
-            logging.info(f"Executed SQL query: {update_query} with parameters: ({deposit_amount}, {account_id})")
-
-            insert_query = """
-                INSERT INTO transactions (from_account_id, amount, transaction_type, description) 
-                VALUES (%s, %s, 'deposit', 'Deposit into account')
-                """
-            cursor.execute(insert_query, (account_id, deposit_amount))
-            logging.info(f"Executed SQL query: {insert_query} with parameters: ({account_id}, {deposit_amount})")
-
-            conn.commit()
-            cursor.close()
-            conn.close()
-
+            # Use db.session.query instead of Account.query
+            account = db.session.query(Account).filter_by(account_id=account_id).first()
+            
+            if not account:
+                flash("Account not found!", "error")
+                return redirect(url_for("account_routes.dashboard"))
+            
+            # Update account balance with proper null handling
+            current_balance = float(account.balance or 0)
+            account.balance = current_balance + deposit_amount
+            
+            # Create transaction record with proper field initialization
+            new_transaction = Transaction(
+                account_id=account_id, 
+                amount=deposit_amount, 
+                type='deposit', 
+                description='Deposit into account'
+            )
+            
+            # Save changes to database
+            db.session.add(new_transaction)
+            db.session.commit()
+            
             logging.info(f"Deposit successful! Amount: {deposit_amount}, Account ID: {account_id}")
             flash("Deposit successful!", "success")
         except Exception as e:
+            db.session.rollback()
             logging.error(f"An error occurred during deposit: {e}")
             flash(f"An error occurred during deposit: {e}", "error")
             collect_failed_automation_results(e)

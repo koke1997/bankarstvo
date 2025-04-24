@@ -1,6 +1,6 @@
 from . import account_routes
 from flask import jsonify, session, current_app
-from DatabaseHandling.connection import get_db_cursor
+from utils.extensions import db
 from core.models import Account
 
 @account_routes.route('/get_balance', methods=['GET'])
@@ -25,23 +25,14 @@ def get_balance():
         return jsonify({'balance': 100.00})
     
     try:
-        # For production, use the database
-        conn, cursor = get_db_cursor()
-        try:
-            cursor.execute("SELECT balance FROM accounts WHERE account_id = %s", (account_id,))
-            result = cursor.fetchone()
+        # For production, use SQLAlchemy to query the database
+        account = Account.query.filter_by(account_id=account_id).first()
+        
+        if not account:
+            return jsonify({'error': 'Invalid account'}), 400
             
-            if not result:
-                return jsonify({'error': 'Invalid account'}), 400
-                
-            balance = result[0]
-            return jsonify({'balance': balance})
-        except Exception as e:
-            current_app.logger.error(f"Error fetching balance: {e}")
-            return jsonify({'error': 'An error occurred while fetching the balance'}), 500
-        finally:
-            cursor.close()
-            conn.close()
+        balance = account.balance
+        return jsonify({'balance': balance})
     except Exception as e:
-        current_app.logger.error(f"Database connection error: {e}")
+        current_app.logger.error(f"Database error: {e}")
         return jsonify({'error': 'An error occurred while fetching the balance'}), 500

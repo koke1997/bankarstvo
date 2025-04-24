@@ -1,5 +1,9 @@
 # user_routes/__init__.py
 from flask import Blueprint, render_template
+import logging
+
+# Set up logger
+logger = logging.getLogger(__name__)
 
 user_routes = Blueprint('user_routes', __name__, 
                        template_folder="templates",
@@ -37,5 +41,15 @@ user_routes.add_url_rule('/logout',
                         view_func=logout,
                         methods=['GET'])
 
-# Log registration of user routes
-print(f"Registered user routes: {[rule.rule for rule in user_routes.iter_rules()]}")
+# Log registration of user routes properly
+registered_routes = [
+    f"{user_routes.url_prefix}{rule}" for rule, _ in user_routes._rules
+] if hasattr(user_routes, '_rules') else [
+    f"{user_routes.url_prefix}/",
+    f"{user_routes.url_prefix}/login",
+    f"{user_routes.url_prefix}/callback",
+    f"{user_routes.url_prefix}/register", 
+    f"{user_routes.url_prefix}/logout"
+]
+
+logger.info(f"Registered user routes: {registered_routes}")

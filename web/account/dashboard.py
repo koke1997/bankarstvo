@@ -2,15 +2,15 @@
 from flask import render_template, session, request, flash, redirect, url_for, current_app, abort
 from flask_login import current_user
 from . import account_routes
-from DatabaseHandling.connection import get_db_cursor
-from .forms import TransferForm
-from routes.search_routes.search import search_accounts_by_username  # Updated import
-from routes.transaction_routes.history import transaction_history
 from utils.extensions import db  # Add SQLAlchemy import
-from core.models import Account, User  # Add model imports
+from .forms import TransferForm
+# Removed old imports
+from core.models import Account, User, Transaction  # Add model imports
 import requests
 import json
 import logging
+import pycountry  # Add pycountry import
+from datetime import datetime  # Added datetime import
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -18,18 +18,31 @@ logger = logging.getLogger(__name__)
 
 @account_routes.route("/dashboard", methods=["GET", "POST"], endpoint="dashboard")
 def dashboard():
+    # Enhanced logging for dashboard access
+    logger.debug(f"Dashboard access - Method: {request.method}, Headers: {dict(request.headers)}")
+    logger.debug(f"Session data: {session}")
+    logger.debug(f"Current user authenticated: {current_user.is_authenticated if hasattr(current_user, 'is_authenticated') else 'No current_user'}")
+    
     # Check if user is logged in via Flask-Login
     if not current_user.is_authenticated:
         # Check if user is logged in via session (fallback)
         if 'user_id' not in session:
+            logger.warning("User not authenticated - redirecting to login")
             flash("Please log in to access your dashboard", "warning")
             return redirect(url_for("user_routes.login"))
+        else:
+            logger.debug(f"User authenticated via session only: user_id={session.get('user_id')}")
+    else:
+        logger.debug(f"User authenticated via Flask-Login: {current_user.get_id()}")
     
     # Get user_id from either current_user or session
     try:
         user_id = current_user.get_id()
-    except:
+        logger.debug(f"Got user_id from current_user: {user_id}")
+    except Exception as e:
+        logger.debug(f"Error getting user_id from current_user: {e}")
         user_id = session.get('user_id', 1)  # Fallback to 1 if not set
+        logger.debug(f"Using session user_id fallback: {user_id}")
     
     # Log the user ID we're trying to use
     logger.info(f"Accessing dashboard for user_id: {user_id}")
@@ -49,39 +62,27 @@ def dashboard():
         # Only attempt database operations if not in emergency mode
         if not is_emergency_mode:
             try:
-                # Try using SQLAlchemy
-                accounts_query = Account.query.filter_by(user_id=user_id).all()
+                # Use db.session.query instead of Account.query
+                accounts_query = db.session.query(Account).filter_by(user_id=user_id).all()
                 accounts = []
                 for account in accounts_query:
                     accounts.append({
                         'account_id': account.account_id,
                         'account_type': account.account_type,
-                        'balance': account.balance,
+                        'balance': account.balance if account.balance is not None else 0.00,
                         'currency_code': account.currency_code
                     })
             except Exception as e:
                 logger.error(f"SQLAlchemy error: {e}")
-                # Fallback to raw connection
-                try:
-                    conn, cursor = get_db_cursor()
-                    cursor.execute(
-                        "SELECT account_id, account_type, balance, currency_code FROM accounts WHERE user_id = %s",
-                        (user_id,),
-                    )
-                    accounts = cursor.fetchall()
-                    cursor.close()
-                    conn.close()
-                except Exception as inner_e:
-                    logger.error(f"Raw SQL error: {inner_e}")
-                    # Create dummy account data if both database methods fail
-                    accounts = [
-                        {
-                            'account_id': 1,
-                            'account_type': 'Checking',
-                            'balance': 1000.00,
-                            'currency_code': 'USD'
-                        }
-                    ]
+                # Create dummy account data if database methods fail
+                accounts = [
+                    {
+                        'account_id': 1,
+                        'account_type': 'Checking',
+                        'balance': 1000.00,
+                        'currency_code': 'USD'
+                    }
+                ]
         else:
             # In emergency mode, create dummy account data
             logger.warning("Using dummy account data in emergency mode")
@@ -102,18 +103,22 @@ def dashboard():
 
         # Load country codes for currency selection
         try:
-            with open("extresources/countrycodes.json") as f:
-                country_data = json.load(f)
-
-            country_options = [
-                {
-                    "code": entry["ISO4217-currency_alphabetic_code"],
-                    "name": entry["CLDR display name"],
-                }
-                for entry in country_data
-                if "ISO4217-currency_alphabetic_code" in entry
-                and entry["ISO4217-currency_alphabetic_code"]
-            ]
+            # Use pycountry instead of loading from JSON file
+            country_options = []
+            for currency in pycountry.currencies:
+                if hasattr(currency, 'alpha_3') and hasattr(currency, 'name'):
+                    country_options.append({
+                        "code": currency.alpha_3,
+                        "name": currency.name
+                    })
+            
+            # If for some reason pycountry doesn't provide any currencies
+            if not country_options:
+                country_options = [
+                    {"code": "USD", "name": "US Dollar"},
+                    {"code": "EUR", "name": "Euro"},
+                    {"code": "GBP", "name": "British Pound"},
+                ]
         except Exception as e:
             logger.error(f"Error loading country codes: {e}")
             # Provide some default currency options
@@ -167,41 +172,29 @@ def dashboard():
         else:
             # Try regular database methods
             try:
-                account = Account.query.filter_by(account_id=selected_account_id, user_id=user_id).first()
+                # Use db.session.query instead of Account.query
+                account = db.session.query(Account).filter_by(account_id=selected_account_id, user_id=user_id).first()
                 if account:
-                    user = User.query.filter_by(user_id=user_id).first()
+                    # Use db.session.query instead of User.query
+                    user = db.session.query(User).filter_by(user_id=user_id).first()
                     selected_account = {
                         'account_id': account.account_id,
                         'account_type': account.account_type, 
-                        'balance': account.balance,
+                        'balance': account.balance if account.balance is not None else 0.00,
                         'currency_code': account.currency_code,
                         'user_id': account.user_id,
                         'username': user.username if user else None
                     }
-                    balance = account.balance
+                    balance = account.balance if account.balance is not None else 0.00
             except Exception as e:
                 logger.error(f"Error getting selected account from database: {e}")
-                try:
-                    conn, cursor = get_db_cursor()
-                    cursor.execute(
-                        "SELECT a.*, u.username FROM accounts a JOIN user u ON a.user_id = u.user_id WHERE a.account_id = %s AND a.user_id = %s",
-                        (selected_account_id, user_id),
-                    )
-                    selected_account = cursor.fetchone()
-
-                    if selected_account:
-                        balance = selected_account["balance"]
-                    cursor.close()
-                    conn.close()
-                except Exception as inner_e:
-                    logger.error(f"Error with raw SQL: {inner_e}")
-                    # Fallback for selected account
-                    for account in accounts:
-                        if account['account_id'] == selected_account_id:
-                            selected_account = account
-                            selected_account['username'] = session.get('username', 'unknown')
-                            balance = account['balance']
-                            break
+                # Fallback for selected account
+                for account in accounts:
+                    if account['account_id'] == selected_account_id:
+                        selected_account = account
+                        selected_account['username'] = session.get('username', 'unknown')
+                        balance = account['balance']
+                        break
 
     # For emergency mode, create fake transactions
     if is_emergency_mode:
@@ -222,9 +215,20 @@ def dashboard():
             }
         ]
     else:
-        # Try to get real transactions
+        # Try to get real transactions using SQLAlchemy
         try:
-            transactions = transaction_history()
+            if selected_account_id:
+                # Use db.session.query instead of Transaction.query
+                transactions_query = db.session.query(Transaction).filter_by(account_id=selected_account_id).all()
+                transactions = []
+                for transaction in transactions_query:
+                    transactions.append({
+                        'transaction_id': transaction.transaction_id,
+                        'date_posted': transaction.date_posted,
+                        'description': transaction.description or '',
+                        'amount': transaction.amount,
+                        'type': transaction.type
+                    })
         except Exception as e:
             logger.error(f"Error getting transaction history: {e}")
             # Use empty transactions as fallback
@@ -264,9 +268,18 @@ def dashboard():
                             ]
                             flash("Search Results", "info")  # Add the expected flash message
                     else:
-                        # Utilize search_accounts from search.py
+                        # Perform search with SQLAlchemy using db.session.query
                         try:
-                            search_results = search_accounts_by_username(search_username)
+                            users = db.session.query(User).filter(User.username.like(f"%{search_username}%")).all()
+                            search_results = []
+                            for user in users:
+                                # Use db.session.query instead of Account.query
+                                accounts = db.session.query(Account).filter_by(user_id=user.user_id).all()
+                                for account in accounts:
+                                    search_results.append({
+                                        "account_id": account.account_id,
+                                        "account_name": f"{user.username}'s {account.account_type} Account"
+                                    })
                         except Exception as e:
                             logger.error(f"Error searching accounts: {e}")
                             # Fallback search results if database fails

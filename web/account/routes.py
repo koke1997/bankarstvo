@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 
 # Import services from core directory
-from core.services.account_service import get_account_details, create_account, update_account
+from core.services import get_account_details, create_account, update_account
 
 # Create blueprint with new naming convention
 account_bp = Blueprint('account', __name__, template_folder='templates')

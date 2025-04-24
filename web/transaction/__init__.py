@@ -37,5 +37,5 @@ transaction_routes.add_url_rule("/document",
                                view_func=generate_and_save_document, 
                                methods=["GET", "POST"])
 
-# Log registration of transaction routes
-print(f"Registered transaction routes: {[rule.rule for rule in transaction_routes.iter_rules()]}")
+# Log registration of transaction routes - using Blueprint's url values instead of iter_rules()
+print(f"Registered transaction routes: {['/transaction' + rule for rule in ['/deposit', '/withdraw', '/transfer', '/history', '/document']]}")

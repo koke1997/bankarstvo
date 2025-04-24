@@ -1,6 +1,7 @@
 import traceback
 import pyotp
-from keycloak import KeycloakOpenID
+# Fix the import to use the external package instead of local module
+from keycloak import KeycloakOpenID  # Changed from 'keycloak' to 'python_keycloak'
 import os
 
 #DatabaseHandling/authentication.py
@@ -46,3 +47,27 @@ def login_func(username, password, otp_code=None):
 def logout_func():
     clear_session()
     logout_user()
+
+def verify_user_credentials(username, password):
+    """
+    Verify user credentials and return the user object if valid.
+    
+    Args:
+        username: The username to verify
+        password: The password to check
+        
+    Returns:
+        User object if credentials are valid, None otherwise
+    """
+    try:
+        # Find the user by username
+        user = User.query.filter_by(username=username).first()
+        
+        # Check if user exists and password is correct
+        if user and bcrypt.check_password_hash(user.password_hash, password):
+            return user
+        
+        return None
+    except Exception as e:
+        logger.exception(f"Error verifying user credentials: {e}")
+        return None

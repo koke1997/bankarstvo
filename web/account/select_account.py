@@ -2,7 +2,8 @@
 from flask import session, request, redirect, url_for, flash
 from flask_login import current_user
 from . import account_routes
-from DatabaseHandling.connection import get_db_cursor
+from utils.extensions import db
+from core.models import Account, User
 import logging
 
 logger = logging.getLogger(__name__)
@@ -15,28 +16,35 @@ def select_account():
     selected_account_id = session.get("selected_account_id")
 
     if selected_account_id is not None:
-        selected_account_id = int(selected_account_id)
         try:
-            conn, cursor = get_db_cursor()
-            cursor.execute("SELECT 1")  # Test the database connection
-            cursor.fetchone()  # Fetch the result of the "SELECT 1" query
-            cursor.execute(
-                "SELECT a.*, u.username FROM accounts a JOIN user u ON a.user_id = u.user_id WHERE a.account_id = %s AND a.user_id = %s",
-                (selected_account_id, current_user.get_id()),  # Get user_id from current_user
-            )
-            selected_account = cursor.fetchone()
-            logger.info(selected_account)  # Log the selected account
-        except Exception as e:
-            logger.error(f"Database error: {e}")  # Log the exception
-            flash("Failed to select account due to a database error", "error")
-            return redirect(url_for("account_routes.dashboard"))
-        finally:
-            cursor.close()
-            conn.close()
+            selected_account_id = int(selected_account_id)
+            try:
+                # Use SQLAlchemy to fetch the account information
+                account = Account.query.filter_by(
+                    account_id=selected_account_id, 
+                    user_id=current_user.get_id()
+                ).first()
+                
+                if account:
+                    user = User.query.filter_by(user_id=account.user_id).first()
+                    selected_account = {
+                        'account_id': account.account_id,
+                        'user_id': account.user_id,
+                        'username': user.username if user else 'Unknown'
+                    }
+                    logger.info(selected_account)  # Log the selected account
+                else:
+                    selected_account = None
+            except Exception as e:
+                logger.error(f"Database error: {e}")  # Log the exception
+                flash("Failed to select account due to a database error", "error")
+                return redirect(url_for("account_routes.dashboard"))
 
-        if selected_account:
-            flash("Account selected successfully", "success")
-        else:
-            flash("Failed to select account", "error")
+            if selected_account:
+                flash("Account selected successfully", "success")
+            else:
+                flash("Failed to select account", "error")
+        except ValueError:
+            flash("Invalid account ID", "error")
 
     return redirect(url_for("account_routes.dashboard"))

@@ -23,6 +23,11 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         
+        # Ensure values aren't None before authentication
+        if not username or not password:
+            flash('Username and password are required', 'danger')
+            return render_template('user/login.html')
+            
         # Use service layer for authentication
         user, error = authenticate_user(username, password)
         
@@ -46,6 +51,11 @@ def register():
         email = request.form.get('email')
         password = request.form.get('password')
         
+        # Ensure all values aren't None before registration
+        if not username or not email or not password:
+            flash('All fields are required', 'danger')
+            return render_template('user/register.html')
+            
         # Use service layer for registration
         user, error = register_new_user(username, email, password)
         

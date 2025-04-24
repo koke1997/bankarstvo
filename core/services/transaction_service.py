@@ -1,10 +1,76 @@
-import mysql.connector
-from DatabaseHandling.connection import connect_db, get_db_cursor
+from utils.extensions import db
+from core.models import Account, Transaction
 from core.validation_utils import validate_account, validate_currency
 import logging
 from flask import current_app
+from sqlalchemy.exc import SQLAlchemyError
 
 logger = logging.getLogger(__name__)
+
+
+def get_transaction_details(transaction_id):
+    """
+    Get details of a specific transaction.
+    """
+    try:
+        # Replace Transaction.query with db.session.query(Transaction)
+        transaction = db.session.query(Transaction).filter_by(transaction_id=transaction_id).first()
+        if transaction:
+            return {
+                'transaction_id': transaction.transaction_id,
+                'account_id': transaction.account_id,
+                'amount': transaction.amount,
+                'type': transaction.type,
+                'description': transaction.description,
+                'date_posted': transaction.date_posted,
+                'recipient_account_id': transaction.recipient_account_id
+            }
+        return None
+    except Exception as e:
+        logger.error(f"Error retrieving transaction details: {e}")
+        return None
+
+
+def create_transaction(account_id, amount, transaction_type, description, recipient_account_id=None):
+    """
+    Create a new transaction record.
+    """
+    try:
+        # Use proper keyword argument initialization 
+        new_transaction = Transaction(
+            account_id=account_id,
+            amount=amount,
+            type=transaction_type,
+            description=description,
+            recipient_account_id=recipient_account_id
+        )
+        db.session.add(new_transaction)
+        db.session.commit()
+        return new_transaction.transaction_id
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Error creating transaction: {e}")
+        return None
+
+
+def update_transaction(transaction_id, **kwargs):
+    """
+    Update an existing transaction.
+    """
+    try:
+        # Replace Transaction.query with db.session.query(Transaction)
+        transaction = db.session.query(Transaction).filter_by(transaction_id=transaction_id).first()
+        if transaction:
+            for key, value in kwargs.items():
+                if hasattr(transaction, key):
+                    setattr(transaction, key, value)
+            db.session.commit()
+            return True
+        return False
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Error updating transaction: {e}")
+        return False
 
 
 def transfer(sender_user_id, receiver_account_id, amount, currency_code):
@@ -51,68 +117,55 @@ def transfer(sender_user_id, receiver_account_id, amount, currency_code):
         # Default success case for tests
         return "Transfer successful"
 
-    # Establish a database connection and get a cursor
-    conn, cursor = get_db_cursor()
-
     try:
         # Validate currency code
         if not validate_currency(currency_code):
             return "Invalid currency code."
 
-        # Fetch the sender's account_id using sender_user_id and currency_code
-        sender_query = (
-            "SELECT account_id, balance FROM accounts WHERE user_id = %s AND currency_code = %s"
-        )
-        cursor.execute(sender_query, (sender_user_id, currency_code))
-        sender_account = cursor.fetchone()
+        # Replace Account.query with db.session.query(Account)
+        # Fetch the sender's account using sender_user_id and currency_code
+        sender_account = db.session.query(Account).filter_by(user_id=sender_user_id, currency_code=currency_code).first()
 
         if not sender_account:
             return "Sender's account not found."
 
-        sender_account_id, sender_balance = sender_account
+        sender_account_id = sender_account.account_id
+        sender_balance = float(sender_account.balance or 0)  # Ensure we don't convert None to float
 
         # Check if the sender has sufficient funds
         if sender_balance < amount:
             return "Insufficient funds."
 
         # Check if the receiver's account is valid
-        if not validate_account(receiver_account_id):
+        receiver_account = db.session.query(Account).filter_by(account_id=receiver_account_id).first()
+        if not receiver_account:
             return "Receiver's account is invalid."
 
         # Transfer funds: Deduct from sender and add to receiver
-        deduct_query = """
-            UPDATE accounts
-            SET balance = balance - %s
-            WHERE account_id = %s
-        """
-        cursor.execute(deduct_query, (amount, sender_account_id))
+        sender_account.balance = sender_balance - amount
+        receiver_balance = float(receiver_account.balance or 0)  # Ensure we don't convert None to float
+        receiver_account.balance = receiver_balance + amount
 
-        add_query = """
-            UPDATE accounts
-            SET balance = balance + %s
-            WHERE account_id = %s
-        """
-        cursor.execute(add_query, (amount, receiver_account_id))
-
-        # Log the transaction
-        log_query = """
-            INSERT INTO transactions (from_account_id, to_account_id, amount, transaction_type, description)
-            VALUES (%s, %s, %s, 'transfer', 'Fund transfer')
-        """
-        cursor.execute(log_query, (sender_account_id, receiver_account_id, amount))
+        # Log the transaction with proper initialization
+        new_transaction = Transaction(
+            account_id=sender_account_id,
+            recipient_account_id=receiver_account_id,
+            amount=amount,
+            type='transfer',
+            description='Fund transfer'
+        )
+        db.session.add(new_transaction)
 
         # Commit the database changes
-        conn.commit()
+        db.session.commit()
 
         return "Transfer successful"
 
-    except mysql.connector.Error as err:
+    except SQLAlchemyError as err:
+        db.session.rollback()
         logger.error(f"Error: {err}")
         return "Failed to transfer funds"
-
-    finally:
-        # Ensure the cursor and connection are always closed
-        if cursor:
-            cursor.close()
-        if conn:
-            conn.close()
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Unexpected error: {e}")
+        return "An error occurred during the transfer"

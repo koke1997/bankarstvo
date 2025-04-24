@@ -33,4 +33,4 @@ account_routes.add_url_rule("/balance",
                            methods=["GET"])
 
 # Log registration of account routes
-print(f"Registered account routes: {[rule.rule for rule in account_routes.iter_rules()]}")
+#print(f"Registered account routes: {[rule.rule for rule in account_routes.iter_rules()]}")

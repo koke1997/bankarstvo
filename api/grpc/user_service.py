@@ -1,8 +1,6 @@
 import grpc
 import logging
 from concurrent import futures
-from DatabaseHandling.authentication import authenticate_user
-from DatabaseHandling.registration_func import register_user
 import sys
 import os
 import time
@@ -13,10 +11,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from proto import user_service_pb2, user_service_pb2_grpc
 
 # Import database models and handlers
-from DatabaseHandling.connection import get_db_connection
-from DatabaseHandling.authentication import authenticate_user, hash_password
-from DatabaseHandling.registration_func import register_user
-from core.models import UserModel
+from utils.extensions import db, bcrypt
+from core.models import User
 
 logger = logging.getLogger(__name__)
 
@@ -30,45 +26,49 @@ class UserServicer(user_service_pb2_grpc.UserServiceServicer):
             username = request.username
             email = request.email
             password = request.password
-            first_name = request.first_name
-            last_name = request.last_name
-            phone_number = request.phone_number
-            address = request.address
+            first_name = request.first_name if hasattr(request, 'first_name') else None
+            last_name = request.last_name if hasattr(request, 'last_name') else None
+            phone_number = request.phone_number if hasattr(request, 'phone_number') else None
+            address = request.address if hasattr(request, 'address') else None
             
-            # Process registration
-            db_connection = get_db_connection()
-            success, message, user = register_user(
-                db_connection, 
-                username, 
-                email, 
-                password, 
-                first_name, 
-                last_name, 
-                phone_number, 
-                address
-            )
+            # Check if user already exists - use db.session.query instead of User.query
+            existing_user = db.session.query(User).filter(
+                (User.username == username) | (User.email == email)
+            ).first()
             
-            if not success:
+            if existing_user:
+                message = "Username or email already exists"
                 context.set_code(grpc.StatusCode.ALREADY_EXISTS)
                 context.set_details(message)
                 return user_service_pb2.UserResponse(
                     success=False,
                     message=message
                 )
+                
+            # Create new user - use only the attributes that are present in the User model
+            password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+            user = User(
+                username=username,
+                email=email,
+                password_hash=password_hash,
+                full_name=f"{first_name or ''} {last_name or ''}".strip()
+            )
+            
+            # Save to database
+            db.session.add(user)
+            db.session.commit()
             
             # Prepare user response (excluding sensitive fields)
+            # Ensure we only access fields that exist in the User model
             user_proto = user_service_pb2.User(
                 user_id=user.user_id,
                 username=user.username,
-                email=user.email,
-                first_name=user.first_name,
-                last_name=user.last_name,
-                phone_number=user.phone_number or "",
-                address=user.address or "",
-                date_created=str(user.date_created),
-                is_active=user.is_active,
-                profile_picture_url=user.profile_picture_url or ""
+                email=user.email
             )
+            
+            # Add optional fields if they exist in both the model and the proto
+            if hasattr(user_service_pb2.User, 'date_created') and hasattr(user, 'account_created'):
+                user_proto.date_created = str(user.account_created)
             
             return user_service_pb2.UserResponse(
                 success=True,
@@ -92,13 +92,13 @@ class UserServicer(user_service_pb2_grpc.UserServiceServicer):
             username_or_email = request.username_or_email
             password = request.password
             
-            # Authenticate user
-            db_connection = get_db_connection()
-            success, message, user = authenticate_user(
-                db_connection, username_or_email, password
-            )
+            # Find user by username or email - use db.session.query instead of User.query
+            user = db.session.query(User).filter(
+                (User.username == username_or_email) | (User.email == username_or_email)
+            ).first()
             
-            if not success:
+            if not user or not bcrypt.check_password_hash(user.password_hash, password):
+                message = "Invalid username/email or password"
                 context.set_code(grpc.StatusCode.UNAUTHENTICATED)
                 context.set_details(message)
                 return user_service_pb2.AuthResponse(
@@ -111,18 +111,16 @@ class UserServicer(user_service_pb2_grpc.UserServiceServicer):
             token = str(uuid.uuid4())
             
             # Prepare user response (excluding sensitive fields)
+            # Ensure we only access fields that exist in the User model
             user_proto = user_service_pb2.User(
                 user_id=user.user_id,
                 username=user.username,
-                email=user.email,
-                first_name=user.first_name,
-                last_name=user.last_name,
-                phone_number=user.phone_number or "",
-                address=user.address or "",
-                date_created=str(user.date_created),
-                is_active=user.is_active,
-                profile_picture_url=user.profile_picture_url or ""
+                email=user.email
             )
+            
+            # Add optional fields if they exist in both the model and the proto
+            if hasattr(user_service_pb2.User, 'date_created') and hasattr(user, 'account_created'):
+                user_proto.date_created = str(user.account_created)
             
             return user_service_pb2.AuthResponse(
                 success=True,
@@ -146,9 +144,8 @@ class UserServicer(user_service_pb2_grpc.UserServiceServicer):
             # Extract fields from request
             user_id = request.user_id
             
-            # Get user from database
-            db_connection = get_db_connection()
-            user = UserModel.find_by_id(db_connection, user_id)
+            # Get user from database - use db.session.query instead of User.query
+            user = db.session.query(User).get(user_id)
             
             if not user:
                 context.set_code(grpc.StatusCode.NOT_FOUND)
@@ -159,18 +156,16 @@ class UserServicer(user_service_pb2_grpc.UserServiceServicer):
                 )
             
             # Prepare user response (excluding sensitive fields)
+            # Ensure we only access fields that exist in the User model
             user_proto = user_service_pb2.User(
                 user_id=user.user_id,
                 username=user.username,
-                email=user.email,
-                first_name=user.first_name,
-                last_name=user.last_name,
-                phone_number=user.phone_number or "",
-                address=user.address or "",
-                date_created=str(user.date_created),
-                is_active=user.is_active,
-                profile_picture_url=user.profile_picture_url or ""
+                email=user.email
             )
+            
+            # Add optional fields if they exist in both the model and the proto
+            if hasattr(user_service_pb2.User, 'date_created') and hasattr(user, 'account_created'):
+                user_proto.date_created = str(user.account_created)
             
             return user_service_pb2.UserResponse(
                 success=True,
@@ -195,22 +190,37 @@ class UserServicer(user_service_pb2_grpc.UserServiceServicer):
             fields_to_update = {}
             
             # Check which fields are set and add them to the update dict
+            # Only include fields that exist in the User model
             if request.HasField('email'):
                 fields_to_update['email'] = request.email
-            if request.HasField('first_name'):
-                fields_to_update['first_name'] = request.first_name
-            if request.HasField('last_name'):
-                fields_to_update['last_name'] = request.last_name
-            if request.HasField('phone_number'):
-                fields_to_update['phone_number'] = request.phone_number
-            if request.HasField('address'):
-                fields_to_update['address'] = request.address
-            if request.HasField('profile_picture_url'):
-                fields_to_update['profile_picture_url'] = request.profile_picture_url
+                
+            # Update full_name field if first_name or last_name is provided
+            if (request.HasField('first_name') or request.HasField('last_name')):
+                # Get the user first to preserve existing name components
+                user = db.session.query(User).get(user_id)
+                if not user:
+                    context.set_code(grpc.StatusCode.NOT_FOUND)
+                    context.set_details("User not found")
+                    return user_service_pb2.UserResponse(
+                        success=False,
+                        message="User not found"
+                    )
+                    
+                # Get current name parts if available
+                current_name = user.full_name or ""
+                current_parts = current_name.split(" ", 1)
+                current_first = current_parts[0] if len(current_parts) > 0 else ""
+                current_last = current_parts[1] if len(current_parts) > 1 else ""
+                
+                # Update with new values if provided
+                first = request.first_name if request.HasField('first_name') else current_first
+                last = request.last_name if request.HasField('last_name') else current_last
+                
+                fields_to_update['full_name'] = f"{first} {last}".strip()
             
             # Update password if provided
             if request.HasField('password') and request.password:
-                fields_to_update['password_hash'] = hash_password(request.password)
+                fields_to_update['password_hash'] = bcrypt.generate_password_hash(request.password).decode('utf-8')
             
             # Check if there's anything to update
             if not fields_to_update:
@@ -219,10 +229,10 @@ class UserServicer(user_service_pb2_grpc.UserServiceServicer):
                     message="No fields to update"
                 )
                 
-            # Get user from database
-            db_connection = get_db_connection()
-            user = UserModel.find_by_id(db_connection, user_id)
-            
+            # Get user from database if not already fetched
+            if 'user' not in locals():
+                user = db.session.query(User).get(user_id)
+                
             if not user:
                 context.set_code(grpc.StatusCode.NOT_FOUND)
                 context.set_details("User not found")
@@ -232,32 +242,21 @@ class UserServicer(user_service_pb2_grpc.UserServiceServicer):
                 )
             
             # Update user in database
-            success = user.update(db_connection, **fields_to_update)
-            
-            if not success:
-                context.set_code(grpc.StatusCode.INTERNAL)
-                context.set_details("Failed to update user")
-                return user_service_pb2.UserResponse(
-                    success=False,
-                    message="Failed to update user"
-                )
-            
-            # Get updated user
-            updated_user = UserModel.find_by_id(db_connection, user_id)
+            for key, value in fields_to_update.items():
+                setattr(user, key, value)
+                
+            db.session.commit()
             
             # Prepare user response (excluding sensitive fields)
             user_proto = user_service_pb2.User(
-                user_id=updated_user.user_id,
-                username=updated_user.username,
-                email=updated_user.email,
-                first_name=updated_user.first_name,
-                last_name=updated_user.last_name,
-                phone_number=updated_user.phone_number or "",
-                address=updated_user.address or "",
-                date_created=str(updated_user.date_created),
-                is_active=updated_user.is_active,
-                profile_picture_url=updated_user.profile_picture_url or ""
+                user_id=user.user_id,
+                username=user.username,
+                email=user.email
             )
+            
+            # Add optional fields if they exist
+            if hasattr(user_service_pb2.User, 'date_created') and hasattr(user, 'account_created'):
+                user_proto.date_created = str(user.account_created)
             
             return user_service_pb2.UserResponse(
                 success=True,

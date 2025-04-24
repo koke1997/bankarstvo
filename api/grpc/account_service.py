@@ -12,10 +12,13 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from proto import account_service_pb2, account_service_pb2_grpc
 
 # Import database models and services
-from DatabaseHandling.connection import get_db_connection
-from FiatHandling.accountdetails import get_account_details, get_account_statement
-from core.models import Account as AccountModel
-from MediaHandling.pdf_handling import generate_statement_pdf
+from utils.extensions import db
+from database.repositories.account_repo import get_account_details, get_account_statement
+from database.repositories.balancecheck_repo import get_user_balance
+from core.models import Account, User, Transaction
+
+# Update model names to match the actual models
+# AccountModel -> Account, UserModel -> User, TransactionModel -> Transaction
 
 # Constants and mapping dictionaries
 ACCOUNT_TYPE_MAP = {
@@ -49,18 +52,18 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             name = request.name
             initial_deposit = request.initial_deposit
             
-            # Create account in database
-            db_connection = get_db_connection()
-            account = AccountModel(
+            # Create account in database - update to use Account model name
+            account = Account(
                 user_id=user_id,
                 account_type=ACCOUNT_TYPE_MAP[account_type],
                 currency_code=currency,
                 name=name,
                 balance=initial_deposit,
                 available_balance=initial_deposit,
-                is_active=True
+                status="active"  # Set status as a string instead of boolean
             )
-            account.save(db_connection)
+            db.session.add(account)
+            db.session.commit()
             
             # Prepare response
             account_proto = self._account_to_proto(account)
@@ -86,9 +89,8 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             account_id = request.account_id
             user_id = request.user_id
             
-            # Get account from database
-            db_connection = get_db_connection()
-            account = AccountModel.find_by_id(db_connection, account_id)
+            # Use db.session.query instead of Account.query
+            account = db.session.query(Account).get(account_id)
             
             # Check if account exists and belongs to the user
             if not account:
@@ -132,9 +134,6 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             account_type = request.account_type
             status = request.status
             
-            # Get accounts from database
-            db_connection = get_db_connection()
-            
             # Build query conditions
             conditions = {"user_id": user_id}
             
@@ -142,9 +141,18 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
                 conditions["account_type"] = ACCOUNT_TYPE_MAP.get(account_type)
                 
             if status != 0:  # If not default (unspecified)
-                conditions["is_active"] = ACCOUNT_STATUS_MAP.get(status, True)
+                # Map numerical status to string status - updated from is_active to status
+                if status == 1:  # INACTIVE
+                    conditions["status"] = "inactive"
+                elif status == 2:  # LOCKED
+                    conditions["status"] = "locked"
+                elif status == 3:  # CLOSED
+                    conditions["status"] = "closed"
+                else:
+                    conditions["status"] = "active"
             
-            accounts = AccountModel.find_by_conditions(db_connection, conditions)
+            # Use db.session.query instead of Account.query
+            accounts = db.session.query(Account).filter_by(**conditions).all()
             
             # Convert accounts to proto format
             account_protos = [self._account_to_proto(account) for account in accounts]
@@ -173,9 +181,8 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             user_id = request.user_id
             name = request.name
             
-            # Get account from database
-            db_connection = get_db_connection()
-            account = AccountModel.find_by_id(db_connection, account_id)
+            # Use db.session.query instead of Account.query
+            account = db.session.query(Account).get(account_id)
             
             # Verify account exists and belongs to user
             if not account:
@@ -196,8 +203,10 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             
             # Update account details
             account.name = name
-            account.last_updated = datetime.datetime.now()
-            account.save(db_connection)
+            # Handle the case where last_updated might not exist in the model
+            if hasattr(account, 'last_updated'):
+                account.last_updated = datetime.datetime.now()
+            db.session.commit()
             
             # Prepare response
             account_proto = self._account_to_proto(account)
@@ -224,9 +233,8 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             user_id = request.user_id
             transfer_to_account_id = request.transfer_remaining_to_account_id
             
-            # Get account from database
-            db_connection = get_db_connection()
-            account = AccountModel.find_by_id(db_connection, account_id)
+            # Use db.session.query instead of Account.query
+            account = db.session.query(Account).get(account_id)
             
             # Verify account exists and belongs to user
             if not account:
@@ -247,7 +255,8 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             
             # Transfer remaining balance if needed
             if transfer_to_account_id and account.balance > 0:
-                transfer_account = AccountModel.find_by_id(db_connection, transfer_to_account_id)
+                # Use db.session.query instead of Account.query
+                transfer_account = db.session.query(Account).get(transfer_to_account_id)
                 
                 if not transfer_account:
                     context.set_code(grpc.StatusCode.NOT_FOUND)
@@ -265,20 +274,26 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
                         message="Permission denied for transfer destination account"
                     )
                 
-                # Perform transfer
-                transfer_account.balance += account.balance
-                transfer_account.available_balance += account.available_balance
-                transfer_account.save(db_connection)
+                # Perform transfer - null handling
+                transfer_account.balance = (transfer_account.balance or 0) + (account.balance or 0)
+                # Check if available_balance exists
+                if hasattr(transfer_account, 'available_balance') and hasattr(account, 'available_balance'):
+                    transfer_account.available_balance = (transfer_account.available_balance or 0) + (account.available_balance or 0)
+                db.session.commit()
                 
                 # Create transaction record for the transfer
                 # Note: This would normally use a transaction service
                 
-            # Close the account
-            account.is_active = False
+            # Close the account - update status field
+            account.status = "closed"  # Use status string instead of is_active boolean
             account.balance = 0
-            account.available_balance = 0
-            account.last_updated = datetime.datetime.now()
-            account.save(db_connection)
+            # Check if available_balance exists
+            if hasattr(account, 'available_balance'):
+                account.available_balance = 0
+            # Check if last_updated exists
+            if hasattr(account, 'last_updated'):
+                account.last_updated = datetime.datetime.now()
+            db.session.commit()
             
             return account_service_pb2.CloseAccountResponse(
                 success=True,
@@ -300,9 +315,8 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             account_id = request.account_id
             user_id = request.user_id
             
-            # Get account from database
-            db_connection = get_db_connection()
-            account = AccountModel.find_by_id(db_connection, account_id)
+            # Use db.session.query instead of Account.query
+            account = db.session.query(Account).get(account_id)
             
             # Verify account exists and belongs to user
             if not account:
@@ -324,13 +338,14 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             # Get current date
             current_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             
+            # Prepare response - added null handling
             return account_service_pb2.BalanceResponse(
                 success=True,
                 message="Balance retrieved successfully",
                 account_id=str(account.account_id),
-                balance=float(account.balance),
-                available_balance=float(account.available_balance),
-                currency=account.currency_code,
+                balance=float(account.balance or 0),
+                available_balance=float(getattr(account, 'available_balance', account.balance) or 0),
+                currency=account.currency_code or '',
                 as_of_date=current_date
             )
             
@@ -369,9 +384,8 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
             account_id = request.account_id
             user_id = request.user_id
             
-            # Get account from database
-            db_connection = get_db_connection()
-            account = AccountModel.find_by_id(db_connection, account_id)
+            # Use db.session.query instead of Account.query
+            account = db.session.query(Account).get(account_id)
             
             # Verify account exists and belongs to user
             if not account:
@@ -390,11 +404,17 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
                     message="Permission denied"
                 )
             
-            # Get account details
-            # Note: In a real implementation, we would fetch more detailed information
-            account_holder_name = "John Doe"  # Placeholder
-            bank_name = "Bankarstvo Bank"     # Placeholder
-            bank_address = "123 Banking St, Finance City"  # Placeholder
+            # Get account details - updated to use get_account_details from repository
+            try:
+                account_details = get_account_details(account_id)
+                account_holder_name = account_details.get('account_holder_name', "John Doe")
+                bank_name = account_details.get('bank_name', "Bankarstvo Bank")
+                bank_address = account_details.get('bank_address', "123 Banking St, Finance City")
+            except:
+                # Fallback to placeholder values
+                account_holder_name = "John Doe"  # Placeholder
+                bank_name = "Bankarstvo Bank"     # Placeholder
+                bank_address = "123 Banking St, Finance City"  # Placeholder
             
             # Prepare response
             account_proto = self._account_to_proto(account)
@@ -449,21 +469,28 @@ class AccountServicer(account_service_pb2_grpc.AccountServiceServicer):
 
     def _account_to_proto(self, account):
         """Helper method to convert an account model to a proto message."""
-        # Map database status to proto enum
-        status = 0 if account.is_active else 1  # ACTIVE or INACTIVE
+        # Map database status to proto enum - updated to check status string
+        # status = 0 if account.is_active else 1  # ACTIVE or INACTIVE
+        status_map = {
+            'active': 0,    # ACTIVE
+            'inactive': 1,  # INACTIVE
+            'locked': 2,    # LOCKED
+            'closed': 3     # CLOSED
+        }
+        status = status_map.get(getattr(account, 'status', 'active'), 0)
         
-        # Map account type to proto enum
-        account_type = ACCOUNT_TYPE_REVERSE_MAP.get(account.account_type, 0)
+        # Map account type to proto enum - add null handling
+        account_type = ACCOUNT_TYPE_REVERSE_MAP.get(account.account_type or 'checking', 0)
         
-        # Create and return the proto message
+        # Create and return the proto message - added null handling throughout
         return account_service_pb2.Account(
             account_id=str(account.account_id),
             user_id=account.user_id,
             account_type=account_type,
             status=status,
-            currency=account.currency_code,
-            balance=float(account.balance),
-            available_balance=float(account.available_balance),
+            currency=account.currency_code or '',
+            balance=float(account.balance or 0),
+            available_balance=float(getattr(account, 'available_balance', account.balance) or 0),
             name=getattr(account, 'name', ''),
             created_at=str(getattr(account, 'date_created', '')),
             updated_at=str(getattr(account, 'last_updated', '')),

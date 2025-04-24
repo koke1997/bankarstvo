@@ -25,9 +25,17 @@ def app():
 def mock_account(mocker, app):
     account = Account()
     account.balance = 100.0
-    mocker.patch(
-        "core.models.Account.query.join", return_value=mocker.Mock(filter_by=lambda email: mocker.Mock(first=lambda: account))
-    )
+    # Updated to mock db.session.query instead of Account.query
+    query_mock = mocker.Mock()
+    join_mock = mocker.Mock()
+    filter_mock = mocker.Mock()
+    first_mock = mocker.Mock(return_value=account)
+    
+    filter_mock.first = first_mock
+    join_mock.filter_by = lambda email: filter_mock
+    query_mock.join = lambda User: join_mock
+    
+    mocker.patch("utils.extensions.db.session.query", return_value=query_mock)
     return account
 
 
@@ -50,7 +58,13 @@ def test_get_user_balance(mock_account, app):
         user = User(username="testuser2", email="test2@example.com", password_hash="pw")
         db.session.add(user)
         db.session.commit()
-        account = Account(account_type="checking", balance=100.0, currency_code="USD", user_id=user.user_id)
+        account = Account(
+            account_type="checking", 
+            balance=100.0, 
+            currency_code="USD", 
+            user_id=user.user_id,
+            status="active"  # Added required field
+        )
         db.session.add(account)
         db.session.commit()
         balance = get_user_balance(user.email)
@@ -58,9 +72,18 @@ def test_get_user_balance(mock_account, app):
 
 
 def test_get_user_balance_no_user(mocker, app):
-    mocker.patch(
-        "core.models.Account.query.join", return_value=mocker.Mock(filter_by=lambda email: mocker.Mock(first=lambda: None))
-    )
+    # Updated to mock db.session.query instead of Account.query
+    query_mock = mocker.Mock()
+    join_mock = mocker.Mock()
+    filter_mock = mocker.Mock()
+    first_mock = mocker.Mock(return_value=None)
+    
+    filter_mock.first = first_mock
+    join_mock.filter_by = lambda email: filter_mock
+    query_mock.join = lambda User: join_mock
+    
+    mocker.patch("utils.extensions.db.session.query", return_value=query_mock)
+    
     with app.app_context():
         balance = get_user_balance("nonexistent@example.com")
         assert balance is None

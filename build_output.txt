@@ -1,0 +1,21 @@
+
+> bankarstvo@1.0.0 build
+> tsc && webpack --config webpack.config.js
+
+frontend/src/router/AppRouter.tsx(8,27): error TS7031: Binding element 'children' implicitly has an 'any' type.
+frontend/src/services/api/accountService.ts(29,5): error TS2740: Type 'AxiosResponse<Account[], any>' is missing the following properties from type 'Account[]': length, pop, push, concat, and 29 more.
+frontend/src/services/api/accountService.ts(34,5): error TS2739: Type 'AxiosResponse<Account, any>' is missing the following properties from type 'Account': account_id, account_type, balance, currency_code, user_id
+frontend/src/services/api/accountService.ts(39,5): error TS2322: Type 'AxiosResponse<Account, any>' is not assignable to type 'Account'.
+frontend/src/services/api/accountService.ts(49,5): error TS2740: Type 'AxiosResponse<{ code: string; name: string; }[], any>' is missing the following properties from type '{ code: string; name: string; }[]': length, pop, push, concat, and 29 more.
+frontend/src/services/api/accountService.ts(54,5): error TS2322: Type 'AxiosResponse<Account[], any>' is not assignable to type 'Account[]'.
+frontend/src/services/api/authService.ts(27,5): error TS2739: Type 'AxiosResponse<AuthResponse, any>' is missing the following properties from type 'AuthResponse': token, user
+frontend/src/services/api/authService.ts(31,5): error TS2322: Type 'AxiosResponse<AuthResponse, any>' is not assignable to type 'AuthResponse'.
+frontend/src/services/api/authService.ts(35,15): error TS2339: Property 'clearToken' does not exist on type 'AxiosInstance'.
+frontend/src/services/api/authService.ts(36,5): error TS2322: Type 'AxiosResponse<void, any>' is not assignable to type 'void'.
+frontend/src/services/api/authService.ts(40,5): error TS2739: Type 'AxiosResponse<{ id: number; username: string; }, any>' is missing the following properties from type '{ id: number; username: string; }': id, username
+frontend/src/services/api/authService.ts(46,15): error TS2339: Property 'setToken' does not exist on type 'AxiosInstance'.
+frontend/src/services/api/authService.ts(53,17): error TS2339: Property 'setToken' does not exist on type 'AxiosInstance'.
+frontend/src/services/api/authService.ts(61,15): error TS2339: Property 'clearToken' does not exist on type 'AxiosInstance'.
+frontend/src/services/api/transactionService.ts(41,5): error TS2740: Type 'AxiosResponse<Transaction[], any>' is missing the following properties from type 'Transaction[]': length, pop, push, concat, and 29 more.
+frontend/src/services/api/transactionService.ts(46,5): error TS2740: Type 'AxiosResponse<Transaction, any>' is missing the following properties from type 'Transaction': transaction_id, account_id, amount, type, and 2 more.
+frontend/src/services/api/transactionService.ts(51,5): error TS2740: Type 'AxiosResponse<Blob, any>' is missing the following properties from type 'Blob': size, type, arrayBuffer, slice, and 2 more.

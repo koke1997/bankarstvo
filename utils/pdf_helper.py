@@ -21,18 +21,31 @@ def generate_pdf(document_content):
 
     return base64.b64encode(pdf).decode('utf-8')
 
-def save_document_to_db(document_type, base64_data, additional_info):
+def save_document_to_db(document_type, base64_data, additional_info=None, user_id=None):
     """Save the base64-encoded document to the database."""
-    user_id = current_user.id  # Assuming you have a user session and using Flask-Login
+    # Use the provided user_id or get from current_user if available
+    if user_id is None and current_user and hasattr(current_user, 'user_id'):
+        user_id = current_user.user_id
+    elif user_id is None:
+        # Default fallback if no user_id is provided and no current user exists
+        user_id = 1
+    
+    # Set sender and receiver to dummy values if not provided
+    # These are required fields in the SignedDocument model
+    sender = "System"
+    receiver = "User"
 
+    # Create a new document with proper initialization
     new_document = SignedDocument(
         user_id=user_id,
         document_type=document_type,
-        image_data=base64_data,  # Assuming 'image_data' is the base64 column
-        additional_info=additional_info
+        image_data=base64_data,
+        additional_info=additional_info,
+        sender=sender,
+        receiver=receiver
     )
 
     db.session.add(new_document)
     db.session.commit()
 
-    return new_document.id  # Use 'id' instead of 'document_id'
+    return new_document.document_id  # Use 'document_id' which is the attribute name defined in the model

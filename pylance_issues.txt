@@ -1,0 +1,989 @@
+c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:12:19 - error: "account_service_pb2" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:12:40 - error: "account_service_pb2_grpc" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:16:6 - error: Import "database.repositories.account_repo" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:17:6 - error: Import "database.repositories.balancecheck_repo" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:57:17 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:58:17 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:59:17 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:60:17 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:61:17 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:62:17 - error: No parameter named "available_balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:63:17 - error: No parameter named "status" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:79:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:97:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:105:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:123:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:169:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:189:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:197:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:222:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:241:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:249:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:262:43 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:270:43 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:305:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:323:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:331:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:354:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:364:31 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:374:31 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:392:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:400:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:433:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:443:31 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:453:31 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:463:31 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\account_service.py:504:19 - error: "server" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:11:19 - error: "transaction_service_pb2" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:11:44 - error: "transaction_service_pb2_grpc" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:42:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:50:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:63:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:91:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:111:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:119:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:132:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:160:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:181:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:189:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:199:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:212:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:258:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:281:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:289:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:346:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\transaction_service.py:355:19 - error: "server" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:11:19 - error: "user_service_pb2" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:11:37 - error: "user_service_pb2_grpc" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:41:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:81:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:102:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:134:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:151:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:178:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:202:43 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:236:20 - error: "user" is possibly unbound (reportPossiblyUnboundVariable)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:237:39 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:269:35 - error: "StatusCode" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\grpc\user_service.py:278:19 - error: "server" is not a known attribute of module "grpc" (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\account_routes.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\account_routes.py:100:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\account_routes.py:101:13 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\account_routes.py:102:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\account_routes.py:103:13 - error: No parameter named "currency_code" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\currency_routes.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\currency_routes.py:19:38 - error: Cannot access attribute "alpha_3" for class "Database"
+    Attribute "alpha_3" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\currency_routes.py:20:38 - error: Cannot access attribute "name" for class "Database"
+    Attribute "name" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\transaction_routes.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\transaction_routes.py:38:48 - error: Argument of type "str | None" cannot be assigned to parameter "date_string" of type "str" in function "strptime"
+    Type "str | None" is not assignable to type "str"
+      "None" is not assignable to "str" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\transaction_routes.py:45:46 - error: Argument of type "str | None" cannot be assigned to parameter "date_string" of type "str" in function "strptime"
+    Type "str | None" is not assignable to type "str"
+      "None" is not assignable to "str" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\transaction_routes.py:58:36 - error: Argument of type "str | None" cannot be assigned to parameter "x" of type "ConvertibleToFloat" in function "__new__"
+    Type "str | None" is not assignable to type "ConvertibleToFloat"
+      Type "None" is not assignable to type "ConvertibleToFloat"
+        "None" is not assignable to "str"
+        "None" is incompatible with protocol "Buffer"
+          "__buffer__" is not present
+        "None" is incompatible with protocol "SupportsFloat"
+          "__float__" is not present
+        "None" is incompatible with protocol "SupportsIndex"
+    ... (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\transaction_routes.py:58:36 - error: Argument of type "str | None" cannot be assigned to parameter "x" of type "ConvertibleToFloat" in function "__new__"
+    Type "str | None" is not assignable to type "ConvertibleToFloat"
+      Type "None" is not assignable to type "ConvertibleToFloat"
+        "None" is not assignable to "str"
+        "None" is incompatible with protocol "Buffer"
+          "__buffer__" is not present
+        "None" is incompatible with protocol "SupportsFloat"
+          "__float__" is not present
+        "None" is incompatible with protocol "SupportsIndex" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\transaction_routes.py:65:36 - error: Argument of type "str | None" cannot be assigned to parameter "x" of type "ConvertibleToFloat" in function "__new__"
+    Type "str | None" is not assignable to type "ConvertibleToFloat"
+      Type "None" is not assignable to type "ConvertibleToFloat"
+        "None" is not assignable to "str"
+        "None" is incompatible with protocol "Buffer"
+          "__buffer__" is not present
+        "None" is incompatible with protocol "SupportsFloat"
+          "__float__" is not present
+        "None" is incompatible with protocol "SupportsIndex"
+    ... (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\rest\routes\transaction_routes.py:65:36 - error: Argument of type "str | None" cannot be assigned to parameter "x" of type "ConvertibleToFloat" in function "__new__"
+    Type "str | None" is not assignable to type "ConvertibleToFloat"
+      Type "None" is not assignable to type "ConvertibleToFloat"
+        "None" is not assignable to "str"
+        "None" is incompatible with protocol "Buffer"
+          "__buffer__" is not present
+        "None" is incompatible with protocol "SupportsFloat"
+          "__float__" is not present
+        "None" is incompatible with protocol "SupportsIndex" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\api\websocket\realtime.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\websocket\realtime.py:3:8 - warning: Import "pika" could not be resolved from source (reportMissingModuleSource)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\api\websocket\realtime.py:6:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\app.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app.py:27:40 - error: No overloads for "join" match the provided arguments (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app.py:27:53 - error: Argument of type "str | None" cannot be assigned to parameter "path" of type "BytesPath" in function "join"
+    Type "str | None" is not assignable to type "BytesPath"
+      Type "str" is not assignable to type "BytesPath"
+        "str" is not assignable to "bytes"
+        "str" is incompatible with protocol "PathLike[bytes]"
+          "__fspath__" is not present (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app.py:28:44 - error: Argument of type "str | None" cannot be assigned to parameter "directory" of type "PathLike[str] | str" in function "send_from_directory"
+    Type "str | None" is not assignable to type "PathLike[str] | str"
+      Type "None" is not assignable to type "PathLike[str] | str"
+        "None" is incompatible with protocol "PathLike[str]"
+          "__fspath__" is not present
+        "None" is not assignable to "str" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:17:53 - error: Type "type[infrastructure.auth.keycloak_client.KeycloakOpenID]" is not assignable to declared type "type[app_factory.KeycloakOpenID]"
+    "infrastructure.auth.keycloak_client.KeycloakOpenID" is not assignable to "app_factory.KeycloakOpenID"
+    Type "type[infrastructure.auth.keycloak_client.KeycloakOpenID]" is not assignable to type "type[app_factory.KeycloakOpenID]" (reportAssignmentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:143:19 - error: Cannot assign to attribute "login_view" for class "LoginManager"
+    Expression of type "Literal['user.login']" cannot be assigned to attribute "login_view" of class "LoginManager"
+      "Literal['user.login']" is not assignable to "None" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:192:14 - error: Import "web.search.routes" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:193:14 - error: Import "web.logger.routes" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:194:14 - error: Import "web.crypto.routes" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:195:14 - error: Import "web.stock.routes" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:196:14 - error: Import "web.marketplace.routes" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:199:14 - error: Import "routes.search_routes.search" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:200:14 - error: Import "routes.logger_routes.log_routes" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:201:14 - error: Import "routes.transaction_routes.crypto" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:202:14 - error: Import "routes.transaction_routes.stock" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\app_factory.py:203:14 - error: Import "routes.marketplace_routes" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\core\models.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\models.py:71:33 - error: Cannot access attribute "account_name" for class "Account*"
+    Attribute "account_name" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\models.py:71:68 - error: Cannot access attribute "country_code" for class "Account*"
+    Attribute "country_code" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\core\models\base.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\models\base.py:71:33 - error: Cannot access attribute "account_name" for class "Account*"
+    Attribute "account_name" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\models\base.py:71:68 - error: Cannot access attribute "country_code" for class "Account*"
+    Attribute "country_code" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\core\models\user.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\models\user.py:21:14 - error: Cannot assign to attribute "is_active" for class "User*"
+    Property "is_active" has no defined setter (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:41:13 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:42:13 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:43:13 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:44:13 - error: No parameter named "description" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:45:13 - error: No parameter named "recipient_account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:114:66 - error: Cannot access attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:151:13 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:152:13 - error: No parameter named "recipient_account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:153:13 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:154:13 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\transaction_service.py:155:13 - error: No parameter named "description" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\user_service.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\user_service.py:7:45 - error: "verify_user_credentials" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\services\user_service.py:63:16 - error: Type "tuple[User, None]" is not assignable to return type "Tuple[User | None, str | None]"
+    Type "User" is not assignable to type "User | None"
+      "core.models.User" is not assignable to "core.models.user.User"
+      "User" is not assignable to "None" (reportReturnType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\core\validation_utils.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\validation_utils.py:14:33 - error: "Currency" is unknown import symbol (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\core\validators\validators.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\core\validators\validators.py:1:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\auth_repo.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\auth_repo.py:3:22 - error: "KeycloakOpenID" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\auth_repo.py:11:6 - error: Import ".session_clearing" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:42:13 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:43:13 - error: No parameter named "description" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:44:13 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:45:13 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:96:13 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:97:13 - error: No parameter named "description" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:98:13 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:99:13 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:166:13 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:167:13 - error: No parameter named "description" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:168:13 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:169:13 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:170:13 - error: No parameter named "recipient_account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:174:13 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:175:13 - error: No parameter named "description" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:176:13 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\database\repositories\transaction_repo.py:177:13 - error: No parameter named "type" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\apps.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\apps.py:5:26 - error: Type "Literal['django.db.models.BigAutoField']" is not assignable to declared type "cached_property"
+    "Literal['django.db.models.BigAutoField']" is not assignable to "cached_property" (reportAssignmentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\consumers.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\consumers.py:2:6 - error: Import "channels.generic.websocket" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\models.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\models.py:23:45 - error: Argument of type "Literal[True]" cannot be assigned to parameter "default" of type "type[NOT_PROVIDED]" in function "__init__"
+    Type "Literal[True]" is not assignable to type "type[NOT_PROVIDED]" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\models.py:29:37 - error: Cannot access attribute "capitalize" for class "CharField"
+    Attribute "capitalize" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\views.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\views.py:17:24 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\views.py:20:39 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\views.py:41:27 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\views.py:60:32 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\accounts\views.py:83:38 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\bankarstvo_django\asgi.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\bankarstvo_django\asgi.py:12:6 - error: Import "channels.routing" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\bankarstvo_django\asgi.py:13:6 - error: Import "channels.auth" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\bankarstvo_django\asgi.py:22:32 - error: "NotificationsConsumer" is unknown import symbol (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\accounts\apps.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\accounts\apps.py:5:26 - error: Type "Literal['django.db.models.BigAutoField']" is not assignable to declared type "cached_property"
+    "Literal['django.db.models.BigAutoField']" is not assignable to "cached_property" (reportAssignmentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\accounts\views.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\accounts\views.py:19:24 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\accounts\views.py:22:39 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\accounts\views.py:65:32 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\accounts\views.py:72:39 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\accounts\views.py:108:32 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\bankarstvo\asgi.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\bankarstvo\asgi.py:7:6 - error: Import "channels.routing" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\bankarstvo\asgi.py:8:6 - error: Import "channels.auth" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\apps.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\apps.py:5:26 - error: Type "Literal['django.db.models.BigAutoField']" is not assignable to declared type "cached_property"
+    "Literal['django.db.models.BigAutoField']" is not assignable to "cached_property" (reportAssignmentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\forms.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\forms.py:16:12 - error: Operator "<=" not supported for "None" (reportOptionalOperand)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\forms.py:30:55 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py:14:29 - error: Cannot access attribute "objects" for class "type[MarketplaceItem]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py:15:35 - error: Cannot access attribute "objects" for class "type[MarketplaceItem]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py:25:29 - error: Cannot access attribute "objects" for class "type[MarketplaceItem]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py:49:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __enter__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py:49:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __exit__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py:60:40 - error: Cannot access attribute "objects" for class "type[MarketplaceTransaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py:80:40 - error: Cannot access attribute "objects" for class "type[MarketplaceTransaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\marketplace\views.py:81:36 - error: Cannot access attribute "objects" for class "type[MarketplaceTransaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\apps.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\apps.py:5:26 - error: Type "Literal['django.db.models.BigAutoField']" is not assignable to declared type "cached_property"
+    "Literal['django.db.models.BigAutoField']" is not assignable to "cached_property" (reportAssignmentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\forms.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\forms.py:16:55 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\forms.py:29:55 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\forms.py:54:60 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\forms.py:55:58 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\models.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\models.py:20:29 - error: Cannot access attribute "capitalize" for class "CharField"
+    Attribute "capitalize" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\models.py:20:81 - error: Cannot access attribute "strftime" for class "DateTimeField"
+    Attribute "strftime" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\models.py:38:87 - error: Cannot access attribute "strftime" for class "DateTimeField"
+    Attribute "strftime" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:16:32 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:34:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __enter__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:34:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __exit__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:36:50 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:76:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __enter__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:76:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __exit__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:78:50 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:123:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __enter__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:123:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __exit__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:125:50 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:154:33 - error: Cannot access attribute "objects" for class "type[CryptoAsset]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\transactions\views.py:160:31 - error: Cannot access attribute "objects" for class "type[StockAsset]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\apps.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\apps.py:5:26 - error: Type "Literal['django.db.models.BigAutoField']" is not assignable to declared type "cached_property"
+    "Literal['django.db.models.BigAutoField']" is not assignable to "cached_property" (reportAssignmentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\consumers.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\consumers.py:2:6 - error: Import "channels.generic.websocket" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\consumers.py:3:6 - error: Import "channels.db" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\forms.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\forms.py:13:11 - error: "Meta" overrides symbol of same name in class "BaseUserCreationForm"
+    "django_specific.django_app.users.forms.UserRegistrationForm.Meta" is not assignable to "django.contrib.auth.forms.BaseUserCreationForm.Meta"
+    Type "type[django_specific.django_app.users.forms.UserRegistrationForm.Meta]" is not assignable to type "type[django.contrib.auth.forms.BaseUserCreationForm.Meta]" (reportIncompatibleVariableOverride)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:36:46 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:39:42 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:50:46 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:52:46 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:56:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __enter__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:56:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __exit__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:75:42 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:79:42 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:108:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:125:32 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:136:25 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:137:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:139:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:156:36 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:168:25 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:169:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:171:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:185:51 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:186:40 - error: Cannot access attribute "DoesNotExist" for class "type[Transaction]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:189:39 - error: Cannot access attribute "objects" for class "type[SignedDocument]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:203:25 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:204:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:206:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:221:36 - error: Cannot access attribute "objects" for class "type[CryptoAsset]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:231:25 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:232:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:234:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:245:35 - error: Cannot access attribute "objects" for class "type[StockAsset]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:255:25 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:256:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:258:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:277:33 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:280:40 - error: Cannot access attribute "objects" for class "type[MarketplaceItem]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:292:25 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:293:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:295:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:308:44 - error: Cannot access attribute "objects" for class "type[MarketplaceItem]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:310:51 - error: Cannot access attribute "objects" for class "type[MarketplaceTransaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:321:40 - error: Cannot access attribute "DoesNotExist" for class "type[MarketplaceItem]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:322:50 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:323:25 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:324:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:326:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:341:29 - error: Cannot access attribute "objects" for class "type[Loan]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:354:25 - error: Cannot access attribute "DoesNotExist" for class "type[User]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:355:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:357:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:366:29 - error: Cannot access attribute "objects" for class "type[Loan]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:368:32 - error: Cannot access attribute "objects" for class "type[Payment]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:378:25 - error: Cannot access attribute "DoesNotExist" for class "type[Loan]"
+    Attribute "DoesNotExist" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:379:46 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\management\commands\migrate_flask_data.py:381:38 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\models.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\models.py:10:51 - error: Argument of type "Literal[False]" cannot be assigned to parameter "default" of type "type[NOT_PROVIDED]" in function "__init__"
+    Type "Literal[False]" is not assignable to type "type[NOT_PROVIDED]" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\models.py:21:11 - error: "Meta" overrides symbol of same name in class "AbstractUser"
+    "django_specific.django_app.users.models.User.Meta" is not assignable to "django.contrib.auth.models.AbstractUser.Meta"
+    Type "type[django_specific.django_app.users.models.User.Meta]" is not assignable to type "type[django.contrib.auth.models.AbstractUser.Meta]" (reportIncompatibleVariableOverride)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\views.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\views.py:53:29 - error: Argument of type "Literal['Authorization code not provided']" cannot be assigned to parameter "content" of type "bytes" in function "__init__"
+    "Literal['Authorization code not provided']" is not assignable to "bytes" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\views.py:61:29 - error: Argument of type "Literal['Failed to get token']" cannot be assigned to parameter "content" of type "bytes" in function "__init__"
+    "Literal['Failed to get token']" is not assignable to "bytes" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\django_app\users\views.py:67:29 - error: Argument of type "Literal['Failed to get user info']" cannot be assigned to parameter "content" of type "bytes" in function "__init__"
+    "Literal['Failed to get user info']" is not assignable to "bytes" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\apps.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\apps.py:5:26 - error: Type "Literal['django.db.models.BigAutoField']" is not assignable to declared type "cached_property"
+    "Literal['django.db.models.BigAutoField']" is not assignable to "cached_property" (reportAssignmentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\models.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\models.py:24:45 - error: Argument of type "Literal[True]" cannot be assigned to parameter "default" of type "type[NOT_PROVIDED]" in function "__init__"
+    Type "Literal[True]" is not assignable to type "type[NOT_PROVIDED]" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\models.py:30:9 - error: Method "__str__" overrides class "Model" in an incompatible manner
+    Return type mismatch: base method returns type "str", override returns type "CharField"
+      "CharField" is not assignable to "str" (reportIncompatibleMethodOverride)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\models.py:67:44 - error: Argument of type "Literal[1]" cannot be assigned to parameter "default" of type "type[NOT_PROVIDED]" in function "__init__"
+    Type "Literal[1]" is not assignable to type "type[NOT_PROVIDED]" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\models.py:79:16 - error: Operator "*" not supported for types "DecimalField" and "IntegerField" (reportOperatorIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\views.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\views.py:17:33 - error: Cannot access attribute "objects" for class "type[Product]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\views.py:32:28 - error: Cannot access attribute "objects" for class "type[Product]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\views.py:34:28 - error: Cannot access attribute "objects" for class "type[Product]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\marketplace\views.py:61:20 - error: Cannot access attribute "objects" for class "type[Order]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\apps.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\apps.py:5:26 - error: Type "Literal['django.db.models.BigAutoField']" is not assignable to declared type "cached_property"
+    "Literal['django.db.models.BigAutoField']" is not assignable to "cached_property" (reportAssignmentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\models.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\models.py:37:41 - error: Cannot access attribute "capitalize" for class "CharField"
+    Attribute "capitalize" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:20:32 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:34:24 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:49:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __enter__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:49:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __exit__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:51:29 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:81:24 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:103:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __enter__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:103:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __exit__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:105:29 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:135:24 - error: Cannot access attribute "objects" for class "type[Account]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:166:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __enter__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:166:18 - error: Object of type "(...) -> object" cannot be used with "with" because it does not correctly implement __exit__ (reportGeneralTypeIssues)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:168:29 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\transactions\views.py:176:29 - error: Cannot access attribute "objects" for class "type[Transaction]"
+    Attribute "objects" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\apps.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\apps.py:5:26 - error: Type "Literal['django.db.models.BigAutoField']" is not assignable to declared type "cached_property"
+    "Literal['django.db.models.BigAutoField']" is not assignable to "cached_property" (reportAssignmentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:27:50 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:29:50 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:31:42 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:39:50 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:41:50 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:43:42 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:48:42 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:50:42 - error: Cannot access attribute "WARNING" for class "Style"
+    Attribute "WARNING" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:55:50 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:57:50 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:68:50 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:70:50 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:72:46 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:79:46 - error: Cannot access attribute "SUCCESS" for class "Style"
+    Attribute "SUCCESS" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\management\commands\check_django_setup.py:81:46 - error: Cannot access attribute "ERROR" for class "Style"
+    Attribute "ERROR" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\models.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\models.py:19:51 - error: Argument of type "Literal[False]" cannot be assigned to parameter "default" of type "type[NOT_PROVIDED]" in function "__init__"
+    Type "Literal[False]" is not assignable to type "type[NOT_PROVIDED]" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\models.py:26:50 - error: Argument of type "Literal[0]" cannot be assigned to parameter "default" of type "type[NOT_PROVIDED]" in function "__init__"
+    Type "Literal[0]" is not assignable to type "type[NOT_PROVIDED]" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\models.py:27:50 - error: Argument of type "Literal[False]" cannot be assigned to parameter "default" of type "type[NOT_PROVIDED]" in function "__init__"
+    Type "Literal[False]" is not assignable to type "type[NOT_PROVIDED]" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\models.py:30:11 - error: "Meta" overrides symbol of same name in class "AbstractUser"
+    "django_specific.users.models.User.Meta" is not assignable to "django.contrib.auth.models.AbstractUser.Meta"
+    Type "type[django_specific.users.models.User.Meta]" is not assignable to type "type[django.contrib.auth.models.AbstractUser.Meta]" (reportIncompatibleVariableOverride)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\models.py:43:9 - error: Operator "+=" not supported for types "IntegerField | int | Unknown" and "Literal[1]"
+    Operator "+" not supported for types "IntegerField" and "Literal[1]" (reportOperatorIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\views.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\views.py:65:12 - error: "User" is unbound (reportUnboundVariable)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\views.py:65:17 - error: Cannot access attribute "objects" for class "Unbound" (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\views.py:69:12 - error: "User" is unbound (reportUnboundVariable)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\django_specific\users\views.py:69:17 - error: Cannot access attribute "objects" for class "Unbound" (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:9:8 - error: Import "grpc" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:10:6 - error: Import "grpc_reflection.v1alpha" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:18:6 - error: Import "grpc_services.user_service" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:19:6 - error: Import "grpc_services.account_service" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:20:6 - error: Import "grpc_services.transaction_service" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:21:6 - error: Import "grpc_services.marketplace_service" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:24:19 - error: "user_service_pb2" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:24:37 - error: "user_service_pb2_grpc" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:25:19 - error: "account_service_pb2" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:25:40 - error: "account_service_pb2_grpc" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:26:19 - error: "transaction_service_pb2" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:26:44 - error: "transaction_service_pb2_grpc" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:27:19 - error: "marketplace_service_pb2" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\grpc_utils\server.py:27:44 - error: "marketplace_service_pb2_grpc" is unknown import symbol (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\test\test_deposit (1).py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\test\test_deposit (1).py:8:6 - error: Import "FiatHandling.deposit" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\test\test_login (2).py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\test\test_login (2).py:9:6 - error: Import "DatabaseHandling.authentication" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\test\test_pdf_handling.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\test\test_pdf_handling.py:10:6 - error: Import "MediaHandling.pdf_handling" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_accountdetails.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_accountdetails.py:2:6 - error: Import "FiatHandling.accountdetails" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:39:5 - error: Function declaration "test_app_creation" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:43:5 - error: Function declaration "test_index_route" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:48:5 - error: Function declaration "test_docs_route" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:52:5 - error: Function declaration "test_404_error_handler" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:57:5 - error: Function declaration "test_500_error_handler" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:63:5 - error: Function declaration "test_app_config" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:67:5 - error: Function declaration "test_app_routes" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:71:5 - error: Function declaration "test_app_error_handling" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_app.py:76:5 - error: Function declaration "test_app_logging" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_balancecheck.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_balancecheck.py:2:6 - error: Import "DatabaseHandling.balancecheck" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_balancecheck.py:62:13 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_balancecheck.py:63:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_balancecheck.py:64:13 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_balancecheck.py:65:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_balancecheck.py:66:13 - error: No parameter named "status" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_connection.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_connection.py:3:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_connection.py:36:5 - error: Function declaration "test_get_db_cursor_with_error" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_connection.py:47:5 - error: Function declaration "test_get_db_cursor_with_custom_error" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_create_account.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_create_account.py:4:6 - error: Import "routes.account_routes.create_account" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_create_account.py:5:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_create_account.py:48:13 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_create_account.py:49:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_create_account.py:50:13 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_create_account.py:51:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_create_account.py:78:36 - error: "user_id" is not a known attribute of "None" (reportOptionalMemberAccess)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:4:6 - error: Import "routes.transaction_routes.crypto" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:52:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:70:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:70:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:70:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:70:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:78:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:96:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:96:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:96:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:96:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:104:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:117:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:117:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:117:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:117:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:123:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_crypto.py:137:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py:4:6 - error: Import "routes.account_routes.dashboard" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py:5:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py:44:13 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py:45:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py:46:13 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py:47:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py:74:36 - error: "user_id" is not a known attribute of "None" (reportOptionalMemberAccess)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_dashboard.py:102:5 - error: Function declaration "test_dashboard_search" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_deposit.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_deposit.py:3:6 - error: Import "FiatHandling.deposit" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_deposit.py:43:17 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_deposit.py:48:21 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_fundtransfer.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_fundtransfer.py:3:6 - error: Import "FiatHandling.fundtransfer" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_fundtransfer.py:49:17 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_fundtransfer.py:55:21 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_get_balance.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_get_balance.py:3:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_get_balance.py:4:6 - error: Import "routes.account_routes.get_balance" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_login.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_login.py:11:6 - error: Import "DatabaseHandling.authentication" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_login.py:110:9 - error: Argument of type "Flask" cannot be assigned to parameter "value" of type "Blueprint" in function "__setitem__"
+    "Flask" is not assignable to "Blueprint" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_pdf_handling.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_pdf_handling.py:10:6 - error: Import "MediaHandling.pdf_handling" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_registration_func.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_registration_func.py:4:6 - error: Import "DatabaseHandling.registration_func" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_select_account.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_select_account.py:32:5 - error: Argument of type "Flask" cannot be assigned to parameter "value" of type "Blueprint" in function "__setitem__"
+    "Flask" is not assignable to "Blueprint" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_withdraw.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_withdraw.py:3:6 - error: Import "FiatHandling.withdraw" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_withdraw.py:36:17 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\test_withdraw.py:48:17 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_accountdetails.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_accountdetails.py:2:6 - error: Import "FiatHandling.accountdetails" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:39:5 - error: Function declaration "test_app_creation" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:43:5 - error: Function declaration "test_index_route" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:48:5 - error: Function declaration "test_docs_route" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:52:5 - error: Function declaration "test_404_error_handler" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:57:5 - error: Function declaration "test_500_error_handler" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:63:5 - error: Function declaration "test_app_config" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:67:5 - error: Function declaration "test_app_routes" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:71:5 - error: Function declaration "test_app_error_handling" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_app.py:76:5 - error: Function declaration "test_app_logging" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_balancecheck.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_balancecheck.py:2:6 - error: Import "DatabaseHandling.balancecheck" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_balancecheck.py:53:27 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_balancecheck.py:53:52 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_balancecheck.py:53:67 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_balancecheck.py:53:88 - error: No parameter named "user_id" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_connection.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_connection.py:3:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_connection.py:36:5 - error: Function declaration "test_get_db_cursor_with_error" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_connection.py:47:5 - error: Function declaration "test_get_db_cursor_with_custom_error" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_create_account.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_create_account.py:4:6 - error: Import "routes.account_routes.create_account" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_create_account.py:5:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_create_account.py:48:13 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_create_account.py:49:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_create_account.py:50:13 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_create_account.py:51:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_create_account.py:78:36 - error: "user_id" is not a known attribute of "None" (reportOptionalMemberAccess)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:4:6 - error: Import "routes.transaction_routes.crypto" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:52:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:70:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:70:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:70:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:70:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:78:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:96:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:96:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:96:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:96:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:104:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:117:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:117:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:117:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:117:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:123:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_crypto.py:137:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py:4:6 - error: Import "routes.account_routes.dashboard" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py:5:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py:44:13 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py:45:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py:46:13 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py:47:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py:74:36 - error: "user_id" is not a known attribute of "None" (reportOptionalMemberAccess)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_dashboard.py:102:5 - error: Function declaration "test_dashboard_search" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_deposit.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_deposit.py:3:6 - error: Import "FiatHandling.deposit" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_deposit.py:43:17 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_deposit.py:48:21 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_fundtransfer.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_fundtransfer.py:3:6 - error: Import "FiatHandling.fundtransfer" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_fundtransfer.py:49:17 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_fundtransfer.py:55:21 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_get_balance.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_get_balance.py:3:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_get_balance.py:4:6 - error: Import "routes.account_routes.get_balance" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_login.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_login.py:11:6 - error: Import "DatabaseHandling.authentication" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_login.py:110:9 - error: Argument of type "Flask" cannot be assigned to parameter "value" of type "Blueprint" in function "__setitem__"
+    "Flask" is not assignable to "Blueprint" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_pdf_handling.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_pdf_handling.py:10:6 - error: Import "MediaHandling.pdf_handling" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_registration_func.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_registration_func.py:4:6 - error: Import "DatabaseHandling.registration_func" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_select_account.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_select_account.py:32:5 - error: Argument of type "Flask" cannot be assigned to parameter "value" of type "Blueprint" in function "__setitem__"
+    "Flask" is not assignable to "Blueprint" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_withdraw.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_withdraw.py:3:6 - error: Import "FiatHandling.withdraw" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_withdraw.py:36:17 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\test_withdraw.py:48:17 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_accountdetails.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_accountdetails.py:2:6 - error: Import "FiatHandling.accountdetails" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:39:5 - error: Function declaration "test_app_creation" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:43:5 - error: Function declaration "test_index_route" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:48:5 - error: Function declaration "test_docs_route" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:52:5 - error: Function declaration "test_404_error_handler" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:57:5 - error: Function declaration "test_500_error_handler" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:63:5 - error: Function declaration "test_app_config" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:67:5 - error: Function declaration "test_app_routes" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:71:5 - error: Function declaration "test_app_error_handling" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_app.py:76:5 - error: Function declaration "test_app_logging" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_balancecheck.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_balancecheck.py:2:6 - error: Import "DatabaseHandling.balancecheck" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_balancecheck.py:53:27 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_balancecheck.py:53:52 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_balancecheck.py:53:67 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_balancecheck.py:53:88 - error: No parameter named "user_id" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_connection.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_connection.py:3:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_connection.py:36:5 - error: Function declaration "test_get_db_cursor_with_error" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_connection.py:47:5 - error: Function declaration "test_get_db_cursor_with_custom_error" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_create_account.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_create_account.py:4:6 - error: Import "routes.account_routes.create_account" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_create_account.py:5:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_create_account.py:48:13 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_create_account.py:49:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_create_account.py:50:13 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_create_account.py:51:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_create_account.py:78:36 - error: "user_id" is not a known attribute of "None" (reportOptionalMemberAccess)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:4:6 - error: Import "routes.transaction_routes.crypto" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:52:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:70:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:70:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:70:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:70:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:78:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:96:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:96:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:96:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:96:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:104:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:117:36 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:117:52 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:117:69 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:117:84 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:123:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_crypto.py:137:12 - error: Object of type "None" is not subscriptable (reportOptionalSubscript)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py:4:6 - error: Import "routes.account_routes.dashboard" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py:5:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py:44:13 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py:45:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py:46:13 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py:47:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py:74:36 - error: "user_id" is not a known attribute of "None" (reportOptionalMemberAccess)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_dashboard.py:102:5 - error: Function declaration "test_dashboard_search" is obscured by a declaration of the same name (reportRedeclaration)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_deposit.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_deposit.py:3:6 - error: Import "FiatHandling.deposit" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_deposit.py:43:17 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_deposit.py:48:21 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_fundtransfer.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_fundtransfer.py:3:6 - error: Import "FiatHandling.fundtransfer" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_fundtransfer.py:49:17 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_fundtransfer.py:55:21 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_get_balance.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_get_balance.py:3:6 - error: Import "DatabaseHandling.connection" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_get_balance.py:4:6 - error: Import "routes.account_routes.get_balance" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_login.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_login.py:11:6 - error: Import "DatabaseHandling.authentication" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_login.py:110:9 - error: Argument of type "Flask" cannot be assigned to parameter "value" of type "Blueprint" in function "__setitem__"
+    "Flask" is not assignable to "Blueprint" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_pdf_handling.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_pdf_handling.py:10:6 - error: Import "MediaHandling.pdf_handling" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_registration_func.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_registration_func.py:4:6 - error: Import "DatabaseHandling.registration_func" could not be resolved (reportMissingImports)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_select_account.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_select_account.py:32:5 - error: Argument of type "Flask" cannot be assigned to parameter "value" of type "Blueprint" in function "__setitem__"
+    "Flask" is not assignable to "Blueprint" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_withdraw.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_withdraw.py:3:6 - error: Import "FiatHandling.withdraw" could not be resolved (reportMissingImports)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_withdraw.py:36:17 - error: Cannot assign to attribute "test_invalid_account" for class "Flask"
+    Attribute "test_invalid_account" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\tests\unit\unit\test_withdraw.py:48:17 - error: Cannot assign to attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\extensions.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\extensions.py:65:21 - error: Cannot assign to attribute "token_claims" for class "Request"
+    Attribute "token_claims" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\pdf_helper.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\pdf_helper.py:40:9 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\pdf_helper.py:41:9 - error: No parameter named "document_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\pdf_helper.py:42:9 - error: No parameter named "image_data" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\pdf_helper.py:43:9 - error: No parameter named "additional_info" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\pdf_helper.py:44:9 - error: No parameter named "sender" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\utils\pdf_helper.py:45:9 - error: No parameter named "receiver" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\create_account.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\create_account.py:46:17 - error: No parameter named "account_type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\create_account.py:47:17 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\create_account.py:48:17 - error: No parameter named "currency_code" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\create_account.py:49:17 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\create_account.py:50:17 - error: No parameter named "status" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\dashboard.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\dashboard.py:98:42 - error: Cannot access attribute "alpha_3" for class "Database"
+    Attribute "alpha_3" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\dashboard.py:99:42 - error: Cannot access attribute "name" for class "Database"
+    Attribute "name" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\get_balance.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\get_balance.py:16:66 - error: Cannot access attribute "test_db_error" for class "Flask"
+    Attribute "test_db_error" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\routes.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\routes.py:6:64 - error: "create_account" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\account\routes.py:6:80 - error: "update_account" is unknown import symbol (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\__init__.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\__init__.py:37:42 - error: Argument of type "() -> None" cannot be assigned to parameter "view_func" of type "RouteCallable | None" in function "add_url_rule"
+    Type "() -> None" is not assignable to type "RouteCallable | None"
+      Type "() -> None" is not assignable to type "(...) -> ResponseReturnValue"
+        Function return type "None" is incompatible with type "ResponseReturnValue"
+          Type "None" is not assignable to type "ResponseReturnValue"
+            "None" is not assignable to "Response"
+            "None" is not assignable to "str"
+            "None" is not assignable to "bytes"
+            "None" is not assignable to "List[Any]"
+    ... (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py:28:34 - error: Cannot access attribute "get_user_balance" for class "Blueprint"
+    Attribute "get_user_balance" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py:33:19 - error: Cannot access attribute "update_user_balance" for class "Blueprint"
+    Attribute "update_user_balance" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py:43:13 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py:44:13 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py:45:13 - error: No parameter named "name" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py:46:13 - error: No parameter named "balance" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py:82:34 - error: Cannot access attribute "get_user_balance" for class "Blueprint"
+    Attribute "get_user_balance" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\crypto.py:83:19 - error: Cannot access attribute "update_user_balance" for class "Blueprint"
+    Attribute "update_user_balance" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\deposit.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\deposit.py:27:31 - error: Operator "+" not supported for types "float" and "float | None"
+    Operator "+" not supported for types "float" and "None" (reportOperatorIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\deposit.py:31:17 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\deposit.py:32:17 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\deposit.py:33:17 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\deposit.py:34:17 - error: No parameter named "description" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\document.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\document.py:3:2 - error: Argument of type "() -> None" cannot be assigned to parameter of type "T_route@route"
+    Type "() -> None" is not assignable to type "RouteCallable"
+      Type "() -> None" is not assignable to type "RouteCallable"
+        Type "() -> None" is not assignable to type "(...) -> ResponseReturnValue"
+          Function return type "None" is incompatible with type "ResponseReturnValue"
+            Type "None" is not assignable to type "ResponseReturnValue"
+        Type "() -> None" is not assignable to type "(...) -> Awaitable[ResponseReturnValue]"
+          Function return type "None" is incompatible with type "Awaitable[ResponseReturnValue]"
+            "None" is incompatible with protocol "Awaitable[ResponseReturnValue]" (reportArgumentType)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\stock.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\stock.py:37:38 - error: No parameter named "user_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\stock.py:37:55 - error: No parameter named "symbol" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\stock.py:37:70 - error: No parameter named "shares" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:19:41 - error: Argument of type "str | None" cannot be assigned to parameter "x" of type "ConvertibleToFloat" in function "__new__"
+    Type "str | None" is not assignable to type "ConvertibleToFloat"
+      Type "None" is not assignable to type "ConvertibleToFloat"
+        "None" is not assignable to "str"
+        "None" is incompatible with protocol "Buffer"
+          "__buffer__" is not present
+        "None" is incompatible with protocol "SupportsFloat"
+          "__float__" is not present
+        "None" is incompatible with protocol "SupportsIndex"
+    ... (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:19:41 - error: Argument of type "str | None" cannot be assigned to parameter "x" of type "ConvertibleToFloat" in function "__new__"
+    Type "str | None" is not assignable to type "ConvertibleToFloat"
+      Type "None" is not assignable to type "ConvertibleToFloat"
+        "None" is not assignable to "str"
+        "None" is incompatible with protocol "Buffer"
+          "__buffer__" is not present
+        "None" is incompatible with protocol "SupportsFloat"
+          "__float__" is not present
+        "None" is incompatible with protocol "SupportsIndex" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:26:37 - error: Argument of type "str | None" cannot be assigned to parameter "x" of type "ConvertibleToInt" in function "__new__"
+    Type "str | None" is not assignable to type "ConvertibleToInt"
+      Type "None" is not assignable to type "ConvertibleToInt"
+        "None" is not assignable to "str"
+        "None" is incompatible with protocol "Buffer"
+          "__buffer__" is not present
+        "None" is incompatible with protocol "SupportsInt"
+          "__int__" is not present
+        "None" is incompatible with protocol "SupportsIndex"
+    ... (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:26:37 - error: Argument of type "str | None" cannot be assigned to parameter "x" of type "ConvertibleToInt" in function "__new__"
+    Type "str | None" is not assignable to type "ConvertibleToInt"
+      Type "None" is not assignable to type "ConvertibleToInt"
+        "None" is not assignable to "str"
+        "None" is incompatible with protocol "Buffer"
+          "__buffer__" is not present
+        "None" is incompatible with protocol "SupportsInt"
+          "__int__" is not present
+        "None" is incompatible with protocol "SupportsIndex" (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:60:21 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:61:21 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:62:21 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:63:21 - error: No parameter named "description" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:64:21 - error: No parameter named "recipient_account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:68:21 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:69:21 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:70:21 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:71:21 - error: No parameter named "description" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\transfer.py:72:21 - error: No parameter named "recipient_account_id" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\withdraw.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\withdraw.py:27:20 - error: Operator ">=" not supported for types "float" and "float | None"
+    Operator ">=" not supported for types "float" and "None" (reportOperatorIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\withdraw.py:29:39 - error: Operator "-" not supported for types "float" and "float | None"
+    Operator "-" not supported for types "float" and "None" (reportOperatorIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\withdraw.py:33:25 - error: No parameter named "account_id" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\withdraw.py:34:25 - error: No parameter named "amount" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\withdraw.py:34:33 - error: Operator "-" not supported for "None" (reportOptionalOperand)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\withdraw.py:35:25 - error: No parameter named "type" (reportCallIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\transaction\withdraw.py:36:25 - error: No parameter named "description" (reportCallIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\__init__.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\__init__.py:22:35 - error: Argument of type "() -> (Response | str | None)" cannot be assigned to parameter "view_func" of type "RouteCallable | None" in function "add_url_rule"
+    Type "() -> (Response | str | None)" is not assignable to type "RouteCallable | None"
+      Type "() -> (Response | str | None)" is not assignable to type "(...) -> ResponseReturnValue"
+        Function return type "Response | str | None" is incompatible with type "ResponseReturnValue"
+          Type "Response | str | None" is not assignable to type "ResponseReturnValue"
+            Type "None" is not assignable to type "ResponseReturnValue"
+      Type "() -> (Response | str | None)" is not assignable to type "(...) -> Awaitable[ResponseReturnValue]"
+        Function return type "Response | str | None" is incompatible with type "Awaitable[ResponseReturnValue]"
+          Type "Response | str | None" is not assignable to type "Awaitable[ResponseReturnValue]"
+    ... (reportArgumentType)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\__init__.py:41:69 - error: Cannot access attribute "iter_rules" for class "Blueprint"
+    Attribute "iter_rules" is unknown (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\login.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\login.py:7:26 - error: "KeycloakOpenID" is unknown import symbol (reportAttributeAccessIssue)
+c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\logout.py
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\logout.py:13:26 - error: "KeycloakOpenID" is unknown import symbol (reportAttributeAccessIssue)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\logout.py:25:11 - error: Class declaration "KeycloakOpenID" is obscured by a declaration of the same name (reportRedeclaration)
+  c:\Users\Ivan\Documents\GitHub\bankarstvo\web\user\logout.py:59:23 - error: "KeycloakOpenID" is possibly unbound (reportPossiblyUnboundVariable)
+578 errors, 1 warning, 0 informations 

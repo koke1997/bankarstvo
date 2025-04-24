@@ -36,16 +36,18 @@ def create_account():
             return ("Invalid currency code", 400)
             
         try:
-            # Check for duplicate account
-            existing = Account.query.filter_by(user_id=user_id, account_type=account_type, currency_code=currency_code).first()
+            # Check for duplicate account - using db.session.query instead of Account.query
+            existing = db.session.query(Account).filter_by(user_id=user_id, account_type=account_type, currency_code=currency_code).first()
             if existing:
                 return ("Account with this type and currency already exists", 400)
                 
+            # Create account object with the proper field assignments as keyword arguments
             account = Account(
                 account_type=account_type,
                 balance=0.00,
                 currency_code=currency_code,
-                user_id=user_id
+                user_id=user_id,
+                status="active"  # Adding a default status
             )
             db.session.add(account)
             db.session.commit()
