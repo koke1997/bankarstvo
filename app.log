@@ -35,3 +35,223 @@
 2025-04-24 14:28:15 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
 2025-04-24 14:28:15 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
 2025-04-24 14:28:15 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 14:54:46 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\app.py', reloading
+2025-04-24 14:54:47 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 14:54:50 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 14:54:50 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 14:54:50 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 14:54:51 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 14:54:51 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 14:56:16 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\app.py', reloading
+2025-04-24 14:56:19 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 14:56:26 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 14:56:26 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 14:56:26 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 14:56:26 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 14:56:26 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:05:45 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\infrastructure\\auth\\keycloak_client.py', reloading
+2025-04-24 15:05:46 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:05:53 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C1B3793210>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:05:57 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:05:57 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:05:57 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:05:57 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:05:57 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:07:35 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\infrastructure\\auth\\user_sync_service.py', reloading
+2025-04-24 15:07:35 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:07:42 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002259A613150>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:07:46 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:07:46 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:07:46 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:07:46 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:07:46 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:08:13 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\core\\models.py', reloading
+2025-04-24 15:08:14 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:08:22 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002063BCC2D10>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:08:26 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:08:26 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:08:26 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:08:26 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:08:26 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:08:37 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\core\\models.py', reloading
+2025-04-24 15:08:37 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:08:45 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020475163050>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:08:49 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:08:49 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:08:49 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:08:49 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:08:49 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:08:54 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\core\\models.py', reloading
+2025-04-24 15:08:55 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:09:01 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020B41093850>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:09:05 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:09:05 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:09:05 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:09:05 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:09:05 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:09:51 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\api\\rest\\routes\\auth_routes.py', reloading
+2025-04-24 15:09:51 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:09:58 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A18D832A50>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:10:02 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:10:02 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:10:02 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:10:02 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:10:02 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:10:34 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\api\\rest\\routes\\auth_routes.py', reloading
+2025-04-24 15:10:34 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:10:41 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028086C73050>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:10:46 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:10:46 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:10:46 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:10:46 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:10:46 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:11:24 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\app.py', reloading
+2025-04-24 15:11:24 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:11:31 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E87A44AF50>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:11:35 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:11:35 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:11:35 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:11:35 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:11:35 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:12:10 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\database\\migrations\\add_keycloak_id.py', reloading
+2025-04-24 15:12:10 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:12:20 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019436B83810>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:12:24 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:12:24 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:12:24 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:12:24 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:12:24 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:18:05 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\database\\migrations\\add_keycloak_id.py', reloading
+2025-04-24 15:18:05 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:18:12 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A2DA7B3210>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:18:16 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:18:16 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:18:16 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:18:17 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:18:17 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:21:41 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\venv\\Lib\\site-packages\\typing_extensions.py', reloading
+2025-04-24 15:21:42 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:21:49 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C6615023D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:21:53 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:21:53 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:21:53 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:21:53 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:21:53 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:22:48 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\scripts\\update_db.py', reloading
+2025-04-24 15:22:49 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:22:57 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002A37AE06510>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:23:01 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:23:01 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:23:01 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:23:01 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:23:01 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:23:27 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\scripts\\update_db.py', reloading
+2025-04-24 15:23:28 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:23:34 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024DFD25AAD0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:23:38 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:23:38 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:23:38 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:23:38 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:23:38 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:24:10 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\scripts\\update_db.py', reloading
+2025-04-24 15:24:10 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:24:17 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023A24B11C90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:24:21 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:24:21 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:24:21 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:24:21 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:24:21 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:24:43 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\scripts\\update_db.py', reloading
+2025-04-24 15:24:43 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:24:49 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F8BA656490>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:24:54 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:24:54 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:24:54 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:24:54 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:24:54 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 15:24:57 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\scripts\\update_db.py', reloading
+2025-04-24 15:24:58 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 15:25:05 [WARNING] - urllib3.connectionpool - connectionpool.py:874 - urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001B372DDD590>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /realms/bankarstvo/protocol/openid-connect/token
+2025-04-24 15:25:09 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 15:25:09 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 15:25:09 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 15:25:09 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 15:25:09 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 20:33:12 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 20:33:12 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 20:33:12 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 20:33:13 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 20:33:15 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 20:33:15 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 20:33:15 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 20:33:15 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 20:33:15 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 21:39:47 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:39:47 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:39:47 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:39:47 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 21:39:48 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:39:48 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:39:48 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:39:49 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 21:39:49 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 21:42:34 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\database\\models\\user.py', reloading
+2025-04-24 21:42:35 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 21:42:37 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:42:37 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:42:37 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:42:37 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 21:42:37 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 21:43:56 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\database\\migrations\\env.py', reloading
+2025-04-24 21:43:56 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 21:43:58 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:43:58 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:43:58 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:43:58 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 21:43:58 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 21:46:12 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:46:12 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:46:12 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:46:12 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 21:46:13 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:46:13 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:46:13 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:46:13 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 21:46:14 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 21:53:05 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\database\\models\\user.py', reloading
+2025-04-24 21:53:05 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 21:53:07 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:53:07 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:53:07 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:53:07 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 21:53:07 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 21:53:21 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\database\\models\\user.py', reloading
+2025-04-24 21:53:22 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 21:53:24 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:53:24 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:53:24 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:53:24 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 21:53:24 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778
+2025-04-24 21:54:42 [INFO] - werkzeug - _internal.py:96 - _log -  * Detected change in 'C:\\Users\\Ivan\\Documents\\GitHub\\bankarstvo\\app.py', reloading
+2025-04-24 21:54:42 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 21:54:44 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:54:44 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:54:44 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:55:45 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:55:45 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:55:45 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:56:41 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:56:41 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:56:41 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:58:24 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:58:24 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:58:24 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:59:36 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:59:36 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:59:36 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:59:37 [INFO] - werkzeug - _internal.py:96 - _log -  * Restarting with stat
+2025-04-24 21:59:38 [WARNING] - web.user.logout - logout.py:22 - <module> - Keycloak module not installed, SSO logout won't be available
+2025-04-24 21:59:38 [INFO] - web.user - __init__.py:55 - <module> - Registered user routes: ['/user/', '/user/login', '/user/callback', '/user/register', '/user/logout']
+2025-04-24 21:59:38 [INFO] - api.rest - __init__.py:23 - create_api_blueprint - Registering auth API blueprint with appropriate prefix
+2025-04-24 21:59:38 [WARNING] - werkzeug - _internal.py:96 - _log -  * Debugger is active!
+2025-04-24 21:59:38 [INFO] - werkzeug - _internal.py:96 - _log -  * Debugger PIN: 747-770-778

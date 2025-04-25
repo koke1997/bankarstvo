@@ -66,6 +66,7 @@ def create_app():
 
     # --- Initialize Database ---
     with app.app_context():
+        db.init_app(app)
         if not app.config.get("TESTING", False):
             try:
                 db.create_all()

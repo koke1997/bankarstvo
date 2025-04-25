@@ -16,6 +16,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(255), unique=True, nullable=False)
     email = db.Column(db.String(128), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
+    full_name = db.Column(db.String(255), nullable=True)
+    
+    # Keycloak ID field for synchronization
+    keycloak_id = db.Column(db.String(36), nullable=True, unique=True)
 
     # Multi-factor authentication fields
     two_factor_auth = db.Column(db.Boolean, default=False)
@@ -33,6 +37,8 @@ class User(db.Model, UserMixin):
         self.username = kwargs.get('username', '')
         self.email = kwargs.get('email', '')
         self.password_hash = kwargs.get('password_hash', 'temp_hash')
+        self.full_name = kwargs.get('full_name', '')
+        self.keycloak_id = kwargs.get('keycloak_id', None)
         self.two_factor_auth = kwargs.get('two_factor_auth', False)
         self.account_created = kwargs.get('account_created', datetime.now())
         

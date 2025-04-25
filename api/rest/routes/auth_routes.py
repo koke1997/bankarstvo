@@ -54,18 +54,27 @@ def register():
                 "message": "Email already in use"
             }), 400
         
-        # Create new user
+        # Create new user in database
         hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
+        full_name = data.get('fullName', '')
         
         new_user = User(
             username=data['username'],
             email=data['email'],
             password_hash=hashed_password,
-            full_name=data.get('fullName', '')
+            full_name=full_name
         )
         
         db.session.add(new_user)
         db.session.commit()
+        
+        # Try to create the user in Keycloak
+        from infrastructure.auth.user_sync_service import UserSyncService
+        keycloak_id = UserSyncService.create_user_in_keycloak(new_user, data['password'])
+        if keycloak_id:
+            logger.info(f"User {data['username']} created in both database and Keycloak")
+        else:
+            logger.warning(f"User {data['username']} created in database but not in Keycloak")
         
         # Log in the new user
         login_user(new_user)
@@ -171,7 +180,43 @@ def login():
         user = User.query.filter((User.username == username) | (User.email == username)).first()
         
         if not user:
-            logger.warning(f"User not found: {username}")
+            # User not found in database, try to import from Keycloak
+            logger.info(f"User {username} not found in database, trying to import from Keycloak")
+            
+            try:
+                from infrastructure.auth.user_sync_service import UserSyncService
+                imported_user = UserSyncService.import_user_from_keycloak(username)
+                if imported_user:
+                    user = imported_user
+                    logger.info(f"Successfully imported user {username} from Keycloak")
+                    # Note: Since we don't know the user's password in Keycloak, we'll authenticate via Keycloak directly
+                    
+                    # Get Keycloak client
+                    keycloak_client = UserSyncService.get_keycloak_client()
+                    if keycloak_client:
+                        # Verify password against Keycloak
+                        auth_result = keycloak_client.authenticate(username, password)
+                        if "error" not in auth_result:
+                            # Successfully authenticated with Keycloak, log in the user
+                            login_user(user)
+                            
+                            # Generate token
+                            token = generate_token(user)
+                            
+                            return jsonify({
+                                "success": True,
+                                "message": "Login successful via Keycloak",
+                                "token": token,
+                                "data": {
+                                    "id": str(user.user_id),
+                                    "username": user.username,
+                                    "email": getattr(user, 'email', '')
+                                }
+                            })
+            except Exception as e:
+                logger.error(f"Failed to import/authenticate user from Keycloak: {e}")
+            
+            # If we get here, either import failed or Keycloak authentication failed
             return jsonify({
                 "success": False,
                 "error": "Invalid credentials",
