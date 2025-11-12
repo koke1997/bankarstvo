@@ -264,7 +264,7 @@ function setupCloseModalButtons(): void {
 }
 
 // Helper functions
-function formatCurrency(amount: number, currency: string = 'USD'): string {
+function formatCurrency(amount: number, currency = 'USD'): string {
   return new Intl.NumberFormat('en-US', { 
     style: 'currency', 
     currency 

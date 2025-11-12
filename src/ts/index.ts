@@ -742,14 +742,14 @@ class BankingApp {
    */
   private getAmountClass(type: string): string {
     switch (type) {
-      case 'deposit':
-      case 'interest':
-        return 'text-green-600';
-      case 'withdrawal':
-      case 'fee':
-        return 'text-red-600';
-      default:
-        return '';
+    case 'deposit':
+    case 'interest':
+      return 'text-green-600';
+    case 'withdrawal':
+    case 'fee':
+      return 'text-red-600';
+    default:
+      return '';
     }
   }
   
@@ -758,14 +758,14 @@ class BankingApp {
    */
   private formatAmount(type: string, amount: number): string {
     switch (type) {
-      case 'deposit':
-      case 'interest':
-        return `+${amount.toFixed(2)}`;
-      case 'withdrawal':
-      case 'fee':
-        return `-${amount.toFixed(2)}`;
-      default:
-        return amount.toFixed(2);
+    case 'deposit':
+    case 'interest':
+      return `+${amount.toFixed(2)}`;
+    case 'withdrawal':
+    case 'fee':
+      return `-${amount.toFixed(2)}`;
+    default:
+      return amount.toFixed(2);
     }
   }
   

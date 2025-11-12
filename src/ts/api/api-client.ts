@@ -1,13 +1,10 @@
 // API client for making HTTP requests to the banking API
 import { 
   Account, 
-  AccountType, 
   Transaction, 
   User, 
   ApiResponse,
-  PaginatedResponse,
   CreateAccountForm,
-  LoginForm,
   RegisterForm
 } from '../models/types';
 
@@ -45,7 +42,7 @@ export class ApiClient {
    * Clear the authentication token
    */
   clearAuthToken(): void {
-    const { Authorization, ...rest } = this.headers as any;
+    const { Authorization: _Authorization, ...rest } = this.headers as any;
     this.headers = rest;
   }
   
@@ -194,7 +191,7 @@ export class ApiClient {
    * @param error Error object
    * @returns Never - always throws
    */
-  private handleError<T>(error: any): never {
+  private handleError(error: any): never {
     console.error('API request failed:', error);
     throw error;
   }
