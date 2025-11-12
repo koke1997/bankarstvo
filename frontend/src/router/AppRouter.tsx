@@ -16,8 +16,11 @@ const ProtectedRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 const AppRouter = () => {
+  // Use basename for GitHub Pages deployment
+  const basename = process.env.NODE_ENV === 'production' ? '/bankarstvo' : '';
+  
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         {/* Public routes */}
         <Route path="/login" element={<Login />} />

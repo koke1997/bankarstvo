@@ -15,8 +15,12 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx",
-    "outDir": "./dist"
+    "outDir": "../dist",
+    "baseUrl": "..",
+    "paths": {
+      "*": ["frontend/src/*"]
+    }
   },
-  "include": ["frontend/src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": ["../frontend/src/**/*"],
+  "exclude": ["../node_modules", "**/*.spec.ts"]
 }

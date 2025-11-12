@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "pytest && npm run lint",
-    "build": "tsc && webpack --config webpack.config.js",
-    "dev": "webpack serve --mode development",
+    "build": "NODE_ENV=production webpack --config config/webpack.config.js",
+    "build:dev": "webpack --config config/webpack.config.js --mode development",
+    "dev": "webpack serve --config config/webpack.config.js --mode development",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write .",
     "test:unit": "pytest",
