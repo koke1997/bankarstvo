@@ -1,6 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const fs = require('fs');
+
+// Plugin to create .nojekyll file for GitHub Pages
+class CreateNoJekyllPlugin {
+  apply(compiler) {
+    compiler.hooks.afterEmit.tap('CreateNoJekyllPlugin', (compilation) => {
+      const outputPath = compilation.options.output.path;
+      const nojekyllPath = path.join(outputPath, '.nojekyll');
+      fs.writeFileSync(nojekyllPath, '');
+    });
+  }
+}
 
 // Determine if we're building for GitHub Pages
 const isProduction = process.env.NODE_ENV === 'production';
@@ -45,7 +57,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../frontend/public/index.html'),
       filename: 'index.html'
-    })
+    }),
+    new CreateNoJekyllPlugin()
   ],
   devServer: {
     historyApiFallback: true,
