@@ -1,7 +1,48 @@
 # Exclude folders part of virtual environment
 venv/
+env/
+ENV/
+.venv/
 
 # Exclude Python bytecode cache folders
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+
+# Node modules and frontend build artifacts
 node_modules/
+dist/
+build/
+*.min.js
+*.min.css
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment and configuration files
+.env
+.env.local
+*.log
+
+# Test coverage and reports
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Package and build artifacts
+*.egg-info/
+.eggs/
+*.egg

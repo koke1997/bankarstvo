@@ -33,16 +33,18 @@ def get_account_transactions(account_id):
         query = Transaction.query.filter_by(account_id=account_id)
         
         # Apply filters based on query parameters
-        if request.args.get('startDate'):
+        start_date_str = request.args.get('startDate')
+        if start_date_str:
             try:
-                start_date = datetime.strptime(request.args.get('startDate'), '%Y-%m-%d')
+                start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
                 query = query.filter(Transaction.date_posted >= start_date)
             except ValueError:
                 return jsonify({"error": "Invalid startDate format. Use YYYY-MM-DD"}), 400
                 
-        if request.args.get('endDate'):
+        end_date_str = request.args.get('endDate')
+        if end_date_str:
             try:
-                end_date = datetime.strptime(request.args.get('endDate'), '%Y-%m-%d')
+                end_date = datetime.strptime(end_date_str, '%Y-%m-%d')
                 # Include the whole day by adding one day and subtracting one second
                 end_date = end_date + timedelta(days=1) - timedelta(seconds=1)
                 query = query.filter(Transaction.date_posted <= end_date)
@@ -53,16 +55,18 @@ def get_account_transactions(account_id):
             transaction_type = request.args.get('type')
             query = query.filter(Transaction.type == transaction_type)
             
-        if request.args.get('minAmount'):
+        min_amount_str = request.args.get('minAmount')
+        if min_amount_str:
             try:
-                min_amount = float(request.args.get('minAmount'))
+                min_amount = float(min_amount_str)
                 query = query.filter(Transaction.amount >= min_amount)
             except ValueError:
                 return jsonify({"error": "Invalid minAmount format. Must be a number"}), 400
                 
-        if request.args.get('maxAmount'):
+        max_amount_str = request.args.get('maxAmount')
+        if max_amount_str:
             try:
-                max_amount = float(request.args.get('maxAmount'))
+                max_amount = float(max_amount_str)
                 query = query.filter(Transaction.amount <= max_amount)
             except ValueError:
                 return jsonify({"error": "Invalid maxAmount format. Must be a number"}), 400
