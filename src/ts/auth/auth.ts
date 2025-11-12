@@ -82,7 +82,7 @@ async function handleRegister(event: Event): Promise<void> {
   
   try {
     const apiClient = new ApiClient();
-    const response = await apiClient.register(registerData);
+    await apiClient.register(registerData);
     
     // Show success message
     showSuccess('Registration successful! You can now log in.');

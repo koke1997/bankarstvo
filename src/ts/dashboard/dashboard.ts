@@ -141,7 +141,7 @@ function renderBalanceSummary(totalBalance: number): void {
   `;
 }
 
-function setupAccountSelectionEvents(accounts: Account[]): void {
+function setupAccountSelectionEvents(_accounts: Account[]): void {
   // Add click event to account cards to show details
   const accountCards = document.querySelectorAll('[data-account-id]');
   accountCards.forEach(card => {
@@ -162,7 +162,7 @@ function setupAccountActionButtons(): void {
   // Deposit buttons
   const depositButtons = document.querySelectorAll('.deposit-btn');
   depositButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
+    button.addEventListener('click', (_event) => {
       const accountId = (button as HTMLElement).getAttribute('data-account-id');
       showTransactionModal('deposit', accountId);
     });
@@ -171,7 +171,7 @@ function setupAccountActionButtons(): void {
   // Withdraw buttons
   const withdrawButtons = document.querySelectorAll('.withdraw-btn');
   withdrawButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
+    button.addEventListener('click', (_event) => {
       const accountId = (button as HTMLElement).getAttribute('data-account-id');
       showTransactionModal('withdraw', accountId);
     });
@@ -180,7 +180,7 @@ function setupAccountActionButtons(): void {
   // Transfer buttons
   const transferButtons = document.querySelectorAll('.transfer-btn');
   transferButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
+    button.addEventListener('click', (_event) => {
       const accountId = (button as HTMLElement).getAttribute('data-account-id');
       showTransactionModal('transfer', accountId);
     });
@@ -296,7 +296,7 @@ function initializeCharts(dashboardData: DashboardData): void {
 }
 
 // Helper functions
-function formatCurrency(amount: number, currency: string = 'USD'): string {
+function formatCurrency(amount: number, currency = 'USD'): string {
   return new Intl.NumberFormat('en-US', { 
     style: 'currency', 
     currency 
@@ -343,14 +343,14 @@ function getAmountColorClass(transaction: Transaction): string {
 
 function getStatusColorClass(status: string): string {
   switch (status) {
-    case 'completed':
-      return 'text-green-600';
-    case 'pending':
-      return 'text-yellow-600';
-    case 'failed':
-      return 'text-red-600';
-    default:
-      return 'text-gray-600';
+  case 'completed':
+    return 'text-green-600';
+  case 'pending':
+    return 'text-yellow-600';
+  case 'failed':
+    return 'text-red-600';
+  default:
+    return 'text-gray-600';
   }
 }
 
@@ -365,20 +365,20 @@ function getTransactionColorClass(transaction: Transaction): string {
 
 function getDefaultTransactionDescription(transaction: Transaction): string {
   switch (transaction.type) {
-    case 'deposit':
-      return 'Deposit';
-    case 'withdrawal':
-      return 'Withdrawal';
-    case 'transfer':
-      return 'Transfer';
-    case 'payment':
-      return 'Payment';
-    case 'fee':
-      return 'Fee';
-    case 'interest':
-      return 'Interest';
-    default:
-      return 'Transaction';
+  case 'deposit':
+    return 'Deposit';
+  case 'withdrawal':
+    return 'Withdrawal';
+  case 'transfer':
+    return 'Transfer';
+  case 'payment':
+    return 'Payment';
+  case 'fee':
+    return 'Fee';
+  case 'interest':
+    return 'Interest';
+  default:
+    return 'Transaction';
   }
 }
 
